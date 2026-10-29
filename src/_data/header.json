@@ -1,9 +1,5 @@
 {
-  "preloader_word": "Milo’s",
-  "preloader_tagline": "European café · Morrisville, NC",
   "topbar_today_label": "Today",
-  "topbar_hours_link": "Full hours",
-  "topbar_checking": "Checking the patio…",
   "nav": [
     {
       "label": "About",
@@ -26,17 +22,8 @@
       "target": "visit"
     }
   ],
-  "mobile_nav": [
-    {
-      "label": "Menu",
-      "target": "menu"
-    },
-    {
-      "label": "Visit & hours",
-      "target": "visit"
-    }
-  ],
   "order_button": "Order",
   "mobile_bar_order": "Order online",
-  "mobile_bar_call": "Call"
+  "mobile_bar_call": "Call",
+  "mobile_menu_label": "Menu"
 }

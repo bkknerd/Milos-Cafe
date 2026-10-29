@@ -1,10 +1,6 @@
 {
   "enabled": true,
-  "eyebrow": "The patio",
-  "heading": "The patio,",
-  "heading_italic": "live.",
-  "intro": "This is Milo’s patio under the real sky over Morrisville right now: the sun, clouds, rain and wind are live. Drag the slider to watch the day pass, or try a different sky.",
-  "sign_text": "Milo’s",
+  "intro": "The patio, drawn live: the sun, clouds, rain and wind follow the real sky over Morrisville. Drag through the day or try a different sky.",
   "card_live": "Right now",
   "card_preview": "Preview",
   "card_place": "Morrisville",

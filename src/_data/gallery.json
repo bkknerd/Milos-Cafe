@@ -1,33 +1,32 @@
 {
   "enabled": true,
-  "eyebrow": "Instagram",
-  "heading": "On",
-  "heading_italic": "Instagram.",
-  "intro": "Plates, pours, and the room.",
+  "heading": "On Instagram",
+  "heading_italic": "",
+  "intro": "Plates, pours and the room.",
   "photos": [
     {
-      "image": "/images/salad-bowl.jpg",
-      "caption": "Colorful salad bowl"
+      "image": "/images/brunch-spread.webp",
+      "caption": "Matcha crepes, French toast and a breakfast focaccia"
     },
     {
-      "image": "/images/matcha-crepes.jpg",
-      "caption": "Matcha latte and crepes"
+      "image": "/images/avocado-focaccia.webp",
+      "caption": "Avocado focaccia and an iced latte"
     },
     {
-      "image": "/images/coffee-pecan-cookie.jpg",
-      "caption": "Coffee and a pecan cookie"
+      "image": "/images/french-toast.webp",
+      "caption": "Tim’s French toast with berries and caramel"
     },
     {
-      "image": "/images/arugula-wrap.jpg",
-      "caption": "Arugula and cheese wrap"
+      "image": "/images/teddy-iced-coffee.webp",
+      "caption": "The resident bear, with an iced coffee"
     },
     {
-      "image": "/images/matcha-ube.jpg",
-      "caption": "Matcha latte with ube"
+      "image": "/images/neon-wall.webp",
+      "caption": "“Do what you love” on the green wall"
     },
     {
-      "image": "/images/latte-art-above.jpg",
-      "caption": "Latte art, from above"
+      "image": "/images/pink-wall.webp",
+      "caption": "Shelves on the pink wall"
     }
   ],
   "follow_label": "Follow @milos_europeancafe"

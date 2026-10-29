@@ -48,3 +48,8 @@
   from = "/hours"
   to = "/#visit"
   status = 302
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

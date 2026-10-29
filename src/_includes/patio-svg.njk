@@ -1,26 +1,144 @@
-<svg id="ps-svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of Milo’s patio that follows the real sky and weather in Morrisville">
+<div class="art">
+<svg class="ps-l" id="ps-bg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
 <defs>
 <linearGradient id="psg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--s1,#4f86e0)"/><stop offset="1" style="stop-color:var(--s2,#bcd9f5)"/></linearGradient>
 <radialGradient id="psh"><stop offset="0" stop-color="#ffd978" stop-opacity=".6"/><stop offset="1" stop-color="#ffd978" stop-opacity="0"/></radialGradient>
-<pattern id="pss" width="40" height="34" patternUnits="userSpaceOnUse"><rect width="20" height="34" fill="#f8f7f3"/></pattern>
-<g id="psc" fill="#f0bf3c"><rect x="-19" y="-46" width="38" height="6" rx="2"/><rect x="-19" y="-92" width="6" height="52" rx="2"/><path d="M-15-40L-19 0M15-40L19 0" stroke="#f0bf3c" stroke-width="4" fill="none"/></g>
-<g id="psp"><path d="M-46 0L0-70L46 0Z"/><path d="M-38-42L0-122L38-42Z"/><path d="M-28-96L0-176L28-96Z"/></g>
+<path id="pine1" d="M0-178L-14-150H-8L-26-118H-18L-38-84H-28L-50-46H-38L-62 0H62L38-46H50L28-84H38L18-118H26L8-150H14Z"/>
+<g id="pine2"><use href="#pine1" fill="#1f3a2d"/><path d="M0-178L14-150H8L26-118H18L38-84H28L50-46H38L62 0H6Z" fill="#2c5341"/><path d="M0-170V0" stroke="#13281f" stroke-width="2"/></g>
 </defs>
-<rect width="1200" height="430" fill="url(#psg)"/>
+<!-- sky (live) -->
+<rect width="1440" height="452" fill="url(#psg)"/>
 <g id="pst" fill="#f8f7f3" opacity="0"></g>
-<circle id="psH" r="160" fill="url(#psh)"/><circle id="psS" r="44" fill="#ffd36b"/><circle id="psM" r="30" fill="#f8f7f3"/>
-<g id="pscl" opacity=".2"><g transform="translate(250 96)"><g class="cd"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g><g transform="translate(700 70)"><g class="cd" style="animation-delay:-30s"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g><g transform="translate(1000 150)"><g class="cd" style="animation-delay:-60s"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g></g>
-<g class="sw" fill="#1d3328"><g transform="translate(500 430) scale(1.5)"><use href="#psp"/></g><g transform="translate(750 430) scale(1.9)"><use href="#psp"/></g><g transform="translate(1030 432) scale(1.5)"><use href="#psp"/></g><g transform="translate(1130 432) scale(2.1)"><use href="#psp"/></g></g>
-<rect y="428" width="1200" height="132" fill="#3a4766"/><path d="M0 436H1200M0 500H1200M0 540H1200" stroke="#f8f7f3" stroke-opacity=".07"/>
-<rect x="40" y="170" width="390" height="260" fill="#f3f1ec"/><rect x="34" y="160" width="402" height="14" fill="#1b2c5a"/>
-<text x="235" y="206" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="34" fill="#13234a">{{ patio.sign_text }}</text>
-<rect x="60" y="216" width="350" height="34" fill="#f0bf3c"/><rect x="60" y="216" width="350" height="34" fill="url(#pss)" opacity=".92"/>
-<rect x="84" y="270" width="176" height="116" fill="#1b2c5a" stroke="#13234a" stroke-width="3"/><path d="M172 270V386" stroke="#13234a" stroke-width="3"/>
-<rect x="300" y="268" width="72" height="162" fill="#1f4bb8" stroke="#13234a" stroke-width="3"/>
-<g id="psf"></g>
-<path id="psl" d="M434 232Q640 346 860 244T1124 238" fill="none" stroke="#13234a" stroke-width="1.6"/><path d="M1124 238V430" stroke="#13234a" stroke-width="6"/>
-<rect id="psN" width="1200" height="560" fill="#050b1a" opacity="0" pointer-events="none"/>
-<g id="psW" opacity="0" fill="#ffc35a"><rect x="86" y="272" width="172" height="112"/><rect x="302" y="270" width="68" height="158" opacity=".8"/></g>
-<g id="psB" opacity="0"></g>
-<g id="psR" opacity="0" stroke="#cfe0ff" stroke-width="1.6" stroke-linecap="round"></g>
+<circle id="psH" r="170" fill="url(#psh)"/><circle id="psS" r="40" fill="#ffd36b"/><circle id="psM" r="28" fill="#f8f7f3"/>
+<g id="pscl" opacity=".2"><g transform="translate(250 120)"><g class="cd"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g><g transform="translate(720 90) scale(.8)"><g class="cd" style="animation-delay:-30s"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g><g transform="translate(1080 140) scale(1.1)"><g class="cd" style="animation-delay:-60s"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g><g transform="translate(1350 100) scale(.7)"><g class="cd" style="animation-delay:-80s"><ellipse rx="74" ry="22"/><ellipse cx="-42" cy="8" rx="44" ry="18"/><ellipse cx="48" cy="6" rx="50" ry="19"/><ellipse cx="8" cy="-14" rx="42" ry="20"/></g></g></g>
+
+<!-- pines: far (parallax) and near (sway) -->
+<g id="psFar" fill="#4f6e5d" opacity=".5"><use href="#pine1" transform="translate(60 442) scale(.9)"/><use href="#pine1" transform="translate(150 442) scale(1.2)"/><use href="#pine1" transform="translate(700 442) scale(1)"/><use href="#pine1" transform="translate(800 442) scale(1.25)"/><use href="#pine1" transform="translate(980 442) scale(.9)"/><use href="#pine1" transform="translate(1180 442) scale(1.2)"/><use href="#pine1" transform="translate(1300 442) scale(1)"/><use href="#pine1" transform="translate(1420 442) scale(1.3)"/></g>
+<g class="sw"><use href="#pine2" transform="translate(48 446) scale(1.55)"/><use href="#pine2" transform="translate(690 446) scale(1.6)"/><use href="#pine2" transform="translate(1110 446) scale(1.95)"/><use href="#pine2" transform="translate(1390 446) scale(2.15)"/></g>
+
+<rect class="psN" width="1440" height="600" fill="#050b1a" opacity="0"/>
 </svg>
+<svg class="ps-l" id="ps-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Illustration of Milo’s patio: a focaccia sandwich and iced coffee on a blue bistro table, folding chairs, Lavazza umbrellas and the storefront, under the real sky over Morrisville">
+<defs>
+<linearGradient id="gGr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a99d86"/><stop offset="1" stop-color="#c9bfaa"/></linearGradient>
+<linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1585bf"/><stop offset=".55" stop-color="#0b6fa8"/><stop offset="1" stop-color="#095a8a"/></linearGradient>
+<linearGradient id="gCof" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a1d0e"/><stop offset=".35" stop-color="#1a0d07"/><stop offset="1" stop-color="#0d0705"/></linearGradient>
+<!-- risograph textures -->
+<pattern id="pBlk" width="44" height="22" patternUnits="userSpaceOnUse"><path d="M0 .6H44M0 11.6H44M.6 0V11M22.6 11V22" stroke="#d3cdbf" stroke-width="1.3" fill="none"/></pattern>
+<pattern id="pDot" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="3" cy="3" r="1.25" fill="#13234a"/></pattern>
+<pattern id="pDotY" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="2.5" cy="2.5" r="1" fill="#c9a64e"/></pattern>
+<pattern id="pGv" width="26" height="19" patternUnits="userSpaceOnUse"><path d="M3 4l3 1M15 12l2-1.5M21 3l2 1M8 15l3 0" stroke="#7d725f" stroke-width="1.4" stroke-linecap="round"/><circle cx="19" cy="15" r="1" fill="#efe9dc"/><circle cx="10" cy="8" r=".9" fill="#efe9dc"/></pattern>
+<pattern id="pNews" width="60" height="34" patternUnits="userSpaceOnUse"><path d="M4 6h22M4 11h16M32 7h20M32 12h12M6 22h10M22 21h26M6 27h18M30 28h14" stroke="#2a2d33" stroke-width="1.6" stroke-linecap="round"/><circle cx="50" cy="24" r="4" fill="none" stroke="#2a2d33" stroke-width="1.4"/></pattern>
+<pattern id="pTile" width="8" height="22" patternUnits="userSpaceOnUse"><rect width="8" height="22" fill="#5f8e93"/><path d="M.5 0V22" stroke="#e8efe9" stroke-width="1"/></pattern>
+<!-- hand-drawn wobble for ink line work (static groups only) -->
+<filter id="fRough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".032" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="psn" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<!-- French folding bistro chair, front view -->
+<g id="chY" stroke="#13234a" stroke-width="1.6" stroke-linejoin="round"><path d="M-19-58L-25 0M19-58L25 0" stroke="#c9a64e" stroke-width="4.5"/><path d="M-21-30H21" stroke="#c9a64e" stroke-width="3"/><path d="M-17-112h34v52h-34z" fill="none" stroke="#c9a64e" stroke-width="4"/><path d="M-17-102h34M-17-91h34M-17-80h34" stroke="#f2dc9a" stroke-width="5"/><path d="M-23-62h46l-3 8h-40z" fill="#f2dc9a"/></g>
+<g id="chB" stroke="#13234a" stroke-width="1.6" stroke-linejoin="round"><path d="M-19-58L-25 0M19-58L25 0" stroke="#2c5a72" stroke-width="4.5"/><path d="M-21-30H21" stroke="#2c5a72" stroke-width="3"/><path d="M-17-112h34v52h-34z" fill="none" stroke="#2c5a72" stroke-width="4"/><path d="M-17-102h34M-17-91h34M-17-80h34" stroke="#3c6f8e" stroke-width="5"/><path d="M-23-62h46l-3 8h-40z" fill="#3c6f8e"/></g>
+<!-- small round bistro table -->
+<g id="tbY"><path d="M-24-70L22 0M24-70L-22 0" stroke="#c9a64e" stroke-width="4.5" stroke-linecap="round"/><ellipse cy="-74" rx="38" ry="10" fill="#f2dc9a" stroke="#13234a" stroke-width="1.6"/></g>
+<!-- Lavazza umbrella: pole + canopy (canopy closes at night via .cp) -->
+</defs>
+<!-- ground -->
+<rect y="440" width="1440" height="160" fill="url(#gGr)"/><rect y="440" width="1440" height="160" fill="url(#pGv)" opacity=".85"/>
+<rect x="100" y="436" width="540" height="12" fill="#dedad2"/>
+
+<!-- storefront: white painted block, logo, plaque, door, window into the green-wall room -->
+<g id="psStore" filter="url(#fRough)">
+<path d="M600 196L630 206V440H600Z" fill="#d9d4c9" stroke="#13234a" stroke-width="2"/>
+<rect x="120" y="196" width="480" height="244" fill="#f4f2ec"/><rect x="120" y="196" width="480" height="244" fill="url(#pBlk)"/>
+<rect x="120" y="196" width="480" height="244" fill="none" stroke="#13234a" stroke-width="2.2"/>
+<rect x="108" y="182" width="526" height="17" fill="#13234a"/>
+<rect x="120" y="199" width="480" height="10" fill="url(#pDot)" opacity=".35"/>
+<image href="{{ settings.logo }}" x="372" y="214" width="196" height="47"/>
+<rect x="318" y="220" width="38" height="38" rx="5" fill="#1c3a8c" stroke="#13234a" stroke-width="1.5"/><text x="337" y="242" text-anchor="middle" font-family="Instrument Sans,Arial,sans-serif" font-weight="700" font-size="6.8" fill="#f8f7f3" letter-spacing=".4">LAVAZZA</text>
+<!-- window: green wall, frames, neon, caramel sofa, rug -->
+<rect x="330" y="286" width="252" height="130" fill="#1f4a3c"/>
+<g fill="none" stroke="#c9a64e" stroke-width="1.6"><rect x="360" y="298" width="16" height="20"/><rect x="382" y="296" width="22" height="16"/><rect x="362" y="324" width="14" height="18"/><rect x="452" y="300" width="14" height="18"/><rect x="470" y="318" width="16" height="22"/></g>
+<path d="M412 306q6-6 10 0t10 0M414 318q5-5 9 0t9 0M416 330q5-5 9 0" stroke="#f07ad0" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<text x="442" y="342" font-family="Fraunces,Georgia,serif" font-size="9" fill="#f8f7f3" letter-spacing="1">MILOS</text>
+<rect x="330" y="392" width="252" height="24" fill="#6f5031"/><ellipse cx="456" cy="404" rx="70" ry="9" fill="#e7c9a6" opacity=".9"/>
+<path d="M404 396v-22q0-6 6-6h92q6 0 6 6v22z" fill="#b4774b" stroke="#13234a" stroke-width="1.4"/><path d="M412 380h80" stroke="#8c5634" stroke-width="2"/>
+<path d="M330 286l70 0-110 130z" fill="#ffffff" opacity=".08"/><path d="M450 286h40l-110 130h-40z" fill="#ffffff" opacity=".07"/>
+<rect x="330" y="286" width="252" height="130" fill="none" stroke="#161616" stroke-width="6"/><path d="M414 286V416M498 286V416" stroke="#161616" stroke-width="4"/>
+<!-- door + gooseneck lamp + patio sign + planters -->
+<rect x="150" y="262" width="86" height="178" fill="#1b1d24" stroke="#13234a" stroke-width="2"/><rect x="162" y="276" width="62" height="120" fill="#2b3550"/><path d="M168 284l20-6v40" stroke="#ffffff" stroke-width="1.4" opacity=".25" fill="none"/>
+<rect x="214" y="352" width="4" height="22" rx="2" fill="#c9c4b8"/>
+<path d="M258 232v6q0 10 10 10h4" stroke="#161616" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="254" y="228" width="8" height="6" rx="1" fill="#161616"/><path d="M262 250q12-12 24 0z" fill="#161616"/><ellipse cx="274" cy="251" rx="5" ry="2" fill="#ffd978" opacity=".8"/>
+<rect x="248" y="300" width="64" height="17" rx="2" fill="#1f4bb8" stroke="#13234a" stroke-width="1.2"/><text x="280" y="312" text-anchor="middle" font-family="Instrument Sans,Arial,sans-serif" font-weight="600" font-size="8.5" fill="#f8f7f3">PATIO →</text>
+<g stroke="#13234a" stroke-width="1.4"><rect x="244" y="404" width="44" height="36" fill="#1b1d24"/><rect x="584" y="404" width="40" height="36" fill="#1b1d24"/></g>
+<g fill="#3f6b46" stroke="#13234a" stroke-width="1.2"><ellipse cx="256" cy="398" rx="14" ry="12"/><ellipse cx="274" cy="394" rx="14" ry="15"/><ellipse cx="598" cy="396" rx="13" ry="13"/><ellipse cx="612" cy="400" rx="12" ry="10"/></g>
+<path d="M262 392l6-10M280 386l4-12M600 388l2-11" stroke="#6f9a5c" stroke-width="2"/>
+</g>
+
+<!-- string lights + pole -->
+<path id="psl" d="M600 226Q860 330 1120 236M1120 236Q1290 300 1440 250" fill="none" stroke="#13234a" stroke-width="1.6"/><path d="M1120 236V442" stroke="#13234a" stroke-width="5"/>
+
+<!-- midground: bistro sets under Lavazza umbrellas, sun shadows in dot screen -->
+<g id="psf" filter="url(#fRough)">
+<g fill="url(#pDot)" opacity=".28"><ellipse cx="720" cy="508" rx="90" ry="10"/><ellipse cx="860" cy="474" rx="56" ry="7"/></g>
+<g transform="translate(700 500)"><use href="#chB" x="-56"/><g><path d="M0-70V-292" stroke="#13234a" stroke-width="4"/><g transform="translate(0 -292)"><path class="cp" d="M-130 0Q0-96 130 0Q108 12 86 2Q64 14 43 3Q22 14 0 3Q-22 14-43 3Q-64 14-86 2Q-108 12-130 0Z" fill="#1d4ed0" stroke="#13234a" stroke-width="2"/><path class="cp" d="M-46-2Q0-86 46-2" fill="none" stroke="#f8f7f3" stroke-width="2" opacity=".55"/><text class="cp" y="-14" text-anchor="middle" font-family="Instrument Sans,Arial,sans-serif" font-weight="700" font-size="12" fill="#f8f7f3" letter-spacing="1.4">LAVAZZA</text></g></g><use href="#tbY"/><use href="#chY" x="58"/></g>
+<g transform="translate(850 468) scale(.7)"><use href="#chY" x="-56"/><g><path d="M0-70V-292" stroke="#13234a" stroke-width="4"/><g transform="translate(0 -292)"><path class="cp" d="M-130 0Q0-96 130 0Q108 12 86 2Q64 14 43 3Q22 14 0 3Q-22 14-43 3Q-64 14-86 2Q-108 12-130 0Z" fill="#1d4ed0" stroke="#13234a" stroke-width="2"/><path class="cp" d="M-46-2Q0-86 46-2" fill="none" stroke="#f8f7f3" stroke-width="2" opacity=".55"/><text class="cp" y="-14" text-anchor="middle" font-family="Instrument Sans,Arial,sans-serif" font-weight="700" font-size="12" fill="#f8f7f3" letter-spacing="1.4">LAVAZZA</text></g></g><use href="#tbY"/><use href="#chB" x="58"/></g>
+<g transform="translate(560 476) scale(.75)"><use href="#chY"/></g>
+</g>
+
+<!-- foreground: the sandwich on the blue table (from the patio photo) -->
+<g id="psFg" filter="url(#fRough)"><g transform="translate(1210 512) scale(1.22) translate(-1250 -566)">
+<ellipse cx="1240" cy="622" rx="320" ry="142" fill="#0a4f7a"/>
+<ellipse cx="1240" cy="608" rx="320" ry="142" fill="url(#gTop)" stroke="#13234a" stroke-width="2.4"/>
+<path d="M960 560Q1060 486 1250 474" stroke="#7fc6ea" stroke-width="5" fill="none" opacity=".45" stroke-linecap="round"/>
+<!-- cast shadows -->
+<path d="M1128 552l120 18 90-6-60-22z" fill="url(#pDot)" opacity=".55"/>
+<path d="M1090 546q30 16 70 8l18-16z" fill="#13234a" opacity=".35"/>
+<path d="M1108 556q22 10 46 2q-12 14-36 10z" fill="#9fe0ff" opacity=".7"/>
+<!-- plate with folk-pattern rim -->
+<ellipse cx="1250" cy="566" rx="156" ry="44" fill="#f2efe6" stroke="#13234a" stroke-width="2"/>
+<ellipse cx="1250" cy="566" rx="146" ry="38" fill="none" stroke="#1e3f8f" stroke-width="13"/>
+<ellipse cx="1250" cy="566" rx="146" ry="38" fill="none" stroke="#f0bf3c" stroke-width="5" stroke-dasharray="4 14"/>
+<ellipse cx="1250" cy="566" rx="146" ry="38" fill="none" stroke="#e05a4a" stroke-width="3" stroke-dasharray="2 16" stroke-dashoffset="9"/>
+<ellipse cx="1250" cy="566" rx="118" ry="28" fill="#fbf9f4"/>
+<path d="M1150 566l40-22h150l30 26-60 14h-140z" fill="#ffffff" stroke="#c9c4b8" stroke-width="1.2"/>
+<!-- iced coffee -->
+<path d="M1088 404h74l-6 140q-1 8-9 8h-44q-8 0-9-8z" fill="#e9f3f6" opacity=".35" stroke="#13234a" stroke-width="2"/>
+<path d="M1092 430h66l-5 112q-1 6-7 6h-42q-6 0-7-6z" fill="url(#gCof)"/>
+<g fill="#5b3926" opacity=".85"><rect x="1100" y="436" width="20" height="18" rx="3" transform="rotate(-12 1110 445)"/><rect x="1126" y="440" width="22" height="18" rx="3" transform="rotate(10 1137 449)"/><rect x="1110" y="464" width="18" height="16" rx="3" transform="rotate(6 1119 472)"/></g>
+<path d="M1102 438h12M1130 442h10" stroke="#ffffff" stroke-width="1.6" opacity=".6" stroke-linecap="round"/>
+<ellipse cx="1125" cy="404" rx="37" ry="6" fill="#f8fbfc" opacity=".5" stroke="#13234a" stroke-width="1.6"/>
+<path d="M1098 414l-4 124" stroke="#ffffff" stroke-width="3" opacity=".55" stroke-linecap="round"/>
+<path d="M1094 530q31 10 62 0v10q-31 10-62 0z" fill="#d7eaf0" opacity=".7"/>
+<!-- sandwich halves: focaccia cross-section, cutlet + slaw, crumpled wrap -->
+<g transform="translate(1196 556) rotate(-3)">
+<path d="M-59.0 -30V-64q0-44 59.0 -46t59.0 46V-30z" fill="#a8692d" stroke="#13234a" stroke-width="2.2"/>
+<path d="M-51.0 -30V-62q0-36 51.0 -38t51.0 38V-30z" fill="#efd6a2"/>
+<g fill="#d3b37a"><circle cx="-26.55" cy="-84" r="2.4"/><circle cx="14.75" cy="-90" r="2"/><circle cx="32.45" cy="-78" r="1.8"/><circle cx="-5.9" cy="-96" r="1.6"/></g>
+<path d="M-51.0 -70q29.5 -6 102 0v14q-35.4 6 -102 0z" fill="#e9b765" stroke="#8f521e" stroke-width="2.2"/>
+<g stroke-linecap="round"><path d="M-49.0 -54l7 -8M-39.0 -52l9 -7M-27.0 -54l8 -6M-2 -52l9 -8M12 -54l8 -6M29.0 -52l9 -7M41.0 -54l7 -6" stroke="#ec8a3c" stroke-width="6.5"/>
+<path d="M-45.0 -58l5 -4M4 -58l6 -3M37.0 -56l5 -4" stroke="#8a2f72" stroke-width="5"/><path d="M-47.0 -44h94" stroke="#8fbf4e" stroke-width="3.2"/></g>
+<path d="M-64.0 -32q26.55 -9 53.1 1q29.5 -11 64.9 -2q20.65 4 32.45-5l-2 46q0 8-8 8h-112q-8 0-8-8z" fill="#fbfaf6" stroke="#13234a" stroke-width="2"/>
+<g stroke="#2a2d33" stroke-linecap="round" opacity=".75" fill="none"><path d="M-53.0 -14h18M-51.0 -6h11M29.0 -18h20M33.0 -8h14" stroke-width="1.6"/><circle cx="45.0" cy="4" r="5" stroke-width="1.4"/></g>
+<path d="M-49.0 -26l8 30M11.8 -24l-4 30" stroke="#d8d3c6" stroke-width="1.4"/>
+<text x="-34" y="0" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="13" fill="#1b1d24" transform="rotate(-4 -34 0)">Delish</text>
+</g>
+<g transform="translate(1322 552) rotate(4)">
+<path d="M-56.0 -30V-64q0-44 56.0 -46t56.0 46V-30z" fill="#a8692d" stroke="#13234a" stroke-width="2.2"/>
+<path d="M-48.0 -30V-62q0-36 48.0 -38t48.0 38V-30z" fill="#efd6a2"/>
+<g fill="#d3b37a"><circle cx="-25.2" cy="-84" r="2.4"/><circle cx="14.0" cy="-90" r="2"/><circle cx="30.800000000000004" cy="-78" r="1.8"/><circle cx="-5.6000000000000005" cy="-96" r="1.6"/></g>
+<path d="M-48.0 -70q28.0 -6 96 0v14q-33.6 6 -96 0z" fill="#e9b765" stroke="#8f521e" stroke-width="2.2"/>
+<g stroke-linecap="round"><path d="M-46.0 -54l7 -8M-36.0 -52l9 -7M-24.0 -54l8 -6M-2 -52l9 -8M12 -54l8 -6M26.0 -52l9 -7M38.0 -54l7 -6" stroke="#ec8a3c" stroke-width="6.5"/>
+<path d="M-42.0 -58l5 -4M4 -58l6 -3M34.0 -56l5 -4" stroke="#8a2f72" stroke-width="5"/><path d="M-44.0 -44h88" stroke="#8fbf4e" stroke-width="3.2"/></g>
+<path d="M-61.0 -32q25.2 -9 50.4 1q28.0 -11 61.60000000000001 -2q19.599999999999998 4 30.800000000000004-5l-2 46q0 8-8 8h-106q-8 0-8-8z" fill="#fbfaf6" stroke="#13234a" stroke-width="2"/>
+<g stroke="#2a2d33" stroke-linecap="round" opacity=".75" fill="none"><path d="M-50.0 -14h18M-48.0 -6h11M26.0 -18h20M30.0 -8h14" stroke-width="1.6"/><circle cx="42.0" cy="4" r="5" stroke-width="1.4"/></g>
+<path d="M-46.0 -26l8 30M11.200000000000001 -24l-4 30" stroke="#d8d3c6" stroke-width="1.4"/>
+
+</g>
+</g>
+</g>
+
+<rect class="psN" width="1440" height="600" fill="#050b1a" opacity="0" pointer-events="none"/>
+<g id="psW" opacity="0" style="mix-blend-mode:screen"><rect x="333" y="289" width="246" height="124" fill="#ffb347" opacity=".75"/><rect x="162" y="276" width="62" height="120" fill="#ffb347" opacity=".7"/><ellipse cx="456" cy="440" rx="170" ry="26" fill="#ffb347" opacity=".25"/></g>
+<g id="psB" opacity="0"></g>
+<rect width="1440" height="600" filter="url(#psn)" opacity=".11" style="mix-blend-mode:multiply" pointer-events="none"/>
+</svg>
+<svg class="ps-l" id="ps-rain" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g id="psR" opacity="0" stroke="#cfe0ff" stroke-width="1.6" stroke-linecap="round"></g></svg>
+</div>

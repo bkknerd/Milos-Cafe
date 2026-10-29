@@ -5,7 +5,7 @@ permalink: /index.html
 {%- set fullAddr = s.street + ", " + s.city + ", " + s.state + " " + s.zip -%}
 {%- set siteUrl = s.site_url or build.url -%}
 {%- set gDir = "https://www.google.com/maps/dir/?api=1&destination=" + ((s.business_name + " " + fullAddr) | enc) -%}
-{%- set on = { kitchen: kitchen.enabled, menu: menu.enabled, reviews: reviews.enabled, gallery: gallery.enabled, faq: faq.enabled, patio: patio.enabled, visit: visit.enabled } -%}
+{%- set on = { kitchen: kitchen.enabled, menu: menu.enabled, reviews: reviews.enabled, gallery: gallery.enabled, faq: faq.enabled, patio: patio.enabled, visit: true } -%}
 {%- macro heading(d) -%}{{ d.heading }}{% if d.heading_italic %} <i>{{ d.heading_italic }}</i>{% endif %}{%- endmacro -%}
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
@@ -13,8 +13,7 @@ permalink: /index.html
 <title>{{ s.seo_title }}</title>
 <meta name="description" content="{{ s.seo_description }}"/>
 <meta name="theme-color" content="#f8f7f3"/>
-<link rel="preload" href="/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href="/fonts/fraunces-latin-full-italic.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="/fonts/fraunces-normal.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -27,7 +26,7 @@ permalink: /index.html
 <meta name="twitter:card" content="summary_large_image"/>
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org", "@type": "CafeOrCoffeeShop", "name": s.business_name,
-  "url": siteUrl, "image": (siteUrl if hero.image.startsWith('/')) + hero.image,
+  "url": siteUrl, "image": (siteUrl if kitchen.image.startsWith('/')) + kitchen.image,
   "telephone": s.phone_dial, "servesCuisine": s.cuisine,
   "address": { "@type": "PostalAddress", "streetAddress": s.street, "addressLocality": s.city, "addressRegion": s.state, "postalCode": s.zip, "addressCountry": "US" },
   "geo": { "@type": "GeoCoordinates", "latitude": s.latitude, "longitude": s.longitude },
@@ -35,117 +34,128 @@ permalink: /index.html
   "sameAs": [s.instagram_url, s.yelp_url]
 } | json | safe }}</script>
 <style>{% raw_include "fonts.css" %}{% raw_include "styles.css" %}</style>
-<script>document.documentElement.classList.add("js");setTimeout(function(){if(!document.documentElement.dataset.ok)document.documentElement.classList.add("ready","fs")},5000)
-/* Netlify Identity invite / password links land here: send them to the CMS */
+<script>/* Netlify Identity invite / password links land here: send them to the CMS */
 if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))location.replace("/admin/"+location.hash);</script>
-</head><body><div class="pre" aria-hidden="true"><div><b><span>{{ header.preloader_word }}</span></b><em>{{ header.preloader_tagline }}</em><u></u></div></div>
-<div class="tb" data-w="0"><div class="w"><span class="pw"><b class="t">--°F</b><span class="d" aria-hidden="true"></span><span class="pt" aria-live="polite">{{ header.topbar_checking }}</span></span><span><span class="hr"></span><span class="sep" aria-hidden="true">·</span><a href="#visit" style="text-decoration:none">{{ header.topbar_hours_link }}</a></span></div></div><header><div class="w"><a aria-label="{{ s.business_name }}" class="logo" href="#"><img decoding="async" alt="{{ s.business_name }} logo" src="{{ s.logo }}"/></a>
-<nav>{% for n in header.nav %}{% if on[n.target] %}<a href="#{{ n.target }}">{{ n.label }}</a>{% endif %}{% endfor %}</nav>
-<a class="btn" href="{{ s.order_url }}">{{ header.order_button }}</a></div><nav aria-label="Quick navigation" class="mobile-nav">{% for n in header.mobile_nav %}{% if on[n.target] %}<a href="#{{ n.target }}">{{ n.label }}</a>{% endif %}{% endfor %}</nav></header>
-<main>
-<div class="w">
-<div class="hero">
-<div>
-<h1>{{ hero.headline }}{% if hero.headline_italic %}<br/><i>{{ hero.headline_italic }}</i>{% endif %}</h1>
-<p>{{ hero.intro }}</p>
-<div class="btns">{% if hero.primary_label %}<a class="btn" href="{{ hero.primary_url }}">{{ hero.primary_label }}</a>{% endif %}{% if hero.secondary_label %}<a class="btn o" href="{{ hero.secondary_url }}">{{ hero.secondary_label }}</a>{% endif %}</div>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hd"><div class="w hd-in">
+<a aria-label="{{ s.business_name }}, back to top" class="logo" href="#"><img alt="{{ s.business_name }} logo" src="{{ s.logo }}" width="900" height="216"/></a>
+<nav class="nav" aria-label="Sections">{% for n in header.nav %}{% if on[n.target] %}<a href="#{{ n.target }}">{{ n.label }}</a>{% endif %}{% endfor %}</nav>
+<div class="hd-r"><a class="today" href="#visit" data-label="{{ header.topbar_today_label }}"></a>{% if on.menu %}<a class="m-menu" href="#menu">{{ header.mobile_menu_label }}</a>{% endif %}<a class="btn" href="{{ s.order_url }}">{{ header.order_button }}</a></div>
+</div></header>
+
+<main id="main">
+<section class="hero" aria-labelledby="hero-h">
+<div class="w hero-top">
+<h1 id="hero-h">{{ hero.headline }}{% if hero.headline_italic %}<br/><i>{{ hero.headline_italic }}</i>{% endif %}</h1>
+<div class="hero-side"><p>{{ hero.intro }}</p>
+<div class="btns">{% if hero.primary_label %}<a class="btn" href="{{ hero.primary_url }}">{{ hero.primary_label }}</a>{% endif %}{% if hero.secondary_label %}<a class="btn o" href="{{ hero.secondary_url }}">{{ hero.secondary_label }}</a>{% endif %}</div></div>
 </div>
-<div class="badge" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="bc" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text font-size="8" font-weight="600" fill="currentColor" font-family="Hanken Grotesk,sans-serif"><textPath href="#bc" textLength="236" lengthAdjust="spacing">{{ hero.badge_ring }}</textPath></text></svg><b>{{ hero.badge_letter }}</b></div><div class="pic"><img decoding="async" alt="{{ hero.image_alt }}" loading="eager" src="{{ hero.image }}"/>{% if hero.patio_tag and on.patio %}<a class="way" href="#patio">{{ hero.patio_tag }} <b>→</b></a>{% endif %}</div>
-</div>
-<div class="mq" aria-hidden="true"><div class="mq-t"></div></div><div class="facts">{% for f in hero.facts %}<div><b>{{ f.value }}</b><span class="k">{{ f.label }}</span></div>{% endfor %}</div>
-{% if kitchen.enabled %}
-<section id="kitchen">
-<div class="head"><span class="k">{{ kitchen.eyebrow }}</span><h2>{{ heading(kitchen) }}</h2></div>
-<p style="max-width:52ch;margin:0 0 40px;color:var(--dim)">{{ kitchen.body }}{% if kitchen.story_label %}<br/><a class="k" href="{{ kitchen.story_url }}">{{ kitchen.story_label }}</a>{% endif %}</p>
-<div class="three">
-{% for c in kitchen.cards %}<div><div class="pic"><img decoding="async" alt="{{ c.alt or c.title }}" loading="lazy" src="{{ c.image }}"/></div><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>
-{% endfor %}</div>
-{% if kitchen.award_show %}<div class="award">{{ kitchen.award_title }}<span style="display:block;margin-top:6px;font:400 var(--t-xs)/1.4 var(--sans);font-style:normal;opacity:.85">{{ kitchen.award_subtitle }}{% if kitchen.award_link_label %} · <a href="{{ kitchen.award_link_url }}">{{ kitchen.award_link_label }}</a>{% endif %}</span></div>{% endif %}
-{% if kitchen.pair_show %}<div class="pair"><strong>{{ kitchen.pair_heading }}</strong><span class="k">{{ kitchen.pair_helper }}</span>
-<select aria-label="Food mood" id="s1"><option value="">{{ kitchen.pair_food_placeholder }}</option>{% for m in kitchen.food_moods %}<option>{{ m.mood }}</option>{% endfor %}</select>
-<select aria-label="Drink mood" id="s2"><option value="">{{ kitchen.pair_drink_placeholder }}</option>{% for m in kitchen.drink_moods %}<option>{{ m.mood }}</option>{% endfor %}</select>
-<button class="btn o" id="spin">{{ kitchen.pair_button }}</button><div aria-live="polite" id="res">{{ kitchen.pair_start }}</div></div>{% endif %}
-</section>
-{% endif %}
-{% if menu.enabled %}
-<section id="menu">
-<div class="head"><span class="k">{{ menu.eyebrow }}</span><h2>{{ heading(menu) }}</h2></div>
-<div class="ctl"><div role="tablist"><button aria-selected="true" class="tab" data-t="food" role="tab">{{ menu.food_tab }}</button><button aria-selected="false" class="tab" data-t="drinks" role="tab">{{ menu.drinks_tab }}</button></div>
-<button aria-pressed="false" id="mf">{{ menu.meat_free_label }}</button><input aria-label="{{ menu.search_placeholder }}" id="q" placeholder="{{ menu.search_placeholder }}" type="search"/></div>
-<div class="cols" id="mn"></div>
-<p class="k"><span style="color:var(--gold)">★</span> {{ menu.footnote }}</p>
-</section>
-{% endif %}
-{% if reviews.enabled %}
-<section id="reviews" class="dark">
-<div class="head"><span class="k">{{ reviews.eyebrow }}</span><h2>{{ heading(reviews) }}</h2></div>
-<div class="rev">
-<div><div class="big">{{ reviews.rating }}</div><p class="k" style="margin:6px 0 22px">{% for l in reviews.rating_sources | nl2br %}{{ l }}{% if not loop.last %}<br/>{% endif %}{% endfor %}</p>
-{% for para in (reviews.notes or "").split("\n\n") %}{% if para | trim %}<p class="k"{% if not loop.first %} style="margin-top:10px"{% endif %}>{{ para | mdi | safe }}</p>{% endif %}{% endfor %}</div>
-<div>
-<div class="q">
-{% for q in reviews.quotes %}<p>{{ q.text }}<span>{{ q.source }}</span></p>
-{% endfor %}</div>
-{% if reviews.mentions and reviews.mentions.length %}<p style="margin:28px 0 6px"><span class="k">{{ reviews.mentions_label }}</span></p>
-<p style="margin:0;color:var(--dim)">{{ reviews.mentions | join(" · ") }}</p>{% endif %}
-{% if reviews.good_to_know %}<p style="margin-top:20px">{{ reviews.good_to_know | mdi | safe }}</p>{% endif %}
-<p class="k"><a href="https://www.google.com/maps/search/?api=1&amp;query={{ (s.business_name + ' ' + s.street + ' ' + s.city + ' ' + s.state + ' ' + s.zip) | enc }}">{{ reviews.google_link_label }}</a> · <a href="{{ s.yelp_url }}">{{ reviews.yelp_link_label }}</a></p>
-</div>
-</div>
-</section>
-{% endif %}
-{% if gallery.enabled %}
-<section id="gallery">
-<div class="head"><span class="k">{{ gallery.eyebrow }}</span><h2>{{ heading(gallery) }}</h2></div>
-<p style="margin:0 0 26px;color:var(--dim)">{{ gallery.intro }}</p>
-<ul class="ig">{% for p in gallery.photos %}<li><img decoding="async" alt="{{ p.caption }}" loading="lazy" src="{{ p.image }}"/>{{ p.caption }}</li>{% endfor %}</ul>
-<p style="margin-top:26px"><a class="btn o" href="{{ s.instagram_url }}">{{ gallery.follow_label }}</a></p>
-</section>
-{% endif %}
-{% if faq.enabled %}
-<section id="faq">
-<div class="head"><span class="k">{{ faq.eyebrow }}</span><h2>{{ heading(faq) }}</h2></div>
-{% for f in faq.items %}<details><summary>{{ f.question }}</summary>{% if f.answer %}{% for para in f.answer.split("\n\n") %}<p>{{ para | mdi | safe }}</p>{% endfor %}{% endif %}{% if f.show_hours %}<p>{% for g in hours.days | hoursGroups %}{{ g.days }}: {{ g.time }}<br/>{% endfor %}{{ hours.note }}</p>{% endif %}</details>
-{% endfor %}</section>
-{% endif %}
 {% if patio.enabled %}
-<section id="patio">
-<div class="head"><span class="k">{{ patio.eyebrow }}</span><h2>{{ heading(patio) }}</h2></div>
-<p style="max-width:54ch;margin:0 0 34px;color:var(--dim)">{{ patio.intro }}</p>
-<div class="ps-w"><div class="ps">{% include "patio-svg.njk" %}</div>
-<div class="ps-card" aria-live="polite"><span class="k" id="ps-k">{{ patio.card_live }} · {{ patio.card_place }}</span><b id="ps-m">{{ patio.card_checking }}</b><span class="k" id="ps-s"></span></div></div>
-<div class="ps-c"><span class="k">{{ patio.slider_label }}</span><input id="ps-r" type="range" min="0" max="1439" step="1" aria-label="Time of day"/><button class="btn o" id="ps-now" hidden>{{ patio.back_to_now }}</button></div>
-<div class="ps-c" id="ps-ch"><span class="k">{{ patio.sky_label }}</span><button class="chip" data-ov="" aria-pressed="true">{{ patio.chip_live }}</button><button class="chip" data-ov="clear" aria-pressed="false">{{ patio.chip_clear }}</button><button class="chip" data-ov="cloud" aria-pressed="false">{{ patio.chip_cloudy }}</button><button class="chip" data-ov="rain" aria-pressed="false">{{ patio.chip_rain }}</button></div>
-</section>
-{% endif %}
-{% if visit.enabled %}
-<section id="visit">
-<div class="head"><span class="k">{{ visit.eyebrow }}</span><h2>{{ heading(visit) }}</h2></div>
-<div class="visit">
-<div><h5>{{ visit.address_label }}</h5><p>{{ s.street }}<br/>{{ s.city }}, {{ s.state }} {{ s.zip }}</p><button class="cp" id="cp">{{ visit.copy_label }}</button></div>
-<div><h5>{{ visit.phone_label }}</h5><p><a href="tel:{{ s.phone_dial }}">{{ s.phone_display }}</a></p><h5 style="margin-top:22px">{{ visit.instagram_label }}</h5><p><a href="{{ s.instagram_url }}">@{{ s.instagram_handle }}</a></p></div>
-<div><h5>{{ visit.hours_label }}</h5><p style="font-size:20px">{% for g in hours.days | hoursGroups %}{{ g.days }}: {{ g.time }}{% if not loop.last %}<br/>{% endif %}{% endfor %}</p><p class="k" style="margin-top:12px">{{ hours.note }}{% if hours.note_link_label %} <a href="{{ s.instagram_hours_url }}">{{ hours.note_link_label }}</a>.{% endif %}</p></div>
+<div class="scene" id="patio">{% include "patio-svg.njk" %}
+<div class="ps-card" aria-live="polite"><span id="ps-k">{{ patio.card_live }} · {{ patio.card_place }}</span><b id="ps-m">{{ patio.card_checking }}</b><span id="ps-s"></span></div></div>
+<div class="w scene-ctl">
+<p class="cap">{{ patio.intro }}</p>
+<label class="sl"><span>{{ patio.slider_label }}</span><input id="ps-r" type="range" min="0" max="1439" step="1"/></label>
+<div class="chips" id="ps-ch" role="group" aria-label="{{ patio.sky_label }}"><button class="chip" data-ov="" aria-pressed="true">{{ patio.chip_live }}</button><button class="chip" data-ov="clear" aria-pressed="false">{{ patio.chip_clear }}</button><button class="chip" data-ov="cloud" aria-pressed="false">{{ patio.chip_cloudy }}</button><button class="chip" data-ov="rain" aria-pressed="false">{{ patio.chip_rain }}</button><button class="chip now" id="ps-now" hidden>{{ patio.back_to_now }}</button></div>
 </div>
-<p class="k" style="margin:30px 0 0;max-width:60ch">{{ visit.patio_note }}</p>
-<div class="strip">{% for p in visit.photos %}<figure style="margin:0"><img decoding="async" alt="{{ p.caption }}" loading="lazy" src="{{ p.image }}"/><span class="k">{{ p.caption }}</span></figure>{% endfor %}</div>
-<div class="cta"><div><h3>{{ visit.cta_heading }}</h3><p>{{ visit.cta_text }}</p></div>
-<div class="btns">{% for b in visit.cta_buttons %}<a class="btn{% if b.outline %} o{% endif %}" href="{{ gDir if b.link == 'directions' else (s.order_url if b.link == 'order' else b.link) }}">{{ b.label }}</a>{% endfor %}</div></div>
-<p class="k" style="margin-top:18px">{{ visit.also_label }} <a href="https://maps.apple.com/?daddr={{ fullAddr | enc }}">Apple Maps</a> · <a href="https://waze.com/ul?ll={{ (s.latitude + ',' + s.longitude) | enc }}&amp;navigate=yes">Waze</a></p>
+{% endif %}
+</section>
+
+{% if kitchen.enabled %}
+<section class="story w" id="kitchen" aria-labelledby="kitchen-h">
+<figure class="story-pic">{% img kitchen.image, kitchen.image_alt, "(max-width: 820px) 100vw, 40vw", "", "lazy" %}</figure>
+<div class="story-txt">
+<h2 id="kitchen-h">{{ heading(kitchen) }}</h2>
+<p class="lede">{{ kitchen.body }}</p>
+{% if kitchen.story_label %}<p><a class="tl" href="{{ kitchen.story_url }}">{{ kitchen.story_label }}</a></p>{% endif %}
+<ul class="spec">{% for c in kitchen.cards %}<li>{% img c.image, c.alt or c.title, "96px", "", "lazy" %}<div><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div></li>{% endfor %}</ul>
+{% if kitchen.award_show %}<p class="award"><span>{{ kitchen.award_title }}</span> {{ kitchen.award_subtitle }}{% if kitchen.award_link_label %}. <a href="{{ kitchen.award_link_url }}">{{ kitchen.award_link_label }}</a>{% endif %}</p>{% endif %}
+</div>
+{% if kitchen.pair_show %}<div class="pair"><p class="pair-h">{{ kitchen.pair_heading }} <span>{{ kitchen.pair_helper }}</span></p>
+<div class="pair-c"><select aria-label="Food mood" id="s1"><option value="">{{ kitchen.pair_food_placeholder }}</option>{% for m in kitchen.food_moods %}<option>{{ m.mood }}</option>{% endfor %}</select>
+<select aria-label="Drink mood" id="s2"><option value="">{{ kitchen.pair_drink_placeholder }}</option>{% for m in kitchen.drink_moods %}<option>{{ m.mood }}</option>{% endfor %}</select>
+<button class="btn o" id="spin">{{ kitchen.pair_button }}</button></div><p aria-live="polite" id="res">{{ kitchen.pair_start }}</p></div>{% endif %}
 </section>
 {% endif %}
-</div></main>
-<footer class="dark"><div class="w"><div class="ft"><span class="logo"><img decoding="async" alt="{{ s.business_name }} logo" src="{{ s.logo_light or s.logo }}"/></span><div class="fbot"><p class="k" style="margin:0">{{ footer.tagline }}<br/>{{ s.street }}, {{ s.city }}, {{ s.state }} · {{ s.phone_display }}</p>{% if footer.credit_label %}<a class="credit k" href="{{ footer.credit_url }}" target="_blank" rel="noopener">{{ footer.credit_label }}</a>{% endif %}</div></div></div></footer>
+
+{% if menu.enabled %}
+<section class="menu w" id="menu" aria-labelledby="menu-h">
+<div class="card">
+<div class="card-hd"><h2 id="menu-h">{{ heading(menu) }}</h2>
+<div class="ctl"><div role="tablist" class="tabs"><button aria-selected="true" class="tab" data-t="food" role="tab">{{ menu.food_tab }}</button><button aria-selected="false" class="tab" data-t="drinks" role="tab">{{ menu.drinks_tab }}</button></div>
+<button aria-pressed="false" id="mf">{{ menu.meat_free_label }}</button><input aria-label="{{ menu.search_placeholder }}" id="q" placeholder="{{ menu.search_placeholder }}" type="search"/></div></div>
+<nav class="jump" id="jump" aria-label="Menu categories"></nav>
+<div class="cols" id="mn"></div>
+<p class="fine"><span aria-hidden="true">★</span> {{ menu.footnote }}</p>
+</div>
+</section>
+{% endif %}
+
+{% if reviews.enabled %}
+<section class="reviews dark" id="reviews" aria-labelledby="reviews-h">
+<div class="w">
+<div class="rv-hd"><h2 id="reviews-h">{{ heading(reviews) }}</h2>
+<p class="score"><b>{{ reviews.rating }}</b><span>{% for l in reviews.rating_sources | nl2br %}{{ l }}{% if not loop.last %}<br/>{% endif %}{% endfor %}</span></p></div>
+{% set q0 = reviews.quotes[0] %}
+{% if q0 %}<blockquote class="feat"><p>{{ q0.text }}</p><cite>{{ q0.source }}</cite></blockquote>{% endif %}
+<div class="qs">{% for q in reviews.quotes %}{% if not loop.first %}<blockquote><p>{{ q.text }}</p><cite>{{ q.source }}</cite></blockquote>{% endif %}{% endfor %}</div>
+{% if reviews.notes %}{% for para in reviews.notes.split("\n\n") %}{% if para | trim %}<p class="fine">{{ para | mdi | safe }}</p>{% endif %}{% endfor %}{% endif %}
+<div class="rv-ft">
+{% if reviews.mentions and reviews.mentions.length %}<p><span class="lbl">{{ reviews.mentions_label }}</span> {{ reviews.mentions | join(", ") }}</p>{% endif %}
+{% if reviews.good_to_know %}<p>{{ reviews.good_to_know | mdi | safe }}</p>{% endif %}
+<p><a href="https://www.google.com/maps/search/?api=1&amp;query={{ (s.business_name + ' ' + s.street + ' ' + s.city + ' ' + s.state + ' ' + s.zip) | enc }}">{{ reviews.google_link_label }}</a> <a href="{{ s.yelp_url }}">{{ reviews.yelp_link_label }}</a></p>
+</div>
+</div>
+</section>
+{% endif %}
+
+{% if gallery.enabled %}
+<section class="gallery w" id="gallery" aria-labelledby="gallery-h">
+<div class="g-hd"><h2 id="gallery-h">{{ heading(gallery) }}</h2><p>{{ gallery.intro }} <a class="tl" href="{{ s.instagram_url }}">@{{ s.instagram_handle }}</a></p></div>
+<ul class="ig">{% for p in gallery.photos %}<li><a href="{{ s.instagram_url }}">{% img p.image, p.caption, "(max-width: 820px) 50vw, 30vw", "", "lazy" %}<span>{{ p.caption }}</span></a></li>{% endfor %}</ul>
+<p class="g-ft"><a class="btn o" href="{{ s.instagram_url }}">{{ gallery.follow_label }}</a></p>
+</section>
+{% endif %}
+
+{% if visit.enabled %}
+<section class="room w" id="room" aria-labelledby="room-h">
+<div class="room-hd"><h2 id="room-h">{{ heading(visit) }}</h2><p>{{ visit.patio_note }}</p></div>
+<div class="strip">{% for p in visit.photos %}<figure>{% img p.image, p.caption, "(max-width: 820px) 100vw, 50vw", "", "lazy" %}<figcaption>{{ p.caption }}</figcaption></figure>{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if faq.enabled %}
+<section class="faq w" id="faq" aria-labelledby="faq-h">
+<h2 id="faq-h">{{ heading(faq) }}</h2>
+<div class="faq-l">{% for f in faq.items %}<details><summary>{{ f.question }}</summary><div class="ans">{% if f.answer %}{% for para in f.answer.split("\n\n") %}<p>{{ para | mdi | safe }}</p>{% endfor %}{% endif %}{% if f.show_hours %}<p>{% for g in hours.days | hoursGroups %}{{ g.days }}: {{ g.time }}<br/>{% endfor %}{{ hours.note }}</p>{% endif %}</div></details>
+{% endfor %}</div>
+</section>
+{% endif %}
+</main>
+
+<footer class="ft dark" id="visit" aria-labelledby="visit-h">
+<div class="w">
+<div class="ft-cta"><h2 id="visit-h">{{ visit.cta_heading }}</h2><p>{{ visit.cta_text }}</p>
+<div class="btns">{% for b in visit.cta_buttons %}<a class="btn{% if b.outline %} o{% endif %}" href="{{ gDir if b.link == 'directions' else (s.order_url if b.link == 'order' else b.link) }}">{{ b.label }}</a>{% endfor %}</div></div>
+<div class="ft-g">
+<div><h3>{{ visit.address_label }}</h3><p>{{ s.street }}<br/>{{ s.city }}, {{ s.state }} {{ s.zip }}</p><p class="sm"><button class="cp" id="cp">{{ visit.copy_label }}</button> <a href="https://maps.apple.com/?daddr={{ fullAddr | enc }}">Apple Maps</a> <a href="https://waze.com/ul?ll={{ (s.latitude + ',' + s.longitude) | enc }}&amp;navigate=yes">Waze</a></p></div>
+<div><h3>{{ visit.hours_label }}</h3><p>{% for g in hours.days | hoursGroups %}<span class="hr-d">{{ g.days }}</span>{{ g.time }}{% endfor %}</p><p class="sm">{{ hours.note }}{% if hours.note_link_label %} <a href="{{ s.instagram_hours_url }}">{{ hours.note_link_label }}</a>{% endif %}</p></div>
+<div><h3>{{ visit.phone_label }}</h3><p><a href="tel:{{ s.phone_dial }}">{{ s.phone_display }}</a></p><h3>{{ visit.instagram_label }}</h3><p><a href="{{ s.instagram_url }}">@{{ s.instagram_handle }}</a></p></div>
+<a class="map" href="{{ gDir }}" aria-label="{{ visit.map_label }}. Opens Google Maps directions">{% include "map-svg.njk" %}</a>
+</div>
+<div class="ft-b"><img class="ft-logo" alt="{{ s.business_name }} logo" src="{{ s.logo_light or s.logo }}" width="900" height="216" loading="lazy"/>{% if footer.credit_label %}<a class="credit" href="{{ footer.credit_url }}" target="_blank" rel="noopener">{{ footer.credit_label }}</a>{% endif %}</div>
+</div>
+</footer>
 <div class="bar"><a class="btn" href="{{ s.order_url }}">{{ header.mobile_bar_order }}</a><a class="btn o" href="tel:{{ s.phone_dial }}">{{ header.mobile_bar_call }}</a></div>
 <script>const SITE={{ {
-  hours: hours.days | hoursJS, verdicts: patio.verdicts, marquee: hero.marquee,
+  hours: hours.days | hoursJS, verdicts: patio.verdicts,
   lat: s.latitude, lng: s.longitude, address: fullAddr, copied: visit.copied_label,
-  today: header.topbar_today_label,
   patio: { card_live: patio.card_live, card_preview: patio.card_preview, card_place: patio.card_place },
-  menu: { food: menu.food, drinks: menu.drinks, empty: menu.no_results },
+  menu: { food: menu.food, drinks: menu.drinks, empty: menu.no_results }, thumbs: thumbs,
   bite: kitchen.food_moods, sip: kitchen.drink_moods, joiner: kitchen.pair_joiner
 } | json | safe }};</script>
 <script>{% raw_include "menu.js" %}</script>
 <script>{% raw_include "fx.js" %}</script>
-<script>{% raw_include "topbar.js" %}</script>
-<script>{% raw_include "patio.js" %}</script>
+{% if patio.enabled %}<script>{% raw_include "patio.js" %}</script>{% endif %}
 </body></html>

@@ -1,11 +1,10 @@
 {
   "enabled": true,
-  "eyebrow": "Reviews",
-  "heading": "What guests",
-  "heading_italic": "say.",
+  "heading": "What guests say",
+  "heading_italic": "",
   "rating": "4.7",
   "rating_sources": "Google, 498 reviews\nYelp 4.5 (95) · Uber Eats 4.8 (73)\nNextdoor Neighborhood Fave 2024",
-  "notes": "Review breakdown omitted: the original 95-review Yelp chart has not been independently verified. [View current Yelp reviews](https://www.yelp.com/biz/milo-s-cafe-morrisville).\n\nRatings above are from the original site draft, not a live feed. Follow the review links for current scores and counts.",
+  "notes": "",
   "quotes": [
     {
       "text": "Tasty food, great coffee, indoor and outdoor seating, friendly service.",

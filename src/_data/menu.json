@@ -1,6 +1,5 @@
 {
   "enabled": true,
-  "eyebrow": "The menu",
   "heading": "Menu",
   "heading_italic": "",
   "food_tab": "Food",
@@ -12,6 +11,7 @@
   "food": [
     {
       "category": "Toast & bowls",
+      "image": "/images/french-toast.webp",
       "items": [
         {
           "name": "Avocado Toast",
@@ -73,6 +73,7 @@
     },
     {
       "category": "Salads",
+      "image": "/images/salad-bowl.jpg",
       "items": [
         {
           "name": "Burrata Salad",
@@ -106,6 +107,7 @@
     },
     {
       "category": "Focaccia",
+      "image": "/images/avocado-focaccia.webp",
       "items": [
         {
           "name": "Mortadella Focaccia",
@@ -160,6 +162,7 @@
     },
     {
       "category": "Crepes",
+      "image": "/images/crepe-salad.jpg",
       "items": [
         {
           "name": "Mushroom & Leeks",
@@ -223,6 +226,7 @@
   "drinks": [
     {
       "category": "Espresso",
+      "image": "/images/latte-art-hot-iced.jpg",
       "items": [
         {
           "name": "Americano",
@@ -367,6 +371,7 @@
     },
     {
       "category": "Coffee",
+      "image": "/images/coffee-pecan-cookie.jpg",
       "items": [
         {
           "name": "Batch Brew",
@@ -423,6 +428,7 @@
     },
     {
       "category": "Specialty lattes",
+      "image": "/images/latte-art-above.jpg",
       "items": [
         {
           "name": "Hazelnut Brown Sugar Latte",
@@ -553,6 +559,7 @@
     },
     {
       "category": "Matcha",
+      "image": "/images/matcha-ube.jpg",
       "items": [
         {
           "name": "Matcha Latte",
@@ -642,6 +649,7 @@
     },
     {
       "category": "Seasonal drinks",
+      "image": "",
       "items": [
         {
           "name": "Brown Butter Pecan Latte",
@@ -877,6 +885,7 @@
     },
     {
       "category": "Not coffee",
+      "image": "",
       "items": [
         {
           "name": "Chai Latte",
@@ -1012,6 +1021,7 @@
     },
     {
       "category": "Teas",
+      "image": "",
       "items": [
         {
           "name": "Black Tea",

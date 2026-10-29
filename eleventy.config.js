@@ -1,5 +1,6 @@
 import markdownIt from "markdown-it";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
+import Image from "@11ty/eleventy-img";
 
 const md = markdownIt({ html: false, linkify: true, typographer: false, breaks: true });
 const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
@@ -15,6 +16,16 @@ export default function (cfg) {
 
   // Inline a CSS/JS file verbatim (no template processing)
   cfg.addShortcode("raw_include", (f) => readFileSync("src/_includes/" + f, "utf8"));
+
+  // Responsive, graded photos: <picture> with WebP + JPEG at phone/desktop widths
+  const grade = (sharp) => { sharp.modulate({ saturation: 0.94, brightness: 1.01 }).linear(1.05, -5).recomb([[1.025, 0, 0], [0, 1, 0], [0, 0, 0.97]]); };
+  cfg.addAsyncShortcode("img", async (src, alt = "", sizes = "100vw", cls = "", loading = "lazy") => {
+    const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+    const file = src && src.startsWith("/") ? "src" + src : null;
+    if (!file || !existsSync(file)) return `<img src="${esc(src || "")}" alt="${esc(alt)}"${cls ? ` class="${esc(cls)}"` : ""} loading="${loading}" decoding="async"/>`;
+    const meta = await Image(file, { widths: [480, 960, 1600], formats: ["webp", "jpeg"], outputDir: "_site/img/", urlPath: "/img/", transform: grade, sharpJpegOptions: { quality: 80, progressive: true, mozjpeg: true }, sharpWebpOptions: { quality: 78 } });
+    return Image.generateHTML(meta, { alt, sizes, loading, decoding: "async", ...(cls ? { class: cls } : {}) });
+  });
 
   // Markdown: block and inline
   cfg.addFilter("md", (s) => md.render(s || ""));

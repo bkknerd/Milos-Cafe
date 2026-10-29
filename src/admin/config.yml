@@ -47,7 +47,7 @@ collections:
       widget: image
       choose_url: false
     - name: logo
-      label: Logo
+      label: Logo (light backgrounds)
       widget: image
       choose_url: false
     - name: logo_light
@@ -132,19 +132,21 @@ collections:
       - name: open
         label: Opens
         widget: string
-        pattern: &id001
+        pattern:
         - ^([01]\d|2[0-3]):[0-5]\d$
         - Use 24-hour time, like 07:00 or 16:30
       - name: close
         label: Closes
         widget: string
-        pattern: *id001
+        pattern:
+        - ^([01]\d|2[0-3]):[0-5]\d$
+        - Use 24-hour time, like 07:00 or 16:30
       allow_add: false
       allow_reorder: false
       min: 7
       max: 7
       summary: '{{fields.day}}: {{fields.open}}–{{fields.close}}'
-      hint: Changes here update the Visit section, the FAQ, the top bar, the patio scene and Google listing data.
+      hint: Updates the header, the footer, the FAQ, the patio scene and Google listing data.
     - name: note
       label: Note under hours
       widget: string
@@ -153,26 +155,15 @@ collections:
       widget: string
       required: false
   - name: header
-    label: Top bar, menu bar & loader
+    label: Header & phone bar
     file: src/_data/header.json
     fields:
-    - name: preloader_word
-      label: Loading screen word
-      widget: string
-    - name: preloader_tagline
-      label: Loading screen tagline
-      widget: string
     - name: topbar_today_label
-      label: 'Top bar: ''Today'' label'
+      label: 'Header: label before today’s hours'
       widget: string
-    - name: topbar_hours_link
-      label: 'Top bar: hours link text'
-      widget: string
-    - name: topbar_checking
-      label: 'Top bar: text while weather loads'
-      widget: string
+      hint: e.g. Today
     - name: nav
-      label: Desktop menu links
+      label: Menu links
       widget: list
       fields:
       - name: label
@@ -181,8 +172,8 @@ collections:
       - name: target
         label: Goes to
         widget: select
-        options: &id002
-        - label: About / The kitchen
+        options:
+        - label: Story (about)
           value: kitchen
         - label: Menu
           value: menu
@@ -192,25 +183,16 @@ collections:
           value: gallery
         - label: FAQ
           value: faq
-        - label: Patio
+        - label: Live patio
           value: patio
-        - label: Visit
+        - label: Visit (footer)
           value: visit
-      summary: '{{fields.label}}'
-    - name: mobile_nav
-      label: Phone menu links
-      widget: list
-      fields:
-      - name: label
-        label: Label
-        widget: string
-      - name: target
-        label: Goes to
-        widget: select
-        options: *id002
       summary: '{{fields.label}}'
     - name: order_button
       label: Header order button
+      widget: string
+    - name: mobile_menu_label
+      label: 'Phone header: menu link text'
       widget: string
     - name: mobile_bar_order
       label: 'Phone bottom bar: order button'
@@ -219,14 +201,14 @@ collections:
       label: 'Phone bottom bar: call button'
       widget: string
   - name: hero
-    label: Hero (top of page)
+    label: Top of page
     file: src/_data/hero.json
     fields:
     - name: headline
       label: Headline
       widget: string
     - name: headline_italic
-      label: Headline, gold italic line
+      label: Headline, italic second line
       widget: string
       required: false
     - name: intro
@@ -247,65 +229,110 @@ collections:
       label: Second button link
       widget: string
       hint: '#menu jumps to the menu.'
-    - name: image
-      label: Photo
-      widget: image
-      choose_url: false
-    - name: image_alt
-      label: Photo description (for screen readers)
+  - name: patio
+    label: Live patio (top of page)
+    file: src/_data/patio.json
+    fields:
+    - name: enabled
+      label: Show the live patio scene
+      widget: boolean
+      default: true
+    - name: intro
+      label: Caption under the scene
+      widget: text
+    - name: card_live
+      label: 'Card: live label'
       widget: string
-    - name: patio_tag
-      label: '''Patio this way'' tag'
+    - name: card_preview
+      label: 'Card: preview label'
       widget: string
-      required: false
-    - name: badge_letter
-      label: Badge letter
+    - name: card_place
+      label: 'Card: place name'
       widget: string
-    - name: badge_ring
-      label: Badge ring text
+    - name: card_checking
+      label: 'Card: text while loading'
       widget: string
-      hint: End with ' · ' so the ring joins up.
-    - name: marquee
-      label: Scrolling words
-      widget: list
-      field:
-        name: item
-        label: Item
-        widget: string
-    - name: facts
-      label: Fact strip
-      widget: list
+    - name: slider_label
+      label: Slider label
+      widget: string
+    - name: back_to_now
+      label: '''Back to now'' button'
+      widget: string
+    - name: sky_label
+      label: Sky buttons label (screen readers)
+      widget: string
+    - name: chip_live
+      label: 'Sky: Live'
+      widget: string
+    - name: chip_clear
+      label: 'Sky: Clear'
+      widget: string
+    - name: chip_cloudy
+      label: 'Sky: Cloudy'
+      widget: string
+    - name: chip_rain
+      label: 'Sky: Rain'
+      widget: string
+    - name: verdicts
+      label: Weather messages
+      widget: object
       fields:
-      - name: value
-        label: Big text
+      - name: perfect
+        label: Perfect weather
         widget: string
-      - name: label
-        label: Small text
+      - name: cool
+        label: Cool (under 62°F feels-like)
         widget: string
-      summary: '{{fields.value}}'
-      hint: If the first big text is a number, it counts up on load.
+      - name: cold
+        label: Cold (under 50°F)
+        widget: string
+      - name: hot
+        label: Hot (over 88°F)
+        widget: string
+      - name: too_hot
+        label: Too hot (over 94°F)
+        widget: string
+      - name: windy
+        label: Windy (over 22 mph)
+        widget: string
+      - name: rain
+        label: Raining
+        widget: string
+      - name: opens_at
+        label: Before opening ('Opens at' + time)
+        widget: string
+      - name: closed_for_day
+        label: After closing
+        widget: string
+      - name: closed_today
+        label: Closed today
+        widget: string
   - name: kitchen
-    label: About / The kitchen
+    label: Story
     file: src/_data/kitchen.json
     fields:
     - name: enabled
       label: Show this section
       widget: boolean
       default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
+      hint: Turn off to hide the section and its menu link.
     - name: heading
       label: Heading
       widget: string
     - name: heading_italic
-      label: Heading, gold italic ending
+      label: Heading, italic second part (optional)
       widget: string
       required: false
     - name: body
       label: Story
       widget: text
+    - name: image
+      label: Story photo
+      widget: image
+      choose_url: false
+    - name: image_alt
+      label: Story photo description
+      widget: string
     - name: story_label
       label: Story link text
       widget: string
@@ -315,7 +342,7 @@ collections:
       widget: string
       required: false
     - name: cards
-      label: Three cards
+      label: Specialties
       widget: list
       fields:
       - name: image
@@ -415,15 +442,12 @@ collections:
       label: Show this section
       widget: boolean
       default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
+      hint: Turn off to hide the section and its menu link.
     - name: heading
       label: Heading
       widget: string
     - name: heading_italic
-      label: Heading, gold italic ending
+      label: Heading, italic second part (optional)
       widget: string
       required: false
     - name: food_tab
@@ -451,10 +475,15 @@ collections:
       - name: category
         label: Category
         widget: string
+      - name: image
+        label: Category photo (small circle)
+        widget: image
+        choose_url: false
+        required: false
       - name: items
         label: Items
         widget: list
-        fields: &id003
+        fields:
         - name: name
           label: Name
           widget: string
@@ -481,55 +510,55 @@ collections:
         - name: layers
           label: Drink layers (cup graphic)
           widget: list
-          required: false
-          collapsed: true
-          hint: Drinks only. Bottom to top; leave empty for no cup. Parts are relative, e.g. 1 espresso, 3 steamed milk, 0.5 milk foam.
-          summary: '{{fields.parts}} × {{fields.layer}}'
           fields:
           - name: layer
             label: Layer
             widget: select
             options:
-              - label: Espresso
-                value: espresso
-              - label: Steamed milk
-                value: milk
-              - label: Milk foam
-                value: foam
-              - label: Hot water
-                value: water
-              - label: Ice
-                value: ice
-              - label: Cold brew
-                value: coldbrew
-              - label: Drip coffee
-                value: coffee
-              - label: Sweet cream
-                value: cream
-              - label: Tonic
-                value: tonic
-              - label: Gelato
-                value: gelato
-              - label: Chocolate
-                value: chocolate
-              - label: House syrup
-                value: syrup
-              - label: Matcha
-                value: matcha
-              - label: Strawberry
-                value: strawberry
-              - label: Chai
-                value: chai
-              - label: Earl grey / tea
-                value: tea
-              - label: Apple cider
-                value: cider
+            - label: Espresso
+              value: espresso
+            - label: Steamed milk
+              value: milk
+            - label: Milk foam
+              value: foam
+            - label: Hot water
+              value: water
+            - label: Ice
+              value: ice
+            - label: Cold brew
+              value: coldbrew
+            - label: Drip coffee
+              value: coffee
+            - label: Sweet cream
+              value: cream
+            - label: Tonic
+              value: tonic
+            - label: Gelato
+              value: gelato
+            - label: Chocolate
+              value: chocolate
+            - label: House syrup
+              value: syrup
+            - label: Matcha
+              value: matcha
+            - label: Strawberry
+              value: strawberry
+            - label: Chai
+              value: chai
+            - label: Earl grey / tea
+              value: tea
+            - label: Apple cider
+              value: cider
           - name: parts
             label: Parts
             widget: number
             value_type: float
             step: 0.1
             min: 0.1
+          required: false
+          collapsed: true
+          summary: '{{fields.parts}} × {{fields.layer}}'
+          hint: Drinks only. Bottom to top; leave empty for no cup. Parts are relative, e.g. 1 espresso, 3 steamed milk, 0.5 milk foam.
         summary: '{{fields.name}}'
         collapsed: true
       summary: '{{fields.category}}'
@@ -541,10 +570,90 @@ collections:
       - name: category
         label: Category
         widget: string
+      - name: image
+        label: Category photo (small circle)
+        widget: image
+        choose_url: false
+        required: false
       - name: items
         label: Items
         widget: list
-        fields: *id003
+        fields:
+        - name: name
+          label: Name
+          widget: string
+        - name: price
+          label: Price
+          widget: number
+          value_type: float
+          step: 0.01
+          min: 0
+          required: false
+          hint: Leave empty to show no price.
+        - name: description
+          label: Description
+          widget: text
+          required: false
+        - name: favorite
+          label: Guest favorite ★
+          widget: boolean
+          default: false
+        - name: contains_meat
+          label: Contains meat (hidden by the Meat-free filter)
+          widget: boolean
+          default: false
+        - name: layers
+          label: Drink layers (cup graphic)
+          widget: list
+          fields:
+          - name: layer
+            label: Layer
+            widget: select
+            options:
+            - label: Espresso
+              value: espresso
+            - label: Steamed milk
+              value: milk
+            - label: Milk foam
+              value: foam
+            - label: Hot water
+              value: water
+            - label: Ice
+              value: ice
+            - label: Cold brew
+              value: coldbrew
+            - label: Drip coffee
+              value: coffee
+            - label: Sweet cream
+              value: cream
+            - label: Tonic
+              value: tonic
+            - label: Gelato
+              value: gelato
+            - label: Chocolate
+              value: chocolate
+            - label: House syrup
+              value: syrup
+            - label: Matcha
+              value: matcha
+            - label: Strawberry
+              value: strawberry
+            - label: Chai
+              value: chai
+            - label: Earl grey / tea
+              value: tea
+            - label: Apple cider
+              value: cider
+          - name: parts
+            label: Parts
+            widget: number
+            value_type: float
+            step: 0.1
+            min: 0.1
+          required: false
+          collapsed: true
+          summary: '{{fields.parts}} × {{fields.layer}}'
+          hint: Drinks only. Bottom to top; leave empty for no cup. Parts are relative, e.g. 1 espresso, 3 steamed milk, 0.5 milk foam.
         summary: '{{fields.name}}'
         collapsed: true
       summary: '{{fields.category}}'
@@ -557,25 +666,22 @@ collections:
       label: Show this section
       widget: boolean
       default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
+      hint: Turn off to hide the section and its menu link.
     - name: heading
       label: Heading
       widget: string
     - name: heading_italic
-      label: Heading, gold italic ending
+      label: Heading, italic second part (optional)
       widget: string
       required: false
     - name: rating
-      label: Big rating
+      label: Rating
       widget: string
     - name: rating_sources
       label: Rating sources (one per line)
       widget: text
     - name: notes
-      label: Notes under rating
+      label: Small print (optional)
       widget: markdown
       buttons:
       - bold
@@ -585,7 +691,7 @@ collections:
       minimal: true
       required: false
     - name: quotes
-      label: Quotes
+      label: Quotes (the first is shown large)
       widget: list
       fields:
       - name: text
@@ -629,15 +735,12 @@ collections:
       label: Show this section
       widget: boolean
       default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
+      hint: Turn off to hide the section and its menu link.
     - name: heading
       label: Heading
       widget: string
     - name: heading_italic
-      label: Heading, gold italic ending
+      label: Heading, italic second part (optional)
       widget: string
       required: false
     - name: intro
@@ -646,7 +749,7 @@ collections:
     - name: photos
       label: Photos
       widget: list
-      fields: &id004
+      fields:
       - name: image
         label: Photo
         widget: image
@@ -666,15 +769,12 @@ collections:
       label: Show this section
       widget: boolean
       default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
+      hint: Turn off to hide the section and its menu link.
     - name: heading
       label: Heading
       widget: string
     - name: heading_italic
-      label: Heading, gold italic ending
+      label: Heading, italic second part (optional)
       widget: string
       required: false
     - name: items
@@ -699,151 +799,45 @@ collections:
         widget: boolean
         default: false
       summary: '{{fields.question}}'
-  - name: patio
-    label: Live patio
-    file: src/_data/patio.json
-    fields:
-    - name: enabled
-      label: Show this section
-      widget: boolean
-      default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
-    - name: heading
-      label: Heading
-      widget: string
-    - name: heading_italic
-      label: Heading, gold italic ending
-      widget: string
-      required: false
-    - name: intro
-      label: Intro
-      widget: text
-    - name: sign_text
-      label: Name on the illustrated storefront
-      widget: string
-    - name: card_live
-      label: 'Card: live label'
-      widget: string
-    - name: card_preview
-      label: 'Card: preview label'
-      widget: string
-    - name: card_place
-      label: 'Card: place name'
-      widget: string
-    - name: card_checking
-      label: 'Card: text while loading'
-      widget: string
-    - name: slider_label
-      label: Slider label
-      widget: string
-    - name: back_to_now
-      label: '''Back to now'' button'
-      widget: string
-    - name: sky_label
-      label: Sky buttons label
-      widget: string
-    - name: chip_live
-      label: 'Sky: Live'
-      widget: string
-    - name: chip_clear
-      label: 'Sky: Clear'
-      widget: string
-    - name: chip_cloudy
-      label: 'Sky: Cloudy'
-      widget: string
-    - name: chip_rain
-      label: 'Sky: Rain'
-      widget: string
-    - name: verdicts
-      label: Weather messages (also used in the top bar)
-      widget: object
-      fields:
-      - name: perfect
-        label: Perfect weather
-        widget: string
-      - name: cool
-        label: Cool (under 62°F feels-like)
-        widget: string
-      - name: cold
-        label: Cold (under 50°F)
-        widget: string
-      - name: hot
-        label: Hot (over 88°F)
-        widget: string
-      - name: too_hot
-        label: Too hot (over 94°F)
-        widget: string
-      - name: windy
-        label: Windy (over 22 mph)
-        widget: string
-      - name: rain
-        label: Raining
-        widget: string
-      - name: opens_at
-        label: Before opening ('Opens at' + time)
-        widget: string
-      - name: closed_for_day
-        label: After closing
-        widget: string
-      - name: closed_today
-        label: Closed today
-        widget: string
   - name: visit
-    label: Visit
+    label: 'Visit: photos & footer'
     file: src/_data/visit.json
     fields:
     - name: enabled
       label: Show this section
       widget: boolean
       default: true
-      hint: Turn off to hide the section and its menu links.
-    - name: eyebrow
-      label: Small label above heading
-      widget: string
+      hint: Turn off to hide the 'Inside and out' photo section. The footer always shows.
     - name: heading
       label: Heading
       widget: string
     - name: heading_italic
-      label: Heading, gold italic ending
+      label: Heading, italic second part (optional)
       widget: string
       required: false
-    - name: address_label
-      label: Address label
-      widget: string
-    - name: copy_label
-      label: Copy button
-      widget: string
-    - name: copied_label
-      label: Copy button after copying
-      widget: string
-    - name: phone_label
-      label: Phone label
-      widget: string
-    - name: instagram_label
-      label: Instagram label
-      widget: string
-    - name: hours_label
-      label: Hours label
-      widget: string
     - name: patio_note
-      label: Patio note
+      label: Photo section text
       widget: text
     - name: photos
-      label: Photo strip
+      label: Photos (the first is shown large)
       widget: list
-      fields: *id004
+      fields:
+      - name: image
+        label: Photo
+        widget: image
+        choose_url: false
+      - name: caption
+        label: Caption (also used as image description)
+        widget: string
       summary: '{{fields.caption}}'
     - name: cta_heading
-      label: Blue box heading
+      label: Footer heading
       widget: string
     - name: cta_text
-      label: Blue box text
+      label: Footer text
       widget: string
     - name: cta_buttons
-      label: Blue box buttons
+      label: Footer buttons
       widget: list
       fields:
       - name: label
@@ -858,16 +852,31 @@ collections:
         widget: boolean
         default: false
       summary: '{{fields.label}}'
-    - name: also_label
-      label: '''Also:'' label'
+    - name: address_label
+      label: Address label
+      widget: string
+    - name: copy_label
+      label: Copy button
+      widget: string
+    - name: copied_label
+      label: Copy button after copying
+      widget: string
+    - name: hours_label
+      label: Hours label
+      widget: string
+    - name: phone_label
+      label: Phone label
+      widget: string
+    - name: instagram_label
+      label: Instagram label
+      widget: string
+    - name: map_label
+      label: Map description (screen readers)
       widget: string
   - name: footer
-    label: Footer & 404 page
+    label: Credit & 404 page
     file: src/_data/footer.json
     fields:
-    - name: tagline
-      label: Footer tagline
-      widget: string
     - name: credit_label
       label: Site credit text (bottom right)
       widget: string
@@ -880,7 +889,7 @@ collections:
       label: 404 heading
       widget: string
     - name: notfound_italic
-      label: 404 heading, gold italic end
+      label: 404 heading, italic end
       widget: string
     - name: notfound_text
       label: 404 text

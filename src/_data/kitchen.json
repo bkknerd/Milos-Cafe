@@ -1,21 +1,22 @@
 {
   "enabled": true,
-  "eyebrow": "The kitchen",
-  "heading": "Scratch made,",
-  "heading_italic": "all day.",
+  "heading": "Scratch-made, all day",
+  "heading_italic": "",
   "body": "Menad and Liliana Haliche opened Milo’s in 2024, turning a former motorcycle shop into a European-style neighborhood café. Menad’s experience in Parisian bistros shapes a menu of focaccia sandwiches, crepes, and espresso.",
+  "image": "/images/storefront.jpg",
+  "image_alt": "Milo’s Cafe storefront with its blue Lavazza plaque and a sign pointing to the patio",
   "story_label": "Our story in The News & Observer",
   "story_url": "https://www.newsobserver.com/living/food-drink/article315186505.html",
   "cards": [
     {
-      "image": "/images/focaccia-sandwiches.jpg",
-      "alt": "Focaccia sandwiches",
+      "image": "/images/patio-lunch.jpg",
+      "alt": "Focaccia sandwich and iced coffee on a blue patio table",
       "title": "Focaccia sandwiches",
       "text": "Fresh fillings, bold sauces, and focaccia from Ninth Street Bakery."
     },
     {
-      "image": "/images/crepe-salad.jpg",
-      "alt": "Crepe with salad on a blue plate",
+      "image": "/images/brunch-spread.webp",
+      "alt": "Matcha crepes with strawberries and cream, French toast and a breakfast focaccia",
       "title": "Sweet and savory crepes",
       "text": "Folded to order. Sweet for dessert, savory for lunch."
     },

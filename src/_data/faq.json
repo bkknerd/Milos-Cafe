@@ -1,8 +1,7 @@
 {
   "enabled": true,
-  "eyebrow": "Good to know",
-  "heading": "Questions,",
-  "heading_italic": "answered.",
+  "heading": "Good to know",
+  "heading_italic": "",
   "items": [
     {
       "question": "What is Milo’s Cafe known for?",

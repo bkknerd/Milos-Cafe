@@ -1,7 +1,6 @@
 {
   "enabled": true,
-  "eyebrow": "Find us",
-  "heading": "Visit",
+  "heading": "Inside and out",
   "heading_italic": "",
   "address_label": "Address",
   "copy_label": "Copy address",
@@ -9,23 +8,23 @@
   "phone_label": "Phone",
   "instagram_label": "Instagram",
   "hours_label": "Opening hours",
-  "patio_note": "Outdoor seating is on the patio, with yellow bistro chairs, a picnic table and blue Lavazza umbrellas under the pines. Follow the “Patio this way” sign by the front door.",
+  "patio_note": "Sit out on the gravel patio with the yellow and blue bistro chairs and Lavazza umbrellas, or stay in by the green wall. Follow the “Patio this way” sign by the front door.",
   "photos": [
     {
-      "image": "/images/patio.jpg",
-      "caption": "The patio: yellow bistro chairs, picnic table, blue Lavazza umbrellas"
+      "image": "/images/patio-lunch.jpg",
+      "caption": "Focaccia and an iced coffee on the patio"
     },
     {
-      "image": "/images/patio-pines.jpg",
-      "caption": "Shaded tables under the pines"
+      "image": "/images/green-wall-room.webp",
+      "caption": "The green wall, the sofa and the poufs"
     },
     {
-      "image": "/images/interior-teal-wall.jpg",
-      "caption": "Inside: the teal wall"
+      "image": "/images/pastry-case.webp",
+      "caption": "Croissants, pain au chocolat and ube financiers"
     },
     {
-      "image": "/images/front-door-holiday.jpg",
-      "caption": "The front door, holiday season"
+      "image": "/images/bench-room.webp",
+      "caption": "The bench room, with fresh flowers on every table"
     }
   ],
   "cta_heading": "Come stay a while.",
@@ -47,5 +46,5 @@
       "outline": true
     }
   ],
-  "also_label": "Also:"
+  "map_label": "Map: Chapel Hill Rd, Morrisville"
 }
