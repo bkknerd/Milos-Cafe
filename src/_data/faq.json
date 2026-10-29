@@ -2,6 +2,8 @@
   "enabled": true,
   "heading": "Good to know",
   "heading_italic": "",
+  "note_text": "Something else? Call us at",
+  "note_after": "or ask at the counter.",
   "items": [
     {
       "question": "What is Milo’s Cafe known for?",

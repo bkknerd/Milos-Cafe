@@ -1,11 +1,40 @@
 <svg viewBox="0 0 320 210" aria-hidden="true" class="map-svg">
-<rect width="320" height="210" rx="6" fill="none" stroke="currentColor" stroke-opacity=".25"/>
-<g stroke="currentColor" fill="none" stroke-linecap="round">
-<path d="M40 0C70 60 60 120 30 210M150 0C160 50 175 90 230 120S300 170 320 175M0 150C80 140 130 160 190 210" stroke-opacity=".22" stroke-width="2"/>
-<path id="chr" d="M-10 70C60 80 120 95 170 105S270 128 330 150" stroke-opacity=".9" stroke-width="7"/>
-<path d="M-10 70C60 80 120 95 170 105S270 128 330 150" stroke="var(--navy)" stroke-width="2.5" stroke-dasharray="8 7"/>
+<defs>
+<pattern id="mHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-38)"><path d="M0 .5H6" stroke="currentColor" stroke-width=".9"/></pattern>
+<filter id="mWob" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs>
+<g filter="url(#mWob)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="1" y="1" width="318" height="208" rx="6" fill="none" stroke="currentColor" stroke-opacity=".3"/>
+<!-- hatched blocks between the roads -->
+<g fill="url(#mHatch)" opacity=".28" stroke="currentColor" stroke-width=".8">
+<path d="M52 8C60 30 62 48 58 60L138 74C148 52 146 28 140 8z"/>
+<path d="M14 92L48 98C50 124 44 146 36 168L10 168z"/>
+<path d="M66 102L150 118C160 140 172 164 178 196L56 196C64 168 68 132 66 102z"/>
+<path d="M176 6C182 40 196 70 230 92L312 120V6z"/>
+<path d="M214 150C250 162 286 178 312 182V204H230C226 186 220 168 214 150z"/>
 </g>
-<path id="chr-t" d="M-10 56C60 66 120 81 170 91S270 114 330 136" fill="none"/><text font-family="Instrument Sans,Arial,sans-serif" font-size="11" font-weight="600" fill="currentColor" fill-opacity=".85" letter-spacing=".3"><textPath href="#chr-t" startOffset="10%">Chapel Hill Rd</textPath></text>
-<g transform="translate(206 112)"><circle r="16" fill="var(--gold)" opacity=".25"/><circle r="7" fill="var(--gold)"/><text x="12" y="30" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="17" fill="currentColor">Milo’s</text></g>
-<g transform="translate(292 30)" fill="currentColor" fill-opacity=".7" font-family="Instrument Sans,Arial,sans-serif" font-size="10" font-weight="600"><path d="M0-14L5 2H-5Z"/><text x="0" y="14" text-anchor="middle">N</text></g>
+<!-- side streets: two hand-drawn edges each -->
+<g fill="none" stroke="currentColor" stroke-opacity=".38" stroke-width="1.1">
+<path d="M37 0C67 60 57 120 27 210M45 0C75 60 65 120 35 210"/>
+<path d="M147 0C157 50 172 88 228 116S298 166 320 171M155 0C164 46 178 82 233 109S300 158 320 163"/>
+<path d="M0 146C80 136 130 156 188 210M0 154C78 144 126 164 180 210"/>
+</g>
+<!-- Chapel Hill Rd -->
+<g fill="none" stroke="currentColor">
+<path d="M-10 64C60 74 120 89 170 99S270 122 330 144" stroke-opacity=".85" stroke-width="1.5"/>
+<path d="M-10 77C60 87 120 102 170 112S270 135 330 157" stroke-opacity=".85" stroke-width="1.5"/>
+<path d="M-10 70.5C60 80.5 120 95.5 170 105.5S270 128.5 330 150.5" stroke="var(--gold)" stroke-width="1.6" stroke-dasharray="7 7" opacity=".8"/>
+</g>
+<!-- a few loblollies -->
+<g stroke="currentColor" stroke-width="1" fill="none" stroke-opacity=".55">
+<path d="M98 50V36M96 37a6 4 0 1 1 5 0M110 52V40M108 41a5 3.5 0 1 1 4.5 0M262 196V182M260 183a6 4 0 1 1 5 0M24 186V174M22 175a5 3.5 0 1 1 4.5 0M248 40V26M246 27a6 4 0 1 1 5 0M268 46V34M266 35a5 3.5 0 1 1 4.5 0"/>
+</g>
+<!-- north -->
+<g transform="translate(292 30)" stroke="currentColor" stroke-opacity=".7" fill="none" stroke-width="1.3"><path d="M0-15L5 3L0-1L-5 3Z" fill="currentColor" fill-opacity=".7"/></g>
+<!-- Milo's -->
+<g transform="translate(206 112)"><circle r="15" fill="var(--gold)" opacity=".18"/><circle r="9" fill="none" stroke="var(--gold)" stroke-width="1.4"/><circle r="5.5" fill="var(--gold)"/></g>
+</g>
+<path id="chr-t" d="M-10 54C60 64 120 79 170 89S270 112 330 134" fill="none"/><text font-family="Instrument Sans,Arial,sans-serif" font-size="11" font-weight="600" fill="currentColor" fill-opacity=".85" letter-spacing=".3"><textPath href="#chr-t" startOffset="10%">Chapel Hill Rd</textPath></text>
+<text x="218" y="144" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="17" fill="currentColor">Milo’s</text>
+<text x="292" y="46" text-anchor="middle" font-family="Instrument Sans,Arial,sans-serif" font-size="10" font-weight="600" fill="currentColor" fill-opacity=".7">N</text>
 </svg>

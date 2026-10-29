@@ -1,10 +1,12 @@
 {
   "enabled": true,
-  "heading": "Scratch-made, all day",
-  "heading_italic": "",
-  "body": "Menad and Liliana Haliche opened Milo’s in 2024, turning a former motorcycle shop into a European-style neighborhood café. Menad’s experience in Parisian bistros shapes a menu of focaccia sandwiches, crepes, and espresso.",
-  "image": "/images/storefront.jpg",
-  "image_alt": "Milo’s Cafe storefront with its blue Lavazza plaque and a sign pointing to the patio",
+  "heading": "From Paris",
+  "heading_italic": "to Morrisville.",
+  "body": "The vision goes beyond serving delicious food and beverages; we aim to create an identity for Morrisville—a place where diverse cultures come together, where stories are shared, and where memories are made.",
+  "body_more": "Milo’s Cafe isn’t just a place to grab a cup of coffee or a bite to eat; it’s a gathering spot where neighbors become friends and every visit feels like coming home.",
+  "image": "/images/owners-family.jpg",
+  "image_alt": "Owners Menad and Liliana Haliche holding their young son in front of the café counter",
+  "image_caption": "Menad and Liliana with their son, behind the counter at Milo’s",
   "story_label": "Our story in The News & Observer",
   "story_url": "https://www.newsobserver.com/living/food-drink/article315186505.html",
   "cards": [
@@ -15,14 +17,14 @@
       "text": "Fresh fillings, bold sauces, and focaccia from Ninth Street Bakery."
     },
     {
-      "image": "/images/brunch-spread.webp",
-      "alt": "Matcha crepes with strawberries and cream, French toast and a breakfast focaccia",
+      "image": "/images/crepe-banana-strawberry.jpg",
+      "alt": "Sweet crepe with strawberries, banana, caramel and whipped cream",
       "title": "Sweet and savory crepes",
       "text": "Folded to order. Sweet for dessert, savory for lunch."
     },
     {
-      "image": "/images/latte-art-hot-iced.jpg",
-      "alt": "Latte art, hot and iced",
+      "image": "/images/espresso-financier.jpg",
+      "alt": "Lavazza espresso and a financier on a yellow patio table",
       "title": "Coffee and matcha",
       "text": "Lavazza espresso, matcha, and seasonal menus."
     }

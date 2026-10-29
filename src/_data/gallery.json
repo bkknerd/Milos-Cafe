@@ -2,37 +2,37 @@
   "enabled": true,
   "heading": "Inside and out",
   "heading_italic": "",
-  "intro": "Sit out on the gravel patio with the yellow and blue bistro chairs and Lavazza umbrellas, or stay in by the green wall. Follow the “Patio this way” sign by the front door.",
+  "intro": "With quality coffee and exceptional food, we’ve embarked on a mission to bring a fresh concept to the charming town of Morrisville.",
   "instagram_lead": "More on Instagram",
   "photos": [
     {
-      "image": "/images/patio-lunch.jpg",
-      "caption": "Focaccia and an iced coffee on the patio",
+      "image": "/images/iced-drinks-trio.jpg",
+      "caption": "Coconut lemonade, raspberry cream cold brew and an ube latte on the patio",
       "wide": true
     },
     {
-      "image": "/images/pastry-case.webp",
-      "caption": "Croissants, pain au chocolat and ube financiers",
+      "image": "/images/counter-pickup.jpg",
+      "caption": "The counter, with the Lavazza grinders and the pastry case",
       "wide": false
     },
     {
-      "image": "/images/teddy-iced-coffee.webp",
-      "caption": "The resident bear, with an iced coffee",
+      "image": "/images/bear-spritz.jpg",
+      "caption": "The resident bear, with a croissant by the window",
       "wide": false
     },
     {
-      "image": "/images/green-wall-room.webp",
-      "caption": "The green wall, the sofa and the poufs",
+      "image": "/images/green-wall-film.jpg",
+      "caption": "The green wall, under clocks for Dubai, New York, Paris, Tokyo and Delhi",
       "wide": true
     },
     {
-      "image": "/images/bench-room.webp",
-      "caption": "The bench room, with fresh flowers on every table",
+      "image": "/images/latte-trio.jpg",
+      "caption": "Blue, green and pink lattes, each with its own pour",
       "wide": true
     },
     {
-      "image": "/images/brunch-spread.webp",
-      "caption": "Matcha crepes, French toast and a breakfast focaccia",
+      "image": "/images/acai-bowl.jpg",
+      "caption": "Acai bowl with granola, banana, berries and pistachio",
       "wide": false
     }
   ],

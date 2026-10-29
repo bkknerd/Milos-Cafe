@@ -304,8 +304,18 @@ collections:
       widget: string
       required: false
     - name: body
-      label: Story
+      label: Story (first paragraph, shown large)
       widget: text
+    - name: body_more
+      label: More story (optional; leave a blank line between paragraphs)
+      widget: markdown
+      buttons:
+      - bold
+      - italic
+      - link
+      editor_components: []
+      minimal: true
+      required: false
     - name: image
       label: Story photo
       widget: image
@@ -313,6 +323,10 @@ collections:
     - name: image_alt
       label: Story photo description
       widget: string
+    - name: image_caption
+      label: Story photo caption
+      widget: string
+      required: false
     - name: story_label
       label: Story link text
       widget: string
@@ -795,6 +809,14 @@ collections:
       widget: string
     - name: heading_italic
       label: Heading, italic second part (optional)
+      widget: string
+      required: false
+    - name: note_text
+      label: Text before the phone number (under the heading)
+      widget: string
+      required: false
+    - name: note_after
+      label: Text after the phone number
       widget: string
       required: false
     - name: items

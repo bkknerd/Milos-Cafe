@@ -28,7 +28,7 @@ permalink: /index.html
 <meta name="twitter:card" content="summary_large_image"/>
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org", "@type": "CafeOrCoffeeShop", "name": s.business_name,
-  "url": siteUrl, "image": (siteUrl if kitchen.image.startsWith('/')) + kitchen.image,
+  "url": siteUrl, "image": (siteUrl if s.share_image.startsWith('/')) + s.share_image,
   "telephone": s.phone_dial, "servesCuisine": s.cuisine,
   "address": { "@type": "PostalAddress", "streetAddress": s.street, "addressLocality": s.city, "addressRegion": s.state, "postalCode": s.zip, "addressCountry": "US" },
   "geo": { "@type": "GeoCoordinates", "latitude": s.latitude, "longitude": s.longitude },
@@ -67,10 +67,11 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 
 {% if kitchen.enabled %}
 <section class="story w" id="kitchen" aria-labelledby="kitchen-h">
-<figure class="story-pic">{% img kitchen.image, kitchen.image_alt, "(max-width: 820px) 100vw, 40vw", "", "lazy" %}</figure>
+<figure class="story-pic">{% img kitchen.image, kitchen.image_alt, "(max-width: 820px) 100vw, 40vw", "", "lazy" %}{% if kitchen.image_caption %}<figcaption>{{ kitchen.image_caption }}</figcaption>{% endif %}</figure>
 <div class="story-txt">
 <h2 id="kitchen-h">{{ heading(kitchen) }}</h2>
 <p class="lede">{{ kitchen.body }}</p>
+{% if kitchen.body_more %}{% for para in kitchen.body_more.split("\n\n") %}{% if para | trim %}<p class="story-more">{{ para | mdi | safe }}</p>{% endif %}{% endfor %}{% endif %}
 {% if kitchen.story_label %}<p><a class="tl" href="{{ kitchen.story_url }}">{{ kitchen.story_label }}</a></p>{% endif %}
 <ul class="spec">{% for c in kitchen.cards %}<li>{% img c.image, c.alt or c.title, "96px", "", "lazy" %}<div><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div></li>{% endfor %}</ul>
 {% if kitchen.award_show %}<p class="award"><span>{{ kitchen.award_title }}</span> {{ kitchen.award_subtitle }}{% if kitchen.award_link_label %}. <a href="{{ kitchen.award_link_url }}">{{ kitchen.award_link_label }}</a>{% endif %}</p>{% endif %}
@@ -132,7 +133,7 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 
 {% if faq.enabled %}
 <section class="faq w" id="faq" aria-labelledby="faq-h">
-<h2 id="faq-h">{{ heading(faq) }}</h2>
+<div class="faq-h"><h2 id="faq-h">{{ heading(faq) }}</h2>{% if faq.note_text %}<p class="faq-note">{{ faq.note_text }} <a href="tel:{{ s.phone_dial }}">{{ s.phone_display }}</a>{% if faq.note_after %} {{ faq.note_after }}{% endif %}</p>{% endif %}</div>
 <div class="faq-l">{% for f in faq.items %}<details><summary>{{ f.question }}</summary><div class="ans">{% if f.answer %}{% for para in f.answer.split("\n\n") %}<p>{{ para | mdi | safe }}</p>{% endfor %}{% endif %}{% if f.show_hours %}<p>{% for g in hours.days | hoursGroups %}{{ g.days }}: {{ g.time }}<br/>{% endfor %}{{ hours.note }}</p>{% endif %}</div></details>
 {% endfor %}</div>
 </section>
