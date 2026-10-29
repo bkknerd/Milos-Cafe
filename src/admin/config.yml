@@ -1,0 +1,890 @@
+# Decap CMS — every editable area of the Milo's Cafe site.
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    update: 'CMS: update {{slug}}'
+    uploadMedia: 'CMS: upload {{path}}'
+    deleteMedia: 'CMS: delete {{path}}'
+local_backend: true
+site_url: /
+display_url: /
+logo_url: /images/logo.png
+media_folder: src/images/uploads
+public_folder: /images/uploads
+collections:
+- name: site
+  label: Website
+  editor:
+    preview: false
+  files:
+  - name: settings
+    label: Business info & SEO
+    file: src/_data/settings.json
+    fields:
+    - name: business_name
+      label: Business name
+      widget: string
+    - name: site_url
+      label: Website address
+      widget: string
+      required: false
+      hint: e.g. https://miloscafe.com — used for link previews. Leave empty to use the Netlify address.
+    - name: seo_title
+      label: Browser tab / Google title
+      widget: string
+    - name: seo_description
+      label: Google description
+      widget: text
+    - name: share_title
+      label: Link preview title
+      widget: string
+    - name: share_description
+      label: Link preview description
+      widget: text
+    - name: share_image
+      label: Link preview image (1200×630)
+      widget: image
+      choose_url: false
+    - name: logo
+      label: Logo
+      widget: image
+      choose_url: false
+    - name: logo_light
+      label: Logo for dark backgrounds (footer)
+      widget: image
+      choose_url: false
+    - name: street
+      label: Street
+      widget: string
+    - name: city
+      label: City
+      widget: string
+    - name: state
+      label: State
+      widget: string
+    - name: zip
+      label: ZIP
+      widget: string
+    - name: latitude
+      label: Latitude
+      widget: number
+      value_type: float
+      step: 1.0e-07
+      hint: Used for the live weather and Waze link.
+    - name: longitude
+      label: Longitude
+      widget: number
+      value_type: float
+      step: 1.0e-07
+    - name: phone_display
+      label: Phone (as shown)
+      widget: string
+    - name: phone_dial
+      label: Phone (for tapping to call)
+      widget: string
+      hint: Digits with country code, e.g. +19194438000
+    - name: order_url
+      label: Online ordering link
+      widget: string
+    - name: instagram_handle
+      label: Instagram handle (no @)
+      widget: string
+    - name: instagram_url
+      label: Instagram link
+      widget: string
+    - name: instagram_hours_url
+      label: Instagram link for holiday hours
+      widget: string
+    - name: yelp_url
+      label: Yelp link
+      widget: string
+    - name: cuisine
+      label: Cuisine types (for Google)
+      widget: list
+      field:
+        name: item
+        label: Item
+        widget: string
+  - name: hours
+    label: Opening hours
+    file: src/_data/hours.json
+    fields:
+    - name: days
+      label: Days
+      widget: list
+      fields:
+      - name: day
+        label: Day
+        widget: select
+        options:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+      - name: closed
+        label: Closed all day
+        widget: boolean
+        default: false
+      - name: open
+        label: Opens
+        widget: string
+        pattern: &id001
+        - ^([01]\d|2[0-3]):[0-5]\d$
+        - Use 24-hour time, like 07:00 or 16:30
+      - name: close
+        label: Closes
+        widget: string
+        pattern: *id001
+      allow_add: false
+      allow_reorder: false
+      min: 7
+      max: 7
+      summary: '{{fields.day}}: {{fields.open}}–{{fields.close}}'
+      hint: Changes here update the Visit section, the FAQ, the top bar, the patio scene and Google listing data.
+    - name: note
+      label: Note under hours
+      widget: string
+    - name: note_link_label
+      label: Instagram link text
+      widget: string
+      required: false
+  - name: header
+    label: Top bar, menu bar & loader
+    file: src/_data/header.json
+    fields:
+    - name: preloader_word
+      label: Loading screen word
+      widget: string
+    - name: preloader_tagline
+      label: Loading screen tagline
+      widget: string
+    - name: topbar_today_label
+      label: 'Top bar: ''Today'' label'
+      widget: string
+    - name: topbar_hours_link
+      label: 'Top bar: hours link text'
+      widget: string
+    - name: topbar_checking
+      label: 'Top bar: text while weather loads'
+      widget: string
+    - name: nav
+      label: Desktop menu links
+      widget: list
+      fields:
+      - name: label
+        label: Label
+        widget: string
+      - name: target
+        label: Goes to
+        widget: select
+        options: &id002
+        - label: About / The kitchen
+          value: kitchen
+        - label: Menu
+          value: menu
+        - label: Reviews
+          value: reviews
+        - label: Instagram
+          value: gallery
+        - label: FAQ
+          value: faq
+        - label: Patio
+          value: patio
+        - label: Visit
+          value: visit
+      summary: '{{fields.label}}'
+    - name: mobile_nav
+      label: Phone menu links
+      widget: list
+      fields:
+      - name: label
+        label: Label
+        widget: string
+      - name: target
+        label: Goes to
+        widget: select
+        options: *id002
+      summary: '{{fields.label}}'
+    - name: order_button
+      label: Header order button
+      widget: string
+    - name: mobile_bar_order
+      label: 'Phone bottom bar: order button'
+      widget: string
+    - name: mobile_bar_call
+      label: 'Phone bottom bar: call button'
+      widget: string
+  - name: hero
+    label: Hero (top of page)
+    file: src/_data/hero.json
+    fields:
+    - name: headline
+      label: Headline
+      widget: string
+    - name: headline_italic
+      label: Headline, gold italic line
+      widget: string
+      required: false
+    - name: intro
+      label: Intro
+      widget: text
+    - name: primary_label
+      label: Main button text
+      widget: string
+      required: false
+    - name: primary_url
+      label: Main button link
+      widget: string
+    - name: secondary_label
+      label: Second button text
+      widget: string
+      required: false
+    - name: secondary_url
+      label: Second button link
+      widget: string
+      hint: '#menu jumps to the menu.'
+    - name: image
+      label: Photo
+      widget: image
+      choose_url: false
+    - name: image_alt
+      label: Photo description (for screen readers)
+      widget: string
+    - name: patio_tag
+      label: '''Patio this way'' tag'
+      widget: string
+      required: false
+    - name: badge_letter
+      label: Badge letter
+      widget: string
+    - name: badge_ring
+      label: Badge ring text
+      widget: string
+      hint: End with ' · ' so the ring joins up.
+    - name: marquee
+      label: Scrolling words
+      widget: list
+      field:
+        name: item
+        label: Item
+        widget: string
+    - name: facts
+      label: Fact strip
+      widget: list
+      fields:
+      - name: value
+        label: Big text
+        widget: string
+      - name: label
+        label: Small text
+        widget: string
+      summary: '{{fields.value}}'
+      hint: If the first big text is a number, it counts up on load.
+  - name: kitchen
+    label: About / The kitchen
+    file: src/_data/kitchen.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: body
+      label: Story
+      widget: text
+    - name: story_label
+      label: Story link text
+      widget: string
+      required: false
+    - name: story_url
+      label: Story link
+      widget: string
+      required: false
+    - name: cards
+      label: Three cards
+      widget: list
+      fields:
+      - name: image
+        label: Photo
+        widget: image
+        choose_url: false
+      - name: alt
+        label: Photo description
+        widget: string
+        required: false
+      - name: title
+        label: Title
+        widget: string
+      - name: text
+        label: Text
+        widget: text
+      summary: '{{fields.title}}'
+    - name: award_show
+      label: Show award
+      widget: boolean
+      default: true
+    - name: award_title
+      label: Award title
+      widget: string
+    - name: award_subtitle
+      label: Award subtitle
+      widget: string
+    - name: award_link_label
+      label: Award link text
+      widget: string
+      required: false
+    - name: award_link_url
+      label: Award link
+      widget: string
+      required: false
+    - name: pair_show
+      label: Show 'Can't decide?' pairing
+      widget: boolean
+      default: true
+    - name: pair_heading
+      label: Pairing heading
+      widget: string
+    - name: pair_helper
+      label: Pairing helper text
+      widget: string
+    - name: pair_food_placeholder
+      label: Food dropdown default
+      widget: string
+    - name: pair_drink_placeholder
+      label: Drink dropdown default
+      widget: string
+    - name: pair_button
+      label: Pairing button
+      widget: string
+    - name: pair_start
+      label: Pairing starting message
+      widget: string
+    - name: pair_joiner
+      label: Text between food and drink
+      widget: string
+      hint: e.g. ', with a '
+    - name: food_moods
+      label: Food moods
+      widget: list
+      fields:
+      - name: mood
+        label: Mood
+        widget: string
+      - name: items
+        label: Suggestions
+        widget: list
+        field:
+          name: item
+          label: Item
+          widget: string
+      summary: '{{fields.mood}}'
+    - name: drink_moods
+      label: Drink moods
+      widget: list
+      fields:
+      - name: mood
+        label: Mood
+        widget: string
+      - name: items
+        label: Suggestions
+        widget: list
+        field:
+          name: item
+          label: Item
+          widget: string
+      summary: '{{fields.mood}}'
+  - name: menu
+    label: Menu
+    file: src/_data/menu.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: food_tab
+      label: Food tab label
+      widget: string
+    - name: drinks_tab
+      label: Drinks tab label
+      widget: string
+    - name: meat_free_label
+      label: Meat-free button
+      widget: string
+    - name: search_placeholder
+      label: Search box text
+      widget: string
+    - name: no_results
+      label: No-results message
+      widget: string
+    - name: footnote
+      label: Footnote (after ★)
+      widget: text
+    - name: food
+      label: Food
+      widget: list
+      fields:
+      - name: category
+        label: Category
+        widget: string
+      - name: items
+        label: Items
+        widget: list
+        fields: &id003
+        - name: name
+          label: Name
+          widget: string
+        - name: price
+          label: Price
+          widget: number
+          value_type: float
+          step: 0.01
+          min: 0
+          required: false
+          hint: Leave empty to show no price.
+        - name: description
+          label: Description
+          widget: text
+          required: false
+        - name: favorite
+          label: Guest favorite ★
+          widget: boolean
+          default: false
+        - name: contains_meat
+          label: Contains meat (hidden by the Meat-free filter)
+          widget: boolean
+          default: false
+        - name: layers
+          label: Drink layers (cup graphic)
+          widget: list
+          required: false
+          collapsed: true
+          hint: Drinks only. Bottom to top; leave empty for no cup. Parts are relative, e.g. 1 espresso, 3 steamed milk, 0.5 milk foam.
+          summary: '{{fields.parts}} × {{fields.layer}}'
+          fields:
+          - name: layer
+            label: Layer
+            widget: select
+            options:
+              - label: Espresso
+                value: espresso
+              - label: Steamed milk
+                value: milk
+              - label: Milk foam
+                value: foam
+              - label: Hot water
+                value: water
+              - label: Ice
+                value: ice
+              - label: Cold brew
+                value: coldbrew
+              - label: Drip coffee
+                value: coffee
+              - label: Sweet cream
+                value: cream
+              - label: Tonic
+                value: tonic
+              - label: Gelato
+                value: gelato
+              - label: Chocolate
+                value: chocolate
+              - label: House syrup
+                value: syrup
+              - label: Matcha
+                value: matcha
+              - label: Strawberry
+                value: strawberry
+              - label: Chai
+                value: chai
+              - label: Earl grey / tea
+                value: tea
+              - label: Apple cider
+                value: cider
+          - name: parts
+            label: Parts
+            widget: number
+            value_type: float
+            step: 0.1
+            min: 0.1
+        summary: '{{fields.name}}'
+        collapsed: true
+      summary: '{{fields.category}}'
+      collapsed: true
+    - name: drinks
+      label: Drinks
+      widget: list
+      fields:
+      - name: category
+        label: Category
+        widget: string
+      - name: items
+        label: Items
+        widget: list
+        fields: *id003
+        summary: '{{fields.name}}'
+        collapsed: true
+      summary: '{{fields.category}}'
+      collapsed: true
+  - name: reviews
+    label: Reviews
+    file: src/_data/reviews.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: rating
+      label: Big rating
+      widget: string
+    - name: rating_sources
+      label: Rating sources (one per line)
+      widget: text
+    - name: notes
+      label: Notes under rating
+      widget: markdown
+      buttons:
+      - bold
+      - italic
+      - link
+      editor_components: []
+      minimal: true
+      required: false
+    - name: quotes
+      label: Quotes
+      widget: list
+      fields:
+      - name: text
+        label: Quote
+        widget: text
+      - name: source
+        label: Source
+        widget: string
+      summary: '{{fields.text}}'
+    - name: mentions_label
+      label: '''Guests often mention'' label'
+      widget: string
+    - name: mentions
+      label: Often mentioned
+      widget: list
+      field:
+        name: item
+        label: Item
+        widget: string
+    - name: good_to_know
+      label: Good to know
+      widget: markdown
+      buttons:
+      - bold
+      - italic
+      - link
+      editor_components: []
+      minimal: true
+      required: false
+    - name: google_link_label
+      label: Google reviews link text
+      widget: string
+    - name: yelp_link_label
+      label: Yelp reviews link text
+      widget: string
+  - name: gallery
+    label: Instagram gallery
+    file: src/_data/gallery.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: intro
+      label: Intro
+      widget: string
+    - name: photos
+      label: Photos
+      widget: list
+      fields: &id004
+      - name: image
+        label: Photo
+        widget: image
+        choose_url: false
+      - name: caption
+        label: Caption (also used as image description)
+        widget: string
+      summary: '{{fields.caption}}'
+    - name: follow_label
+      label: Follow button text
+      widget: string
+  - name: faq
+    label: FAQ
+    file: src/_data/faq.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: items
+      label: Questions
+      widget: list
+      fields:
+      - name: question
+        label: Question
+        widget: string
+      - name: answer
+        label: Answer
+        widget: markdown
+        buttons:
+        - bold
+        - italic
+        - link
+        editor_components: []
+        minimal: true
+        required: false
+      - name: show_hours
+        label: Add opening hours under the answer
+        widget: boolean
+        default: false
+      summary: '{{fields.question}}'
+  - name: patio
+    label: Live patio
+    file: src/_data/patio.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: intro
+      label: Intro
+      widget: text
+    - name: sign_text
+      label: Name on the illustrated storefront
+      widget: string
+    - name: card_live
+      label: 'Card: live label'
+      widget: string
+    - name: card_preview
+      label: 'Card: preview label'
+      widget: string
+    - name: card_place
+      label: 'Card: place name'
+      widget: string
+    - name: card_checking
+      label: 'Card: text while loading'
+      widget: string
+    - name: slider_label
+      label: Slider label
+      widget: string
+    - name: back_to_now
+      label: '''Back to now'' button'
+      widget: string
+    - name: sky_label
+      label: Sky buttons label
+      widget: string
+    - name: chip_live
+      label: 'Sky: Live'
+      widget: string
+    - name: chip_clear
+      label: 'Sky: Clear'
+      widget: string
+    - name: chip_cloudy
+      label: 'Sky: Cloudy'
+      widget: string
+    - name: chip_rain
+      label: 'Sky: Rain'
+      widget: string
+    - name: verdicts
+      label: Weather messages (also used in the top bar)
+      widget: object
+      fields:
+      - name: perfect
+        label: Perfect weather
+        widget: string
+      - name: cool
+        label: Cool (under 62°F feels-like)
+        widget: string
+      - name: cold
+        label: Cold (under 50°F)
+        widget: string
+      - name: hot
+        label: Hot (over 88°F)
+        widget: string
+      - name: too_hot
+        label: Too hot (over 94°F)
+        widget: string
+      - name: windy
+        label: Windy (over 22 mph)
+        widget: string
+      - name: rain
+        label: Raining
+        widget: string
+      - name: opens_at
+        label: Before opening ('Opens at' + time)
+        widget: string
+      - name: closed_for_day
+        label: After closing
+        widget: string
+      - name: closed_today
+        label: Closed today
+        widget: string
+  - name: visit
+    label: Visit
+    file: src/_data/visit.json
+    fields:
+    - name: enabled
+      label: Show this section
+      widget: boolean
+      default: true
+      hint: Turn off to hide the section and its menu links.
+    - name: eyebrow
+      label: Small label above heading
+      widget: string
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, gold italic ending
+      widget: string
+      required: false
+    - name: address_label
+      label: Address label
+      widget: string
+    - name: copy_label
+      label: Copy button
+      widget: string
+    - name: copied_label
+      label: Copy button after copying
+      widget: string
+    - name: phone_label
+      label: Phone label
+      widget: string
+    - name: instagram_label
+      label: Instagram label
+      widget: string
+    - name: hours_label
+      label: Hours label
+      widget: string
+    - name: patio_note
+      label: Patio note
+      widget: text
+    - name: photos
+      label: Photo strip
+      widget: list
+      fields: *id004
+      summary: '{{fields.caption}}'
+    - name: cta_heading
+      label: Blue box heading
+      widget: string
+    - name: cta_text
+      label: Blue box text
+      widget: string
+    - name: cta_buttons
+      label: Blue box buttons
+      widget: list
+      fields:
+      - name: label
+        label: Text
+        widget: string
+      - name: link
+        label: Link
+        widget: string
+        hint: A full web address, or type order for the online-ordering link, or directions for Google Maps directions.
+      - name: outline
+        label: Outline style
+        widget: boolean
+        default: false
+      summary: '{{fields.label}}'
+    - name: also_label
+      label: '''Also:'' label'
+      widget: string
+  - name: footer
+    label: Footer & 404 page
+    file: src/_data/footer.json
+    fields:
+    - name: tagline
+      label: Footer tagline
+      widget: string
+    - name: credit_label
+      label: Site credit text (bottom right)
+      widget: string
+      required: false
+    - name: credit_url
+      label: Site credit link
+      widget: string
+      required: false
+    - name: notfound_heading
+      label: 404 heading
+      widget: string
+    - name: notfound_italic
+      label: 404 heading, gold italic end
+      widget: string
+    - name: notfound_text
+      label: 404 text
+      widget: string
+    - name: notfound_button
+      label: 404 button
+      widget: string

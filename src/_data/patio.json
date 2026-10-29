@@ -1,0 +1,31 @@
+{
+  "enabled": true,
+  "eyebrow": "The patio",
+  "heading": "The patio,",
+  "heading_italic": "live.",
+  "intro": "This is Milo’s patio under the real sky over Morrisville right now: the sun, clouds, rain and wind are live. Drag the slider to watch the day pass, or try a different sky.",
+  "sign_text": "Milo’s",
+  "card_live": "Right now",
+  "card_preview": "Preview",
+  "card_place": "Morrisville",
+  "card_checking": "Checking the sky…",
+  "slider_label": "Drag through the day",
+  "back_to_now": "Back to now",
+  "sky_label": "Try a sky",
+  "chip_live": "Live",
+  "chip_clear": "Clear",
+  "chip_cloudy": "Cloudy",
+  "chip_rain": "Rain",
+  "verdicts": {
+    "rain": "Wet out there. Cozy seats inside.",
+    "cold": "Too chilly for the patio.",
+    "too_hot": "Too hot for the patio. Stay cool inside.",
+    "windy": "Breezy. Patio with a jacket.",
+    "cool": "Cool. Patio with a jacket.",
+    "hot": "Hot. Grab a shaded table.",
+    "perfect": "Perfect patio weather.",
+    "opens_at": "Opens at",
+    "closed_for_day": "Closed for the day",
+    "closed_today": "Closed today"
+  }
+}

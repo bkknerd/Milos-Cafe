@@ -1,0 +1,50 @@
+{
+  "enabled": true,
+  "eyebrow": "Reviews",
+  "heading": "What guests",
+  "heading_italic": "say.",
+  "rating": "4.7",
+  "rating_sources": "Google, 498 reviews\nYelp 4.5 (95) · Uber Eats 4.8 (73)\nNextdoor Neighborhood Fave 2024",
+  "notes": "Review breakdown omitted: the original 95-review Yelp chart has not been independently verified. [View current Yelp reviews](https://www.yelp.com/biz/milo-s-cafe-morrisville).\n\nRatings above are from the original site draft, not a live feed. Follow the review links for current scores and counts.",
+  "quotes": [
+    {
+      "text": "Tasty food, great coffee, indoor and outdoor seating, friendly service.",
+      "source": "Google review"
+    },
+    {
+      "text": "Great food and atmosphere, staff is super friendly and the barista is quick!",
+      "source": "Google review"
+    },
+    {
+      "text": "I ordered the croissant ham, egg and cheese breakfast sandwich with salad combo.",
+      "source": "Google review"
+    },
+    {
+      "text": "I felt welcomed from the moment I walked in.",
+      "source": "Yelp review"
+    },
+    {
+      "text": "Great food, wonderful service.",
+      "source": "Yelp review"
+    },
+    {
+      "text": "The crepe was delicious.",
+      "source": "Google review"
+    }
+  ],
+  "mentions_label": "Guests often mention",
+  "mentions": [
+    "Goat cheese toast",
+    "Avocado toast",
+    "Mediterranean chicken salad",
+    "Prosciutto salad",
+    "Salami focaccia",
+    "Mushroom & leeks crepe",
+    "Chicken & brie crepe",
+    "Iced matcha latte",
+    "Friendly, welcoming staff"
+  ],
+  "good_to_know": "**Good to know:** weekend brunch gets busy, so expect a short wait for a seat.",
+  "google_link_label": "All Google reviews",
+  "yelp_link_label": "All Yelp reviews"
+}

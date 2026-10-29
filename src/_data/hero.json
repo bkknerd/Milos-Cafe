@@ -1,0 +1,40 @@
+{
+  "headline": "A little Europe.",
+  "headline_italic": "A lot of flavor.",
+  "intro": "Focaccia sandwiches, Lavazza espresso, and crepes worth slowing down for. Your neighborhood café in Morrisville.",
+  "primary_label": "Order online",
+  "primary_url": "https://order.spoton.com/so-milos-cafe-21006/morrisville-nc/66f5d47035b06b6ed85df923",
+  "secondary_label": "View menu",
+  "secondary_url": "#menu",
+  "image": "/images/storefront.jpg",
+  "image_alt": "Milo’s Cafe storefront with its blue Lavazza plaque and a sign pointing to the patio",
+  "patio_tag": "Patio this way",
+  "badge_letter": "M",
+  "badge_ring": "ESPRESSO · FOCACCIA · CRÊPES · ",
+  "marquee": [
+    "Focaccia",
+    "Crêpes",
+    "Lavazza",
+    "Matcha",
+    "Espresso",
+    "Toast"
+  ],
+  "facts": [
+    {
+      "value": "4.7",
+      "label": "Google, 498 reviews"
+    },
+    {
+      "value": "Best sandwiches",
+      "label": "in the Triangle"
+    },
+    {
+      "value": "$10 to $20",
+      "label": "most guests spend"
+    },
+    {
+      "value": "In & out",
+      "label": "indoor and outdoor seating"
+    }
+  ]
+}

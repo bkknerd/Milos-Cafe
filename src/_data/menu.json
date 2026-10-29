@@ -1,0 +1,1040 @@
+{
+  "enabled": true,
+  "eyebrow": "The menu",
+  "heading": "Menu",
+  "heading_italic": "",
+  "food_tab": "Food",
+  "drinks_tab": "Drinks",
+  "meat_free_label": "Meat-free food",
+  "search_placeholder": "Search the menu",
+  "no_results": "Nothing matches yet. Try another word.",
+  "footnote": "Guest favorite. Meat-free is a guide, so ask us about ingredients and allergens. Prices as listed on the online menu. In-store prices may differ.",
+  "food": [
+    {
+      "category": "Toast & bowls",
+      "items": [
+        {
+          "name": "Avocado Toast",
+          "price": 9.83,
+          "description": "Focaccia toast with avocado & house salad.",
+          "favorite": true,
+          "contains_meat": false
+        },
+        {
+          "name": "Prosciutto Egg Toast",
+          "price": 14.48,
+          "description": "",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Goat Cheese Toast",
+          "price": 12.41,
+          "description": "Focaccia, eggs, goat cheese, olives & house salad.",
+          "favorite": true,
+          "contains_meat": false
+        },
+        {
+          "name": "Granola Bowl",
+          "price": 10.34,
+          "description": "Vanilla Greek yogurt, berries, granola, honey.",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Acai Bowl",
+          "price": 15.01,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Ham, Egg & Cheese Croissant",
+          "price": 12.41,
+          "description": "Served with house salad.",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Tim’s French Toast",
+          "price": 14.49,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Breakfast Formula",
+          "price": 16.56,
+          "description": "",
+          "favorite": false,
+          "contains_meat": true
+        }
+      ]
+    },
+    {
+      "category": "Salads",
+      "items": [
+        {
+          "name": "Burrata Salad",
+          "price": 17.58,
+          "description": "Spring mix, cherry tomatoes, strawberries, walnuts, balsamic dressing.",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Mediterranean Chicken Salad",
+          "price": 17.58,
+          "description": "Mixed greens, chicken, olives, cucumbers, feta, lemon vinaigrette.",
+          "favorite": true,
+          "contains_meat": true
+        },
+        {
+          "name": "Prosciutto Salad",
+          "price": 16.55,
+          "description": "Arugula, cherry tomatoes, parmesan, mozzarella, pesto.",
+          "favorite": true,
+          "contains_meat": true
+        },
+        {
+          "name": "Side Salad",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        }
+      ]
+    },
+    {
+      "category": "Focaccia",
+      "items": [
+        {
+          "name": "Mortadella Focaccia",
+          "price": 15.51,
+          "description": "Pepper mortadella, stracciatella, Dijon mustard, green olives, cornichons, crushed pistachio, honey.",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Milo’s Morning Bite",
+          "price": 13.44,
+          "description": "",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Prosciutto Focaccia",
+          "price": 17.58,
+          "description": "Buffalo mozzarella, arugula, tomatoes, parmesan, pesto.",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Salami Focaccia",
+          "price": 16.55,
+          "description": "Salami, harissa, gruyere, pepper spread, arugula, roasted peppers, pickled onion.",
+          "favorite": true,
+          "contains_meat": true
+        },
+        {
+          "name": "Schnitzel Focaccia",
+          "price": 17.58,
+          "description": "Chicken schnitzel, gruyere, yuzu slaw, spicy mayo.",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Smoked Salmon Egg Focaccia",
+          "price": 17.58,
+          "description": "Dill-chive cream cheese, smoked salmon, eggs, avocado, arugula.",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Veggie Focaccia",
+          "price": 15.51,
+          "description": "Basil hummus, arugula, sauteed eggplant, zucchini and peppers, sundried tomatoes, green olives, vegan mayo.",
+          "favorite": false,
+          "contains_meat": false
+        }
+      ]
+    },
+    {
+      "category": "Crepes",
+      "items": [
+        {
+          "name": "Mushroom & Leeks",
+          "price": 16.04,
+          "description": "",
+          "favorite": true,
+          "contains_meat": false
+        },
+        {
+          "name": "Ham, Egg, Cheese & Bechamel",
+          "price": 13.44,
+          "description": "",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Chicken & Creamy Brie",
+          "price": 17.08,
+          "description": "",
+          "favorite": true,
+          "contains_meat": true
+        },
+        {
+          "name": "Mediterranean Egg & Feta",
+          "price": 16.55,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Smoked Salmon Crepe",
+          "price": 15.51,
+          "description": "",
+          "favorite": false,
+          "contains_meat": true
+        },
+        {
+          "name": "Blueberry Cream Cheese",
+          "price": 15.52,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Strawberry Matcha",
+          "price": 15.52,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Nutella or Peanut Butter Crepe",
+          "price": 10.35,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        }
+      ]
+    }
+  ],
+  "drinks": [
+    {
+      "category": "Espresso",
+      "items": [
+        {
+          "name": "Americano",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "water",
+              "parts": 2
+            }
+          ]
+        },
+        {
+          "name": "Cortado",
+          "price": 4.55,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Affogato",
+          "price": 5.17,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "gelato",
+              "parts": 2
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": 5.18,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 1
+            },
+            {
+              "layer": "foam",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": 5.69,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Espresso Tonic",
+          "price": 5.69,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "ice",
+              "parts": 1
+            },
+            {
+              "layer": "tonic",
+              "parts": 2
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "chocolate",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 2
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Coffee",
+      "items": [
+        {
+          "name": "Batch Brew",
+          "price": null,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "coffee",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Cold Brew",
+          "price": 5.18,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "ice",
+              "parts": 1
+            },
+            {
+              "layer": "coldbrew",
+              "parts": 3
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Cream Cold Brew",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "ice",
+              "parts": 1
+            },
+            {
+              "layer": "coldbrew",
+              "parts": 3
+            },
+            {
+              "layer": "cream",
+              "parts": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Specialty lattes",
+      "items": [
+        {
+          "name": "Hazelnut Brown Sugar Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Lavender Honey Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Bean Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Specialty Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Matcha",
+      "items": [
+        {
+          "name": "Matcha Latte",
+          "price": 6.21,
+          "description": "",
+          "favorite": true,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "matcha",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Matcha Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "strawberry",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 2
+            },
+            {
+              "layer": "matcha",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Lavender Matcha Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "matcha",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Matcha Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "matcha",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Seasonal drinks",
+      "items": [
+        {
+          "name": "Brown Butter Pecan Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Pumpkin Tiramisu Latte",
+          "price": 7.5,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 2.5
+            },
+            {
+              "layer": "cream",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Spiced Pear Matcha Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "matcha",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            }
+          ]
+        },
+        {
+          "name": "Black Sesame Matcha Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "matcha",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            }
+          ]
+        },
+        {
+          "name": "Black Sesame Caramel Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Apple Cider Cream Brulee",
+          "price": 7.5,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "cider",
+              "parts": 3
+            },
+            {
+              "layer": "cream",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Fig Rosemary Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Fig Rosemary Matcha Cloud",
+          "price": 7.5,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "milk",
+              "parts": 2
+            },
+            {
+              "layer": "matcha",
+              "parts": 1
+            },
+            {
+              "layer": "cream",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Fig & Rosemary Cream Cold Brew",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "ice",
+              "parts": 1
+            },
+            {
+              "layer": "coldbrew",
+              "parts": 3
+            },
+            {
+              "layer": "cream",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Baklava Latte",
+          "price": 6.73,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.5
+            },
+            {
+              "layer": "espresso",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Not coffee",
+      "items": [
+        {
+          "name": "Chai Latte",
+          "price": 6.21,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "chai",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 2
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "London Fog",
+          "price": 5.43,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "tea",
+              "parts": 2
+            },
+            {
+              "layer": "syrup",
+              "parts": 0.3
+            },
+            {
+              "layer": "milk",
+              "parts": 1
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 5.18,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "chocolate",
+              "parts": 1
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 0.5
+            }
+          ]
+        },
+        {
+          "name": "Steamer",
+          "price": 3.36,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false,
+          "layers": [
+            {
+              "layer": "syrup",
+              "parts": 0.3
+            },
+            {
+              "layer": "milk",
+              "parts": 3
+            },
+            {
+              "layer": "foam",
+              "parts": 1
+            }
+          ]
+        },
+        {
+          "name": "Kombucha",
+          "price": 6.21,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Healthy Soda",
+          "price": 5.69,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Orange Juice",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Flavored Pellegrino",
+          "price": 3.93,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Regular Pellegrino",
+          "price": 2.9,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Fiji Water",
+          "price": 2.74,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        }
+      ]
+    },
+    {
+      "category": "Teas",
+      "items": [
+        {
+          "name": "Black Tea",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Green Tea",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Herbal Tea",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        }
+      ]
+    }
+  ]
+}

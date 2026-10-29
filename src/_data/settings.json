@@ -1,0 +1,30 @@
+{
+  "business_name": "Milo’s Cafe",
+  "site_url": "",
+  "seo_title": "Milo’s Cafe | European All-Day Café in Morrisville, NC",
+  "seo_description": "Milo’s Cafe in Morrisville, NC: focaccia sandwiches, Lavazza espresso, matcha and crepes made from scratch. Indoor and patio seating.",
+  "share_title": "Milo’s Cafe | European All-Day Café in Morrisville, NC",
+  "share_description": "Focaccia sandwiches, Lavazza espresso, matcha and crepes made from scratch. Indoor and patio seating on Chapel Hill Rd.",
+  "share_image": "/images/og.jpg",
+  "logo": "/images/logo.png",
+  "logo_light": "/images/logo-light.png",
+  "street": "10119 Chapel Hill Rd",
+  "city": "Morrisville",
+  "state": "NC",
+  "zip": "27560",
+  "latitude": 35.8265444,
+  "longitude": -78.8267744,
+  "phone_display": "(919) 443-8000",
+  "phone_dial": "+19194438000",
+  "order_url": "https://order.spoton.com/so-milos-cafe-21006/morrisville-nc/66f5d47035b06b6ed85df923",
+  "instagram_handle": "milos_europeancafe",
+  "instagram_url": "https://www.instagram.com/milos_europeancafe/",
+  "instagram_hours_url": "https://www.instagram.com/milos_europeancafe/reels/",
+  "yelp_url": "https://www.yelp.com/biz/milo-s-cafe-morrisville",
+  "cuisine": [
+    "European",
+    "Coffee",
+    "Crepes",
+    "Sandwiches"
+  ]
+}

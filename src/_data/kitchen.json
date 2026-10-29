@@ -1,0 +1,111 @@
+{
+  "enabled": true,
+  "eyebrow": "The kitchen",
+  "heading": "Scratch made,",
+  "heading_italic": "all day.",
+  "body": "Menad and Liliana Haliche opened Milo’s in 2024, turning a former motorcycle shop into a European-style neighborhood café. Menad’s experience in Parisian bistros shapes a menu of focaccia sandwiches, crepes, and espresso.",
+  "story_label": "Our story in The News & Observer",
+  "story_url": "https://www.newsobserver.com/living/food-drink/article315186505.html",
+  "cards": [
+    {
+      "image": "/images/focaccia-sandwiches.jpg",
+      "alt": "Focaccia sandwiches",
+      "title": "Focaccia sandwiches",
+      "text": "Fresh fillings, bold sauces, and focaccia from Ninth Street Bakery."
+    },
+    {
+      "image": "/images/crepe-salad.jpg",
+      "alt": "Crepe with salad on a blue plate",
+      "title": "Sweet and savory crepes",
+      "text": "Folded to order. Sweet for dessert, savory for lunch."
+    },
+    {
+      "image": "/images/latte-art-hot-iced.jpg",
+      "alt": "Latte art, hot and iced",
+      "title": "Coffee and matcha",
+      "text": "Lavazza espresso, matcha, and seasonal menus."
+    }
+  ],
+  "award_show": true,
+  "award_title": "Best Sandwich Shop in the Triangle",
+  "award_subtitle": "2026 News & Observer readers’ poll",
+  "award_link_label": "Read the story",
+  "award_link_url": "https://www.newsobserver.com/living/food-drink/article315186505.html",
+  "pair_show": true,
+  "pair_heading": "Can’t decide?",
+  "pair_helper": "Pick a mood for each and we’ll pair something from the menu.",
+  "pair_food_placeholder": "Food: surprise me",
+  "pair_drink_placeholder": "Drink: surprise me",
+  "pair_button": "Pair it ↻",
+  "pair_start": "Choose a mood to start.",
+  "pair_joiner": ", with a ",
+  "food_moods": [
+    {
+      "mood": "Savory",
+      "items": [
+        "Salami Focaccia",
+        "Schnitzel Focaccia",
+        "Goat Cheese Toast",
+        "Mushroom & Leeks Crepe",
+        "Chicken & Creamy Brie Crepe",
+        "Mortadella Focaccia"
+      ]
+    },
+    {
+      "mood": "Sweet",
+      "items": [
+        "Nutella or Peanut Butter Crepe",
+        "Blueberry Cream Cheese Crepe",
+        "Strawberry Matcha Crepe",
+        "Tim’s French Toast"
+      ]
+    },
+    {
+      "mood": "Light",
+      "items": [
+        "Avocado Toast",
+        "Granola Bowl",
+        "Prosciutto Salad",
+        "Mediterranean Chicken Salad",
+        "Burrata Salad"
+      ]
+    }
+  ],
+  "drink_moods": [
+    {
+      "mood": "Coffee",
+      "items": [
+        "Cortado",
+        "Cappuccino",
+        "Espresso Tonic",
+        "Affogato"
+      ]
+    },
+    {
+      "mood": "Matcha",
+      "items": [
+        "Matcha Latte",
+        "Strawberry Matcha Latte",
+        "Lavender Matcha Latte"
+      ]
+    },
+    {
+      "mood": "Seasonal",
+      "items": [
+        "Baklava Latte",
+        "Fig Rosemary Latte",
+        "Brown Butter Pecan Latte",
+        "Pumpkin Tiramisu Latte"
+      ]
+    },
+    {
+      "mood": "Not coffee",
+      "items": [
+        "Chai Latte",
+        "London Fog",
+        "Kombucha",
+        "Hot Chocolate"
+      ]
+    }
+  ]
+}

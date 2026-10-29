@@ -1,0 +1,51 @@
+{
+  "enabled": true,
+  "eyebrow": "Find us",
+  "heading": "Visit",
+  "heading_italic": "",
+  "address_label": "Address",
+  "copy_label": "Copy address",
+  "copied_label": "Copied",
+  "phone_label": "Phone",
+  "instagram_label": "Instagram",
+  "hours_label": "Opening hours",
+  "patio_note": "Outdoor seating is on the patio, with yellow bistro chairs, a picnic table and blue Lavazza umbrellas under the pines. Follow the “Patio this way” sign by the front door.",
+  "photos": [
+    {
+      "image": "/images/patio.jpg",
+      "caption": "The patio: yellow bistro chairs, picnic table, blue Lavazza umbrellas"
+    },
+    {
+      "image": "/images/patio-pines.jpg",
+      "caption": "Shaded tables under the pines"
+    },
+    {
+      "image": "/images/interior-teal-wall.jpg",
+      "caption": "Inside: the teal wall"
+    },
+    {
+      "image": "/images/front-door-holiday.jpg",
+      "caption": "The front door, holiday season"
+    }
+  ],
+  "cta_heading": "Come stay a while.",
+  "cta_text": "Find a table inside or settle into a shaded spot on the patio.",
+  "cta_buttons": [
+    {
+      "label": "Order pickup",
+      "link": "https://order.spoton.com/so-milos-cafe-21006/morrisville-nc/66f5d47035b06b6ed85df923",
+      "outline": false
+    },
+    {
+      "label": "Order delivery",
+      "link": "https://order.spoton.com/so-milos-cafe-21006/morrisville-nc/66f5d47035b06b6ed85df923",
+      "outline": true
+    },
+    {
+      "label": "Get directions",
+      "link": "directions",
+      "outline": true
+    }
+  ],
+  "also_label": "Also:"
+}

@@ -1,0 +1,34 @@
+{
+  "enabled": true,
+  "eyebrow": "Instagram",
+  "heading": "On",
+  "heading_italic": "Instagram.",
+  "intro": "Plates, pours, and the room.",
+  "photos": [
+    {
+      "image": "/images/salad-bowl.jpg",
+      "caption": "Colorful salad bowl"
+    },
+    {
+      "image": "/images/matcha-crepes.jpg",
+      "caption": "Matcha latte and crepes"
+    },
+    {
+      "image": "/images/coffee-pecan-cookie.jpg",
+      "caption": "Coffee and a pecan cookie"
+    },
+    {
+      "image": "/images/arugula-wrap.jpg",
+      "caption": "Arugula and cheese wrap"
+    },
+    {
+      "image": "/images/matcha-ube.jpg",
+      "caption": "Matcha latte with ube"
+    },
+    {
+      "image": "/images/latte-art-above.jpg",
+      "caption": "Latte art, from above"
+    }
+  ],
+  "follow_label": "Follow @milos_europeancafe"
+}

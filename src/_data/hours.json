@@ -1,0 +1,48 @@
+{
+  "days": [
+    {
+      "day": "Monday",
+      "closed": false,
+      "open": "07:00",
+      "close": "16:00"
+    },
+    {
+      "day": "Tuesday",
+      "closed": false,
+      "open": "07:00",
+      "close": "16:00"
+    },
+    {
+      "day": "Wednesday",
+      "closed": false,
+      "open": "07:00",
+      "close": "16:00"
+    },
+    {
+      "day": "Thursday",
+      "closed": false,
+      "open": "07:00",
+      "close": "16:00"
+    },
+    {
+      "day": "Friday",
+      "closed": false,
+      "open": "07:00",
+      "close": "17:00"
+    },
+    {
+      "day": "Saturday",
+      "closed": false,
+      "open": "07:00",
+      "close": "17:00"
+    },
+    {
+      "day": "Sunday",
+      "closed": false,
+      "open": "08:30",
+      "close": "15:30"
+    }
+  ],
+  "note": "Holiday hours may vary.",
+  "note_link_label": "Hours announced on Instagram"
+}

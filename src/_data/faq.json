@@ -1,0 +1,43 @@
+{
+  "enabled": true,
+  "eyebrow": "Good to know",
+  "heading": "Questions,",
+  "heading_italic": "answered.",
+  "items": [
+    {
+      "question": "What is Milo’s Cafe known for?",
+      "answer": "Focaccia sandwiches, espresso, and sweet and savory crepes. News & Observer readers voted Milo’s the Best Sandwich Shop in the Triangle in 2026. [Read the coverage.](https://www.newsobserver.com/living/food-drink/article315186505.html)",
+      "show_hours": false
+    },
+    {
+      "question": "Where is Milo’s Cafe?",
+      "answer": "Milo’s Cafe is at 10119 Chapel Hill Rd, Morrisville, NC 27560.",
+      "show_hours": false
+    },
+    {
+      "question": "What does Milo’s Cafe serve?",
+      "answer": "Lavazza espresso and coffee drinks, matcha, specialty lattes and teas, plus focaccia sandwiches, salads, toast and bowls, and sweet or savory crepes, all made from scratch.",
+      "show_hours": false
+    },
+    {
+      "question": "Can I order online for pickup or delivery?",
+      "answer": "Yes. Order through our online ordering page for pickup, curbside or delivery, or come in and dine with us.",
+      "show_hours": false
+    },
+    {
+      "question": "Is there outdoor seating?",
+      "answer": "Yes. We have indoor seating and a patio with bistro chairs and shaded tables.",
+      "show_hours": false
+    },
+    {
+      "question": "What are your opening hours?",
+      "answer": "",
+      "show_hours": true
+    },
+    {
+      "question": "Do you have vegetarian options?",
+      "answer": "Yes, including avocado toast, goat cheese toast, veggie focaccia and several crepes. Please ask us about ingredients and allergens.",
+      "show_hours": false
+    }
+  ]
+}

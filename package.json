@@ -1,0 +1,14 @@
+{
+  "name": "milos-cafe",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "cms": "npx decap-server"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.2",
+    "markdown-it": "14.1.0"
+  }
+}
