@@ -13,15 +13,6 @@
   "chip_cloudy": "Cloudy",
   "chip_rain": "Rain",
   "verdicts": {
-    "rain": "Wet out there. Cozy seats inside.",
-    "cold": "Too chilly for the patio.",
-    "too_hot": "Too hot for the patio. Stay cool inside.",
-    "windy": "Breezy. Patio with a jacket.",
-    "cool": "Cool. Patio with a jacket.",
-    "hot": "Hot. Grab a shaded table.",
-    "perfect": "Perfect patio weather.",
-    "opens_at": "Opens at",
-    "closed_for_day": "Closed for the day",
     "closed_today": "Closed today"
   }
 }

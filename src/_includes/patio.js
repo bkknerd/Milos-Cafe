@@ -1,7 +1,7 @@
 (()=>{
 const $=s=>document.querySelector(s),svg=$('#ps-svg');if(!svg)return;const sc=svg.closest('.scene'),svgs=[...sc.querySelectorAll('svg.ps-l')];
 const S={h:12,sr:7.5,ss:18.5,cover:30,rain:false,wind:5,feel:70,temp:null,ov:null,live:true};
-const hrs=SITE.hours,V=SITE.verdicts,PL=SITE.patio;
+const PL=SITE.patio;
 const ny=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).map(x=>[x.type,x.value]));return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),h:(+p.hour)+(+p.minute)/60}};
 const f=h=>{const m=Math.round(h*60)%1440,hh=Math.floor(m/60),mm=m%60;return(hh%12||12)+':'+String(mm).padStart(2,'0')+' '+(hh>=12?'PM':'AM')};
 const mix=(a,b,t)=>a.map((x,i)=>Math.round(x+(b[i]-x)*t));
@@ -10,7 +10,6 @@ const sky=v=>{let i=K.findIndex(k=>k[0]>v)-1;if(i<0)i=K.length-2;const a=K[i],b=
 const vh=(h,sr,ss)=>{const v=h>=sr&&h<=ss?6.5+(h-sr)/(ss-sr)*13:h<sr?6.5-(sr-h):19.5+(h-ss);return((v%24)+24)%24};
 const dk=v=>v<5?1:v<6.5?1-(v-5)/1.5:v<19?0:v<21?(v-19)/2:1;
 const ph=v=>v<5?'Night':v<6.5?'Before dawn':v<8.5?'Sunrise':v<11?'Morning':v<15?'Midday':v<17.5?'Afternoon':v<19.5?'Golden hour':v<21?'Dusk':'Night';
-const vd=(e,w,r)=>r?V.rain:e<50?V.cold:e>94?V.too_hot:w>22?V.windy:e<62?V.cool:e>88?V.hot:V.perfect;
 const set=(id,k,v)=>$(id).setAttribute(k,v);
 /* stars, bulbs, rain */
 let s='';for(let i=0;i<46;i++){const a=Math.abs(Math.sin(i*12.9898)*43758.5453)%1,b=Math.abs(Math.sin(i*78.233)*12345.678)%1,c=Math.abs(Math.sin(i*39.346)*9876.54)%1;s+='<circle cx="'+(a*1440).toFixed(0)+'" cy="'+(80+b*300).toFixed(0)+'" r="'+(.7+c*1.3).toFixed(1)+'"/>'}$('#pst').innerHTML=s;
@@ -36,17 +35,19 @@ sc.style.setProperty('--o',d>.85||S.wind>25?.16:1);
 sc.style.setProperty('--st',S.feel<72&&d<.95?.9:0);
 sc.style.setProperty('--sw',Math.max(1.8,7-S.wind/4)+'s');
 /* text */
-const dd=ny().d,hd=hrs[dd],[o,c]=hd||[0,0],w=rain?'Rain':cover>70?'Overcast':cover>30?'Partly cloudy':'Clear';
-const st=!hd?V.closed_today:S.h<o?V.opens_at+' '+f(o):S.h>=c?V.closed_for_day:vd(S.feel,S.wind,rain);
+const w=rain?'Rain':cover>70?'Overcast':cover>30?'Partly cloudy':'Clear';
 $('#ps-k').textContent=(S.live&&!S.ov?PL.card_live:PL.card_preview)+' · '+PL.card_place;
 $('#ps-m').textContent=ph(v);
-$('#ps-s').textContent=[f(S.h),S.temp!=null?Math.round(S.temp)+'°F':'',w,st].filter(Boolean).join(' · ');
-$('#ps-r').value=Math.round(S.h*60);$('#ps-now').hidden=S.live;
+$('#ps-s').textContent=[f(S.h),S.temp!=null?Math.round(S.temp)+'°F':'',w].filter(Boolean).join(' · ');
+$('#ps-r').value=Math.round(S.h*60);$('#ps-now').hidden=S.live&&!S.ov;
 }
 /* controls */
 $('#ps-r').oninput=e=>{S.live=false;S.h=e.target.value/60;draw()};
-$('#ps-now').onclick=()=>{S.live=true;S.h=ny().h;draw()};
-document.querySelectorAll('#ps-ch .chip').forEach(b=>b.onclick=()=>{S.ov=b.dataset.ov||null;document.querySelectorAll('#ps-ch .chip').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+/* sky chips (the "Back to now" button is not one of them) */
+const chips=[...document.querySelectorAll('#ps-ch .chip[data-ov]')],press=b=>chips.forEach(x=>x.setAttribute('aria-pressed',x===b));
+chips.forEach(b=>b.onclick=()=>{S.ov=b.dataset.ov||null;press(b);draw()});
+/* back to now: real time and real weather, then keep focus on the controls */
+$('#ps-now').onclick=()=>{S.live=true;S.h=ny().h;S.ov=null;press(chips[0]);draw();$('#ps-r').focus({preventScroll:true})};
 setInterval(()=>{if(S.live){S.h=ny().h;draw()}},30000);
 S.h=ny().h;draw();
 /* framing: show the storefront on narrow screens */

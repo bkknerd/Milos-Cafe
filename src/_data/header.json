@@ -10,7 +10,7 @@
       "target": "menu"
     },
     {
-      "label": "Instagram",
+      "label": "Photos",
       "target": "gallery"
     },
     {
@@ -23,7 +23,8 @@
     }
   ],
   "order_button": "Order",
-  "mobile_bar_order": "Order online",
+  "mobile_bar_order": "Order",
   "mobile_bar_call": "Call",
-  "mobile_menu_label": "Menu"
+  "mobile_menu_label": "Menu",
+  "mobile_bar_directions": "Directions"
 }

@@ -1,32 +1,39 @@
 {
   "enabled": true,
-  "heading": "On Instagram",
+  "heading": "Inside and out",
   "heading_italic": "",
-  "intro": "Plates, pours and the room.",
+  "intro": "Sit out on the gravel patio with the yellow and blue bistro chairs and Lavazza umbrellas, or stay in by the green wall. Follow the “Patio this way” sign by the front door.",
+  "instagram_lead": "More on Instagram",
   "photos": [
     {
-      "image": "/images/brunch-spread.webp",
-      "caption": "Matcha crepes, French toast and a breakfast focaccia"
+      "image": "/images/patio-lunch.jpg",
+      "caption": "Focaccia and an iced coffee on the patio",
+      "wide": true
     },
     {
-      "image": "/images/avocado-focaccia.webp",
-      "caption": "Avocado focaccia and an iced latte"
-    },
-    {
-      "image": "/images/french-toast.webp",
-      "caption": "Tim’s French toast with berries and caramel"
+      "image": "/images/pastry-case.webp",
+      "caption": "Croissants, pain au chocolat and ube financiers",
+      "wide": false
     },
     {
       "image": "/images/teddy-iced-coffee.webp",
-      "caption": "The resident bear, with an iced coffee"
+      "caption": "The resident bear, with an iced coffee",
+      "wide": false
     },
     {
-      "image": "/images/neon-wall.webp",
-      "caption": "“Do what you love” on the green wall"
+      "image": "/images/green-wall-room.webp",
+      "caption": "The green wall, the sofa and the poufs",
+      "wide": true
     },
     {
-      "image": "/images/pink-wall.webp",
-      "caption": "Shelves on the pink wall"
+      "image": "/images/bench-room.webp",
+      "caption": "The bench room, with fresh flowers on every table",
+      "wide": true
+    },
+    {
+      "image": "/images/brunch-spread.webp",
+      "caption": "Matcha crepes, French toast and a breakfast focaccia",
+      "wide": false
     }
   ],
   "follow_label": "Follow @milos_europeancafe"

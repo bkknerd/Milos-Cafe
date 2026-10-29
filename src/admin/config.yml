@@ -87,6 +87,10 @@ collections:
     - name: order_url
       label: Online ordering link
       widget: string
+    - name: order_provider
+      label: Online ordering service name
+      widget: string
+      hint: Used to tell screen-reader users where the Order button goes, e.g. SpotOn
     - name: instagram_handle
       label: Instagram handle (no @)
       widget: string
@@ -179,7 +183,7 @@ collections:
           value: menu
         - label: Reviews
           value: reviews
-        - label: Instagram
+        - label: Photos
           value: gallery
         - label: FAQ
           value: faq
@@ -199,6 +203,9 @@ collections:
       widget: string
     - name: mobile_bar_call
       label: 'Phone bottom bar: call button'
+      widget: string
+    - name: mobile_bar_directions
+      label: 'Phone bottom bar: directions button'
       widget: string
   - name: hero
     label: Top of page
@@ -274,38 +281,11 @@ collections:
       label: 'Sky: Rain'
       widget: string
     - name: verdicts
-      label: Weather messages
+      label: Closed-day text
       widget: object
       fields:
-      - name: perfect
-        label: Perfect weather
-        widget: string
-      - name: cool
-        label: Cool (under 62°F feels-like)
-        widget: string
-      - name: cold
-        label: Cold (under 50°F)
-        widget: string
-      - name: hot
-        label: Hot (over 88°F)
-        widget: string
-      - name: too_hot
-        label: Too hot (over 94°F)
-        widget: string
-      - name: windy
-        label: Windy (over 22 mph)
-        widget: string
-      - name: rain
-        label: Raining
-        widget: string
-      - name: opens_at
-        label: Before opening ('Opens at' + time)
-        widget: string
-      - name: closed_for_day
-        label: After closing
-        widget: string
       - name: closed_today
-        label: Closed today
+        label: Header text on a closed day
         widget: string
   - name: kitchen
     label: Story
@@ -388,6 +368,12 @@ collections:
     - name: pair_helper
       label: Pairing helper text
       widget: string
+    - name: pair_food_label
+      label: Food field label
+      widget: string
+    - name: pair_drink_label
+      label: Drink field label
+      widget: string
     - name: pair_food_placeholder
       label: Food dropdown default
       widget: string
@@ -397,13 +383,13 @@ collections:
     - name: pair_button
       label: Pairing button
       widget: string
+    - name: pair_and
+      label: Symbol between food and drink
+      widget: string
+      hint: e.g. &
     - name: pair_start
-      label: Pairing starting message
+      label: Message if no pairing can be made
       widget: string
-    - name: pair_joiner
-      label: Text between food and drink
-      widget: string
-      hint: e.g. ', with a '
     - name: food_moods
       label: Food moods
       widget: list
@@ -418,6 +404,7 @@ collections:
           name: item
           label: Item
           widget: string
+        hint: Use menu item names exactly as they appear on the menu.
       summary: '{{fields.mood}}'
     - name: drink_moods
       label: Drink moods
@@ -433,6 +420,7 @@ collections:
           name: item
           label: Item
           widget: string
+        hint: Use menu item names exactly as they appear on the menu.
       summary: '{{fields.mood}}'
   - name: menu
     label: Menu
@@ -752,7 +740,7 @@ collections:
       label: Yelp reviews link text
       widget: string
   - name: gallery
-    label: Instagram gallery
+    label: 'Photos: inside and out'
     file: src/_data/gallery.json
     fields:
     - name: enabled
@@ -769,7 +757,7 @@ collections:
       required: false
     - name: intro
       label: Intro
-      widget: string
+      widget: text
     - name: photos
       label: Photos
       widget: list
@@ -781,9 +769,17 @@ collections:
       - name: caption
         label: Caption (also used as image description)
         widget: string
+      - name: wide
+        label: Wide (use for landscape photos)
+        widget: boolean
+        default: false
       summary: '{{fields.caption}}'
+    - name: instagram_lead
+      label: Text before the Instagram button
+      widget: string
+      required: false
     - name: follow_label
-      label: Follow button text
+      label: Instagram button text
       widget: string
   - name: faq
     label: FAQ
@@ -824,36 +820,9 @@ collections:
         default: false
       summary: '{{fields.question}}'
   - name: visit
-    label: 'Visit: photos & footer'
+    label: Visit (footer)
     file: src/_data/visit.json
     fields:
-    - name: enabled
-      label: Show this section
-      widget: boolean
-      default: true
-      hint: Turn off to hide the 'Inside and out' photo section. The footer always shows.
-    - name: heading
-      label: Heading
-      widget: string
-    - name: heading_italic
-      label: Heading, italic second part (optional)
-      widget: string
-      required: false
-    - name: patio_note
-      label: Photo section text
-      widget: text
-    - name: photos
-      label: Photos (the first is shown large)
-      widget: list
-      fields:
-      - name: image
-        label: Photo
-        widget: image
-        choose_url: false
-      - name: caption
-        label: Caption (also used as image description)
-        widget: string
-      summary: '{{fields.caption}}'
     - name: cta_heading
       label: Footer heading
       widget: string

@@ -35,10 +35,21 @@ $("#q").value="";$("#mf").setAttribute("aria-pressed","false");$$(".tab").forEac
 const el=document.getElementById(a.dataset.item);if(!el)return;el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"center"});
 el.classList.remove("hl");void el.offsetWidth;el.classList.add("hl")}));
 draw("food")}
-/* mood pairing */
-const bite=Object.fromEntries((SITE.bite||[]).map(m=>[m.mood,m.items||[]])),sip=Object.fromEntries((SITE.sip||[]).map(m=>[m.mood,m.items||[]]));
+/* mood pairing: real menu items, prices, links into the menu, no immediate repeats */
+const IDX={};["food","drinks"].forEach(t=>(M[t]||[]).forEach(c=>(c.items||[]).forEach(i=>IDX[i.name]={tab:t,price:price(i.price)})));
+const moods=l=>Object.fromEntries((l||[]).map(m=>[m.mood,(m.items||[]).filter(n=>IDX[n])]).filter(([,v])=>v.length));
+const bite=moods(SITE.bite),sip=moods(SITE.sip);
 const pk=a=>a[Math.floor(Math.random()*a.length)];
-function go(){const b=$("#s1").value||pk(Object.keys(bite)),s=$("#s2").value||pk(Object.keys(sip));if(!bite[b]||!sip[s])return;$("#res").textContent=pk(bite[b])+SITE.joiner+pk(sip[s])+"."}
-if($("#spin")){$("#spin").onclick=go;$("#s1").onchange=go;$("#s2").onchange=go}
+let last="";
+function jumpTo(tab,id){if(!$("#mn"))return;$("#q").value="";$("#mf").setAttribute("aria-pressed","false");$$(".tab").forEach(x=>x.setAttribute("aria-selected",x.dataset.t===tab));draw(tab);
+const el=document.getElementById(id);if(!el)return;el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"center"});el.classList.remove("hl");void el.offsetWidth;el.classList.add("hl")}
+function card(kind,name){const it=IDX[name];return `<a class="pr-i" href="#${islug(name)}" data-tab="${it.tab}" data-item="${islug(name)}"><span class="pr-k">${esc(kind)}</span><span class="pr-n">${esc(name)}</span>${it.price?`<span class="pr-p">${it.price}</span>`:""}</a>`}
+function go(animate){const r=$("#res");if(!r)return;const fm=$("#s1").value,dm=$("#s2").value;
+const fl=fm&&bite[fm]?bite[fm]:Object.values(bite).flat(),dl=dm&&sip[dm]?sip[dm]:Object.values(sip).flat();if(!fl.length||!dl.length)return;
+let f,d,n=0;do{f=pk(fl);d=pk(dl);n++}while(f+"|"+d===last&&n<12);last=f+"|"+d;
+r.innerHTML=card(r.dataset.food,f)+`<span class="pr-amp" aria-hidden="true">${esc(r.dataset.and||"&")}</span>`+card(r.dataset.drink,d);
+r.classList.remove("in");if(animate!==false){void r.offsetWidth;r.classList.add("in")}}
+if($("#spin")){$("#spin").onclick=()=>go();$("#s1").onchange=()=>go();$("#s2").onchange=()=>go();go(false);
+$("#res").addEventListener("click",e=>{const a=e.target.closest(".pr-i");if(!a)return;e.preventDefault();jumpTo(a.dataset.tab,a.dataset.item)})}
 const cp=$("#cp");if(cp)cp.onclick=e=>{try{navigator.clipboard.writeText(SITE.address);e.currentTarget.textContent=SITE.copied}catch(x){}};
 })();

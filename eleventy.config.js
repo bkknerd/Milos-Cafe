@@ -18,7 +18,14 @@ export default function (cfg) {
   cfg.addShortcode("raw_include", (f) => readFileSync("src/_includes/" + f, "utf8"));
 
   // Responsive, graded photos: <picture> with WebP + JPEG at phone/desktop widths
-  const grade = (sharp) => { sharp.modulate({ saturation: 0.94, brightness: 1.01 }).linear(1.05, -5).recomb([[1.025, 0, 0], [0, 1, 0], [0, 0, 0.97]]); };
+  // House photo treatment (applies to every photo, including CMS uploads): matte, warm,
+  // slightly lifted blacks and a soft cobalt tint in the shadows, to sit with the illustration.
+  const cobaltTile = readFileSync("src/_includes/cobalt-tile.png");
+  const grade = (sharp) => {
+    sharp.modulate({ saturation: 0.9 }).linear(0.95, 8)
+      .recomb([[1.035, 0.01, 0], [0, 1, 0], [0, 0.01, 0.95]])
+      .composite([{ input: cobaltTile, tile: true, blend: "screen" }]);
+  };
   cfg.addAsyncShortcode("img", async (src, alt = "", sizes = "100vw", cls = "", loading = "lazy") => {
     const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
     const file = src && src.startsWith("/") ? "src" + src : null;

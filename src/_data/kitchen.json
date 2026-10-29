@@ -34,12 +34,11 @@
   "award_link_url": "https://www.newsobserver.com/living/food-drink/article315186505.html",
   "pair_show": true,
   "pair_heading": "Can’t decide?",
-  "pair_helper": "Pick a mood for each and we’ll pair something from the menu.",
-  "pair_food_placeholder": "Food: surprise me",
-  "pair_drink_placeholder": "Drink: surprise me",
-  "pair_button": "Pair it ↻",
+  "pair_helper": "Pick a mood for each, or leave it to us. We’ll pair a plate and a drink from the menu.",
+  "pair_food_placeholder": "Surprise me",
+  "pair_drink_placeholder": "Surprise me",
+  "pair_button": "Pair it",
   "pair_start": "Choose a mood to start.",
-  "pair_joiner": ", with a ",
   "food_moods": [
     {
       "mood": "Savory",
@@ -47,8 +46,8 @@
         "Salami Focaccia",
         "Schnitzel Focaccia",
         "Goat Cheese Toast",
-        "Mushroom & Leeks Crepe",
-        "Chicken & Creamy Brie Crepe",
+        "Mushroom & Leeks",
+        "Chicken & Creamy Brie",
         "Mortadella Focaccia"
       ]
     },
@@ -56,8 +55,8 @@
       "mood": "Sweet",
       "items": [
         "Nutella or Peanut Butter Crepe",
-        "Blueberry Cream Cheese Crepe",
-        "Strawberry Matcha Crepe",
+        "Blueberry Cream Cheese",
+        "Strawberry Matcha",
         "Tim’s French Toast"
       ]
     },
@@ -108,5 +107,8 @@
         "Hot Chocolate"
       ]
     }
-  ]
+  ],
+  "pair_food_label": "Food",
+  "pair_drink_label": "Drink",
+  "pair_and": "&"
 }
