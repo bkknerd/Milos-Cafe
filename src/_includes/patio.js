@@ -27,7 +27,7 @@ if(p>=0&&p<=1){const x=140+p*1160,y=400-Math.sin(Math.PI*p)*280,o=Math.min(1,Mat
 const q=((S.h-S.ss+24)%24)/(24-(S.ss-S.sr));
 if(q<=1){set('#psM','cx',140+q*1160);set('#psM','cy',400-Math.sin(Math.PI*q)*260);set('#psM','opacity',Math.min(1,Math.sin(Math.PI*q)*4)*(1-cover/100*.8))}else set('#psM','opacity',0);
 set('#pst','opacity',d*(1-cover/100*.85));
-sc.querySelectorAll('.psN').forEach(n=>n.setAttribute('opacity',d*.5+(rain?.12:0)));
+sc.querySelectorAll('.psN').forEach(n=>n.setAttribute('opacity',d*.5+(rain?.12:0)));sc.style.setProperty('--nk',d*.5+(rain?.12:0));
 const lit=Math.min(1,d*1.3+(cover>80?.15:0));set('#psW','opacity',lit);set('#psB','opacity',lit);
 set('#pscl','opacity',Math.min(1,cover<10?.18:cover/100*1.05+.05));
 $('#pscl').style.fill='rgb('+mix(mix([244,237,224],[60,70,110],d),[96,110,140],rain?.6:cover>70?.3:0)+')';
@@ -50,7 +50,12 @@ document.querySelectorAll('#ps-ch .chip').forEach(b=>b.onclick=()=>{S.ov=b.datas
 setInterval(()=>{if(S.live){S.h=ny().h;draw()}},30000);
 S.h=ny().h;draw();
 /* framing: show the storefront on narrow screens */
-const fr=()=>svgs.forEach(v=>v.setAttribute('preserveAspectRatio',(innerWidth<760?'xMaxYMax':'xMidYMax')+' slice'));fr();addEventListener('resize',fr,{passive:true});
+/* fit: the whole drawing always sits inside the first screen. Plenty of room: fill the width.
+   Short screen: scale the drawing down (sky and gravel continue into the side margins). Phones: frame the table. */
+const fit=()=>{if(innerWidth<760){sc.style.height='';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMaxYMax slice'));return}
+const full=sc.clientWidth*600/1440,top=sc.getBoundingClientRect().top+scrollY,avail=innerHeight-top-6,h=Math.round(Math.max(260,Math.min(full,avail)));
+sc.style.height=h+'px';const m=h<full-1?'meet':'slice';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMidYMax '+m))};
+fit();addEventListener('resize',fit,{passive:true});if(document.fonts)document.fonts.ready.then(fit);
 /* depth: far pines and clouds drift slower than the page */
 if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const far=$('#psFar'),cl=$('#pscl'),box=sc;
 const par=()=>{const r=box.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const y=Math.max(0,-r.top);far.style.transform='translateY('+(y*.06)+'px)';cl.style.transform='translateY('+(y*.12)+'px)'};

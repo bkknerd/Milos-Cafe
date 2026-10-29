@@ -371,7 +371,7 @@
     },
     {
       "category": "Coffee",
-      "image": "/images/coffee-pecan-cookie.jpg",
+      "image": "/images/drink-cold-brew.jpg",
       "items": [
         {
           "name": "Batch Brew",
@@ -649,7 +649,7 @@
     },
     {
       "category": "Seasonal drinks",
-      "image": "",
+      "image": "/images/coffee-pecan-cookie.jpg",
       "items": [
         {
           "name": "Brown Butter Pecan Latte",
@@ -885,7 +885,7 @@
     },
     {
       "category": "Not coffee",
-      "image": "",
+      "image": "/images/drink-iced.jpg",
       "items": [
         {
           "name": "Chai Latte",
@@ -1021,7 +1021,7 @@
     },
     {
       "category": "Teas",
-      "image": "",
+      "image": "/images/drink-mugs.jpg",
       "items": [
         {
           "name": "Black Tea",

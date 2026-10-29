@@ -46,7 +46,11 @@ button,input,select{font:inherit;color:inherit}
 h1{font-size:var(--t-4xl);line-height:.98;letter-spacing:-.025em;color:var(--blue)}
 h1 i{font-weight:350}
 .hero-side p{margin:0 0 22px;font-size:var(--t-l);line-height:1.45;color:var(--dim);max-width:30ch}
-.scene{position:relative;height:clamp(320px,min(46vw,calc(100vh - 372px)),620px);height:clamp(320px,min(46vw,calc(100svh - 372px)),620px);overflow:hidden;background:var(--navy)}
+.scene{position:relative;height:clamp(320px,min(41.6vw,calc(100vh - 372px)),620px);height:clamp(320px,min(41.6vw,calc(100svh - 372px)),620px);overflow:hidden;background:linear-gradient(180deg,var(--s1,#4f86e0) 0,var(--s2,#bcd9f5) 73.3%,#a99d86 73.3%,#c9bfaa 100%)}
+.art::before{content:"";position:absolute;left:0;right:0;bottom:0;height:26.7%;background:radial-gradient(circle,#7d725f 1.1px,transparent 1.5px) 0 0/26px 19px,radial-gradient(circle,#efe9dc .9px,transparent 1.3px) 13px 9px/26px 19px;opacity:.75}
+.art svg{z-index:1}
+.scene::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.1;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.ps-card{z-index:3}
 .art{position:relative;height:100%}.art svg{position:absolute;inset:0;display:block;width:100%;height:100%}.art #ps-svg{will-change:transform;transform:translateZ(0)}
 #psFar,#pscl{will-change:transform}
 .ps-card{position:absolute;left:clamp(16px,4vw,56px);bottom:clamp(14px,2.4vw,32px);max-width:min(420px,calc(100% - 32px));padding:14px 18px 15px;border-radius:12px;background:#fffefbe8;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 30px #13234a24;font-size:var(--t-xs);color:var(--dim)}
@@ -231,3 +235,6 @@ details[open] summary::after{transform:rotate(45deg)}
 }
 @media(max-width:520px){.ft-g{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* short screens: tighten the headline so the drawing gets the room */
+@media (min-width:901px) and (max-height:820px){.hero{padding-top:20px}.hero-top{padding-bottom:18px;align-items:center}h1{font-size:clamp(2.6rem,10.5vh,6rem)}.hero-side p{font-size:var(--t-m);margin-bottom:14px}}
