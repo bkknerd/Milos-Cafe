@@ -8,10 +8,33 @@
   "search_placeholder": "Search the menu",
   "no_results": "Nothing matches yet. Try another word.",
   "footnote": "Guest favorite. Meat-free is a guide, so ask us about ingredients and allergens. Prices as listed on the online menu. In-store prices may differ.",
+  "favorites_show": false,
+  "favorites_heading": "House favorites",
+  "favorites": [
+    {
+      "item": "Schnitzel Focaccia",
+      "image": "/images/patio-lunch.jpg",
+      "alt": "Schnitzel focaccia with slaw, cut in half, on a blue patio table"
+    },
+    {
+      "item": "Strawberry Matcha",
+      "image": "/images/matcha-crepe.jpg",
+      "alt": "Matcha crepe with strawberries and cream"
+    },
+    {
+      "item": "Tim’s French Toast",
+      "image": "/images/french-toast.webp",
+      "alt": "French toast with berries, cream and caramel"
+    },
+    {
+      "item": "Matcha Latte",
+      "image": "/images/matcha-ube.jpg",
+      "alt": "Matcha latte with leaf latte art"
+    }
+  ],
   "food": [
     {
       "category": "Toast & bowls",
-      "image": "/images/french-toast.webp",
       "items": [
         {
           "name": "Avocado Toast",
@@ -69,11 +92,11 @@
           "favorite": false,
           "contains_meat": true
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Salads",
-      "image": "/images/salad-bowl.jpg",
       "items": [
         {
           "name": "Burrata Salad",
@@ -103,11 +126,11 @@
           "favorite": false,
           "contains_meat": false
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Focaccia",
-      "image": "/images/avocado-focaccia.webp",
       "items": [
         {
           "name": "Mortadella Focaccia",
@@ -158,11 +181,11 @@
           "favorite": false,
           "contains_meat": false
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Crepes",
-      "image": "/images/crepe-salad.jpg",
       "items": [
         {
           "name": "Mushroom & Leeks",
@@ -220,13 +243,13 @@
           "favorite": false,
           "contains_meat": false
         }
-      ]
+      ],
+      "compact": false
     }
   ],
   "drinks": [
     {
       "category": "Espresso",
-      "image": "/images/latte-art-hot-iced.jpg",
       "items": [
         {
           "name": "Americano",
@@ -248,7 +271,7 @@
         {
           "name": "Cortado",
           "price": 4.55,
-          "description": "",
+          "description": "Equal parts espresso and steamed milk.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -265,7 +288,7 @@
         {
           "name": "Affogato",
           "price": 5.17,
-          "description": "",
+          "description": "A scoop of gelato drowned in hot espresso.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -324,7 +347,7 @@
         {
           "name": "Espresso Tonic",
           "price": 5.69,
-          "description": "",
+          "description": "Espresso poured over tonic and ice.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -367,11 +390,11 @@
             }
           ]
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Coffee",
-      "image": "/images/drink-cold-brew.jpg",
       "items": [
         {
           "name": "Batch Brew",
@@ -424,16 +447,16 @@
             }
           ]
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Specialty lattes",
-      "image": "/images/latte-art-above.jpg",
       "items": [
         {
           "name": "Hazelnut Brown Sugar Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with hazelnut and brown sugar.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -458,7 +481,7 @@
         {
           "name": "Lavender Honey Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with lavender and honey.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -483,7 +506,7 @@
         {
           "name": "Salted Caramel Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with salted caramel.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -508,7 +531,7 @@
         {
           "name": "Vanilla Bean Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with vanilla bean.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -555,11 +578,11 @@
             }
           ]
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Matcha",
-      "image": "/images/matcha-ube.jpg",
       "items": [
         {
           "name": "Matcha Latte",
@@ -645,16 +668,16 @@
             }
           ]
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Seasonal drinks",
-      "image": "/images/coffee-pecan-cookie.jpg",
       "items": [
         {
           "name": "Brown Butter Pecan Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with brown butter and toasted pecan.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -679,7 +702,7 @@
         {
           "name": "Pumpkin Tiramisu Latte",
           "price": 7.5,
-          "description": "",
+          "description": "Pumpkin and espresso under a sweet cream top.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -704,7 +727,7 @@
         {
           "name": "Spiced Pear Matcha Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Matcha and steamed milk with spiced pear.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -725,7 +748,7 @@
         {
           "name": "Black Sesame Matcha Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Matcha and steamed milk with toasted black sesame.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -746,7 +769,7 @@
         {
           "name": "Black Sesame Caramel Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso with black sesame and caramel.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -771,7 +794,7 @@
         {
           "name": "Apple Cider Cream Brulee",
           "price": 7.5,
-          "description": "",
+          "description": "Warm apple cider under a brûléed sweet cream top.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -788,7 +811,7 @@
         {
           "name": "Fig Rosemary Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with fig and rosemary.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -813,7 +836,7 @@
         {
           "name": "Fig Rosemary Matcha Cloud",
           "price": 7.5,
-          "description": "",
+          "description": "Matcha with fig and rosemary under a cloud of cold foam.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -838,7 +861,7 @@
         {
           "name": "Fig & Rosemary Cream Cold Brew",
           "price": 6.73,
-          "description": "",
+          "description": "Cold brew topped with fig and rosemary sweet cream.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -859,7 +882,7 @@
         {
           "name": "Baklava Latte",
           "price": 6.73,
-          "description": "",
+          "description": "Espresso and steamed milk with honey, walnut and cinnamon.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -881,16 +904,16 @@
             }
           ]
         }
-      ]
+      ],
+      "compact": false
     },
     {
       "category": "Not coffee",
-      "image": "/images/drink-iced.jpg",
       "items": [
         {
           "name": "Chai Latte",
           "price": 6.21,
-          "description": "",
+          "description": "Spiced chai and steamed milk.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -911,7 +934,7 @@
         {
           "name": "London Fog",
           "price": 5.43,
-          "description": "",
+          "description": "Earl grey, vanilla and steamed milk.",
           "favorite": false,
           "contains_meat": false,
           "layers": [
@@ -974,7 +997,41 @@
               "parts": 1
             }
           ]
+        }
+      ],
+      "compact": false
+    },
+    {
+      "category": "Teas",
+      "items": [
+        {
+          "name": "Black Tea",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
         },
+        {
+          "name": "Green Tea",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        },
+        {
+          "name": "Herbal Tea",
+          "price": 4.14,
+          "description": "",
+          "favorite": false,
+          "contains_meat": false
+        }
+      ],
+      "compact": false
+    },
+    {
+      "category": "Bottled & cans",
+      "compact": true,
+      "items": [
         {
           "name": "Kombucha",
           "price": 6.21,
@@ -1013,33 +1070,6 @@
         {
           "name": "Fiji Water",
           "price": 2.74,
-          "description": "",
-          "favorite": false,
-          "contains_meat": false
-        }
-      ]
-    },
-    {
-      "category": "Teas",
-      "image": "/images/drink-mugs.jpg",
-      "items": [
-        {
-          "name": "Black Tea",
-          "price": 4.14,
-          "description": "",
-          "favorite": false,
-          "contains_meat": false
-        },
-        {
-          "name": "Green Tea",
-          "price": 4.14,
-          "description": "",
-          "favorite": false,
-          "contains_meat": false
-        },
-        {
-          "name": "Herbal Tea",
-          "price": 4.14,
           "description": "",
           "favorite": false,
           "contains_meat": false

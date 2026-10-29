@@ -468,6 +468,32 @@ collections:
     - name: footnote
       label: Footnote (after ★)
       widget: text
+    - name: favorites_show
+      label: Show House favorites
+      widget: boolean
+      default: false
+      hint: Turn on to show the photo strip at the top of the menu.
+    - name: favorites_heading
+      label: House favorites heading
+      widget: string
+    - name: favorites
+      label: House favorites (photo strip at the top of the menu)
+      widget: list
+      fields:
+      - name: item
+        label: Menu item name
+        widget: string
+        hint: Must match the item name exactly, e.g. Schnitzel Focaccia
+      - name: image
+        label: Photo
+        widget: image
+        choose_url: false
+      - name: alt
+        label: Photo description
+        widget: string
+        required: false
+      summary: '{{fields.item}}'
+      max: 4
     - name: food
       label: Food
       widget: list
@@ -475,11 +501,10 @@ collections:
       - name: category
         label: Category
         widget: string
-      - name: image
-        label: Category photo (small circle)
-        widget: image
-        choose_url: false
-        required: false
+      - name: compact
+        label: Compact list (names and prices only, e.g. bottled drinks)
+        widget: boolean
+        default: false
       - name: items
         label: Items
         widget: list
@@ -570,11 +595,10 @@ collections:
       - name: category
         label: Category
         widget: string
-      - name: image
-        label: Category photo (small circle)
-        widget: image
-        choose_url: false
-        required: false
+      - name: compact
+        label: Compact list (names and prices only, e.g. bottled drinks)
+        widget: boolean
+        default: false
       - name: items
         label: Items
         widget: list

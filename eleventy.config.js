@@ -27,6 +27,14 @@ export default function (cfg) {
     return Image.generateHTML(meta, { alt, sizes, loading, decoding: "async", ...(cls ? { class: cls } : {}) });
   });
 
+  // Look up a menu item by name: { tab, price }
+  cfg.addFilter("menuItem", (menu, name) => {
+    for (const tab of ["food", "drinks"]) for (const c of (menu && menu[tab]) || []) for (const i of c.items || [])
+      if (i.name === name) return { tab, price: typeof i.price === "number" && i.price > 0 ? "$" + i.price.toFixed(2) : "" };
+    return { tab: "food", price: "" };
+  });
+  cfg.addFilter("slug", (s) => "i-" + String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-"));
+
   // Markdown: block and inline
   cfg.addFilter("md", (s) => md.render(s || ""));
   cfg.addFilter("mdi", (s) => md.renderInline(s || ""));

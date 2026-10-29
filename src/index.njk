@@ -85,6 +85,7 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 <div class="card-hd"><h2 id="menu-h">{{ heading(menu) }}</h2>
 <div class="ctl"><div role="tablist" class="tabs"><button aria-selected="true" class="tab" data-t="food" role="tab">{{ menu.food_tab }}</button><button aria-selected="false" class="tab" data-t="drinks" role="tab">{{ menu.drinks_tab }}</button></div>
 <button aria-pressed="false" id="mf">{{ menu.meat_free_label }}</button><input aria-label="{{ menu.search_placeholder }}" id="q" placeholder="{{ menu.search_placeholder }}" type="search"/></div></div>
+{% if menu.favorites_show and menu.favorites and menu.favorites.length %}<div class="favs"><h3 class="favs-h">{{ menu.favorites_heading }}</h3><ul>{% for f in menu.favorites %}{% set mi = menu | menuItem(f.item) %}<li><a href="#{{ f.item | slug }}" data-tab="{{ mi.tab }}" data-item="{{ f.item | slug }}">{% img f.image, f.alt or f.item, "(max-width: 900px) 45vw, 240px", "", "lazy" %}<span class="fn">{{ f.item }}</span><span class="fp">{{ mi.price }}</span></a></li>{% endfor %}</ul></div>{% endif %}
 <nav class="jump" id="jump" aria-label="Menu categories"></nav>
 <div class="cols" id="mn"></div>
 <p class="fine"><span aria-hidden="true">★</span> {{ menu.footnote }}</p>
@@ -152,7 +153,7 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
   hours: hours.days | hoursJS, verdicts: patio.verdicts,
   lat: s.latitude, lng: s.longitude, address: fullAddr, copied: visit.copied_label,
   patio: { card_live: patio.card_live, card_preview: patio.card_preview, card_place: patio.card_place },
-  menu: { food: menu.food, drinks: menu.drinks, empty: menu.no_results }, thumbs: thumbs,
+  menu: { food: menu.food, drinks: menu.drinks, empty: menu.no_results },
   bite: kitchen.food_moods, sip: kitchen.drink_moods, joiner: kitchen.pair_joiner
 } | json | safe }};</script>
 <script>{% raw_include "menu.js" %}</script>

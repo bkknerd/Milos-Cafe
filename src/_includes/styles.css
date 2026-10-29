@@ -107,7 +107,6 @@ select{background:var(--paper);border:1px solid var(--rule);border-radius:8px;mi
 .cols{columns:2 400px;column-gap:clamp(40px,6vw,96px)}
 .g{break-inside:avoid;margin-bottom:44px;scroll-margin-top:calc(var(--hd) + 64px)}
 .g h3{display:flex;align-items:center;gap:14px;font:italic 400 var(--t-2xl)/1.1 var(--serif);color:var(--blue);margin-bottom:10px}
-.g h3 img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none}
 .g ul{list-style:none;margin:0;padding:0}
 .it{padding:10px 0}
 .row{display:flex;align-items:baseline;gap:10px}
@@ -238,3 +237,23 @@ details[open] summary::after{transform:rotate(45deg)}
 
 /* short screens: tighten the headline so the drawing gets the room */
 @media (min-width:901px) and (max-height:820px){.hero{padding-top:20px}.hero-top{padding-bottom:18px;align-items:center}h1{font-size:clamp(2.6rem,10.5vh,6rem)}.hero-side p{font-size:var(--t-m);margin-bottom:14px}}
+
+/* menu: fixed cup slot so drink prices line up */
+.cup-slot{flex:none;width:26px;align-self:center}
+/* menu: compact list for bottled & canned drinks */
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 28px;font-size:var(--t-s)}
+.mini li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dotted #13234a33}
+.mini .n{font-weight:500}.mini .p{color:var(--dim)}
+.g-compact h3{font-size:var(--t-xl)}
+/* menu: house favorites */
+.favs{margin:28px 0 8px}
+.favs-h{font:600 var(--t-xs)/1.4 var(--sans);color:var(--dim);text-align:center;margin:0 0 14px}
+.favs ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px)}
+.favs a{display:block;text-decoration:none;color:inherit}
+.favs img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:180px 180px 4px 4px;transition:transform .5s var(--ease)}
+.favs a:hover img{transform:translateY(-4px)}
+.favs .fn{display:block;margin-top:10px;font:italic 400 var(--t-l)/1.2 var(--serif);color:var(--blue)}
+.favs .fp{display:block;font-size:var(--t-xs);color:var(--dim);font-variant-numeric:tabular-nums lining-nums}
+.it.hl,.mini li.hl{animation:hl 1.8s var(--ease)}
+@keyframes hl{0%,40%{background:#f0bf3c40}100%{background:transparent}}
+@media(max-width:900px){.favs ul{grid-template-columns:repeat(2,1fr)}.mini{grid-template-columns:1fr}}
