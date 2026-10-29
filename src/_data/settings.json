@@ -1,10 +1,10 @@
 {
   "business_name": "Milo’s Cafe",
   "site_url": "",
-  "seo_title": "Milo’s Cafe | European All-Day Café in Morrisville, NC",
-  "seo_description": "Milo’s Cafe in Morrisville, NC: focaccia sandwiches, Lavazza espresso, matcha and crepes made from scratch. Indoor and patio seating.",
-  "share_title": "Milo’s Cafe | European All-Day Café in Morrisville, NC",
-  "share_description": "Focaccia sandwiches, Lavazza espresso, matcha and crepes made from scratch. Indoor and patio seating on Chapel Hill Rd.",
+  "seo_title": "Milo’s Cafe | Coffee & Sandwiches in Morrisville, near Cary",
+  "seo_description": "Lavazza espresso, matcha and focaccia sandwiches voted Best Sandwich Shop in the Triangle (2026 N&O readers’ poll). A Morrisville café minutes from Cary.",
+  "share_title": "Milo’s Cafe | Coffee & Sandwiches in Morrisville, near Cary",
+  "share_description": "Lavazza espresso, matcha and the Triangle’s readers’-choice sandwich shop, on Chapel Hill Rd in Morrisville, minutes from Cary.",
   "share_image": "/images/og.jpg",
   "logo": "/images/logo.png",
   "logo_light": "/images/logo-light.png",
@@ -23,9 +23,14 @@
   "instagram_hours_url": "https://www.instagram.com/milos_europeancafe/reels/",
   "yelp_url": "https://www.yelp.com/biz/milo-s-cafe-morrisville",
   "cuisine": [
-    "European",
     "Coffee",
+    "Espresso",
+    "Sandwiches",
     "Crepes",
-    "Sandwiches"
+    "European"
+  ],
+  "area_served": [
+    "Morrisville",
+    "Cary"
   ]
 }

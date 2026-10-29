@@ -110,6 +110,14 @@ collections:
         name: item
         label: Item
         widget: string
+    - name: area_served
+      label: Towns you serve (for Google and AI search)
+      widget: list
+      field:
+        name: item
+        label: Item
+        widget: string
+      hint: e.g. Morrisville, Cary
   - name: hours
     label: Opening hours
     file: src/_data/hours.json
@@ -211,6 +219,11 @@ collections:
     label: Top of page
     file: src/_data/hero.json
     fields:
+    - name: eyebrow
+      label: Small line above the headline (what and where)
+      widget: string
+      required: false
+      hint: 'Helps Google and AI search: say what you are and where, e.g. Coffee shop & sandwich café in Morrisville, NC'
     - name: headline
       label: Headline
       widget: string
@@ -339,6 +352,21 @@ collections:
       label: Specialties
       widget: list
       fields:
+      - name: icon
+        label: Drawn icon (leave empty to show the photo)
+        widget: select
+        required: false
+        options:
+        - label: Focaccia sandwich
+          value: sandwich
+        - label: Crepe
+          value: crepe
+        - label: Coffee cup
+          value: cup
+        - label: Croissant
+          value: croissant
+        - label: Pine tree
+          value: pine
       - name: image
         label: Photo
         widget: image
@@ -819,6 +847,10 @@ collections:
       label: Text after the phone number
       widget: string
       required: false
+    - name: show_drawing
+      label: Show the little drawings under the phone line
+      widget: boolean
+      default: true
     - name: items
       label: Questions
       widget: list

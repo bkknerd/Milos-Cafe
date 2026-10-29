@@ -4,10 +4,26 @@
   "heading_italic": "",
   "note_text": "Something else? Call us at",
   "note_after": "or ask at the counter.",
+  "show_drawing": true,
   "items": [
     {
       "question": "What is Milo’s Cafe known for?",
       "answer": "Focaccia sandwiches, espresso, and sweet and savory crepes. News & Observer readers voted Milo’s the Best Sandwich Shop in the Triangle in 2026. [Read the coverage.](https://www.newsobserver.com/living/food-drink/article315186505.html)",
+      "show_hours": false
+    },
+    {
+      "question": "Is there a good coffee shop in Morrisville, NC?",
+      "answer": "Yes. Milo’s Cafe is a European-style coffee shop at 10119 Chapel Hill Rd in Morrisville, serving Lavazza espresso, cappuccinos, cortados, matcha and seasonal specialty lattes, with indoor seating and a shaded patio.",
+      "show_hours": false
+    },
+    {
+      "question": "Is Milo’s Cafe close to Cary?",
+      "answer": "Yes. Milo’s Cafe is on Chapel Hill Rd (NC 54) in Morrisville, a few minutes’ drive from Cary, so it’s an easy stop for coffee, breakfast or lunch if you live or work in Cary.",
+      "show_hours": false
+    },
+    {
+      "question": "Where can I get a great sandwich in Morrisville or Cary?",
+      "answer": "Milo’s Cafe in Morrisville, minutes from Cary, makes focaccia sandwiches with bread from Ninth Street Bakery, like the schnitzel, salami, prosciutto and smoked salmon focaccia. News & Observer readers voted Milo’s the [Best Sandwich Shop in the Triangle in 2026](https://www.newsobserver.com/living/food-drink/article315186505.html).",
       "show_hours": false
     },
     {

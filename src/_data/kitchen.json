@@ -12,18 +12,21 @@
   "cards": [
     {
       "image": "/images/patio-lunch.jpg",
+      "icon": "sandwich",
       "alt": "Focaccia sandwich and iced coffee on a blue patio table",
       "title": "Focaccia sandwiches",
       "text": "Fresh fillings, bold sauces, and focaccia from Ninth Street Bakery."
     },
     {
       "image": "/images/crepe-banana-strawberry.jpg",
+      "icon": "crepe",
       "alt": "Sweet crepe with strawberries, banana, caramel and whipped cream",
       "title": "Sweet and savory crepes",
       "text": "Folded to order. Sweet for dessert, savory for lunch."
     },
     {
       "image": "/images/espresso-financier.jpg",
+      "icon": "cup",
       "alt": "Lavazza espresso and a financier on a yellow patio table",
       "title": "Coffee and matcha",
       "text": "Lavazza espresso, matcha, and seasonal menus."

@@ -10,7 +10,7 @@ const label = (t) => { const [h, m] = String(t).split(":").map(Number); return (
 export default function (cfg) {
   cfg.setNunjucksEnvironmentOptions({ autoescape: true, throwOnUndefined: false });
 
-  ["src/images", "src/fonts", "src/admin", "src/favicon.svg", "src/apple-touch-icon.png", "src/robots.txt"]
+  ["src/images", "src/fonts", "src/admin", "src/favicon.svg", "src/apple-touch-icon.png"]
     .forEach((p) => cfg.addPassthroughCopy(p));
   cfg.ignores.add("src/admin/**");
 
@@ -68,6 +68,28 @@ export default function (cfg) {
   // schema.org openingHoursSpecification
   cfg.addFilter("hoursSchema", (days) => (days || []).filter((d) => !d.closed)
     .map((d) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: d.day, opens: d.open, closes: d.close })));
+
+  // schema.org areaServed from a plain list of town names
+  cfg.addFilter("areaServed", (towns, state) => (towns || []).map((n) => ({ "@type": "City", name: state ? `${n}, ${state}` : n })));
+  // FAQPage for search and answer engines: plain-text answers, hours spelled out where the item asks for them
+  cfg.addFilter("faqSchema", (items, hours) => {
+    const strip = (s) => md.renderInline(s || "").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;|&rsquo;/g, "’").replace(/&quot;/g, '"').trim();
+    const groups = cfg.getFilter("hoursGroups")((hours && hours.days) || []);
+    return (items || []).filter((f) => f.question).map((f) => {
+      let a = strip(f.answer);
+      if (f.show_hours) a = (a ? a + " " : "") + groups.map((g) => `${g.days}: ${g.time}`).join(". ") + "." + (hours && hours.note ? " " + hours.note : "");
+      return { "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: a } };
+    }).filter((q) => q.acceptedAnswer.text);
+  });
+
+  cfg.addFilter("fixed2", (n) => (typeof n === "number" ? n.toFixed(2) : n));
+  // schema.org Menu: sections and dishes with descriptions
+  cfg.addFilter("menuSchema", (menu, siteUrl) => {
+    const sec = (cats) => (cats || []).map((c) => ({ "@type": "MenuSection", name: c.category,
+      hasMenuItem: (c.items || []).map((i) => Object.assign({ "@type": "MenuItem", name: i.name }, i.description ? { description: i.description } : {})) }));
+    return { "@type": "Menu", name: "Milo’s Cafe menu", url: (siteUrl || "") + "/#menu",
+      hasMenuSection: [{ "@type": "MenuSection", name: "Food", hasMenuSection: sec(menu.food) }, { "@type": "MenuSection", name: "Drinks", hasMenuSection: sec(menu.drinks) }] };
+  });
 
   return { dir: { input: "src", output: "_site", includes: "_includes", data: "_data" }, templateFormats: ["njk"], htmlTemplateEngine: "njk" };
 }

@@ -1,0 +1,43 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+{%- set s = settings -%}
+{%- set siteUrl = s.site_url or build.url -%}
+# {{ s.business_name | safe }}
+
+> {{ s.seo_description | safe }}
+
+{{ s.business_name | safe }} is a European-style coffee shop and sandwich café at {{ s.street }}, {{ s.city }}, {{ s.state }} {{ s.zip }}. It is a few minutes' drive from Cary, NC, on Chapel Hill Rd (NC 54).
+
+## Key facts
+- Address: {{ s.street }}, {{ s.city }}, {{ s.state }} {{ s.zip }}
+- Serves: {{ s.area_served | join(", ") }}, NC
+- Phone: {{ s.phone_display }}
+{% if kitchen.award_show %}- Award: {{ kitchen.award_title | safe }}, {{ kitchen.award_subtitle | safe }} ({{ kitchen.award_link_url }})
+{% endif %}- Ratings: {{ reviews.rating }} ({{ reviews.rating_sources.split("\n")[0] | safe }}){% for l in reviews.rating_sources.split("\n") %}{% if not loop.first %}; {{ l | safe }}{% endif %}{% endfor %}
+- Coffee: Lavazza espresso, cappuccino, cortado, matcha and seasonal specialty lattes
+- Food: focaccia sandwiches (bread from Ninth Street Bakery), sweet and savory crepes, salads, toast and bowls
+- Seating: indoor seating and a shaded patio
+- Order online for pickup or delivery: {{ s.order_url }}
+
+## Hours
+{% for g in hours.days | hoursGroups %}- {{ g.days }}: {{ g.time }}
+{% endfor %}{% if hours.note %}- {{ hours.note | safe }}
+{% endif %}
+## Menu
+Prices are as listed on the online ordering menu; in-store prices may differ.
+{% for tab in [menu.food, menu.drinks] %}{% for c in tab %}
+### {{ c.category | safe }}
+{% for i in c.items %}- {{ i.name | safe }}{% if i.price %} (${{ i.price | fixed2 }}){% endif %}{% if i.description %}: {{ i.description | safe }}{% endif %}
+{% endfor %}{% endfor %}{% endfor %}
+## Common questions
+{% for f in faq.items %}{% if f.answer %}
+### {{ f.question | safe }}
+{{ f.answer | safe }}
+{% endif %}{% endfor %}
+## Links
+- Website: {{ siteUrl }}/
+- Menu: {{ siteUrl }}/#menu
+- Instagram: {{ s.instagram_url }}
+- Yelp: {{ s.yelp_url }}

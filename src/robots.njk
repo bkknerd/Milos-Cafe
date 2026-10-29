@@ -1,0 +1,11 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- set siteUrl = settings.site_url or build.url -%}
+User-agent: *
+Allow: /
+Disallow: /admin/
+{% if siteUrl %}
+Sitemap: {{ siteUrl }}/sitemap.xml
+{% endif %}

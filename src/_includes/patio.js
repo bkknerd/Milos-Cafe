@@ -53,7 +53,13 @@ S.h=ny().h;draw();
 /* framing: show the storefront on narrow screens */
 /* fit: the whole drawing always sits inside the first screen. Plenty of room: fill the width.
    Short screen: scale the drawing down (sky and gravel continue into the side margins). Phones: frame the table. */
-const fit=()=>{if(innerWidth<760){sc.style.height='';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMaxYMax slice'));return}
+const art=sc.querySelector('.art');
+const fit=()=>{if(innerWidth<760){sc.style.height='';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMaxYMax slice'));
+/* phones: the drawing ends above the bottom action bar; on short screens it gives up sky, never the table */
+const bar=document.querySelector('.bar'),barH=bar&&getComputedStyle(bar).display!=='none'?bar.offsetHeight:0;
+art.style.height='';const top=art.getBoundingClientRect().top+scrollY,natural=art.offsetHeight,room=innerHeight-top-barH-6;
+if(room<natural)art.style.height=Math.max(200,Math.round(room))+'px';return}
+art.style.height='';
 const full=sc.clientWidth*600/1440,top=sc.getBoundingClientRect().top+scrollY,avail=innerHeight-top-6,h=Math.round(Math.max(260,Math.min(full,avail)));
 sc.style.height=h+'px';const m=h<full-1?'meet':'slice';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMidYMax '+m))};
 fit();addEventListener('resize',fit,{passive:true});if(document.fonts)document.fonts.ready.then(fit);
