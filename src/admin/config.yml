@@ -30,6 +30,11 @@ collections:
       widget: string
       required: false
       hint: e.g. https://miloscafe.com — used for link previews. Leave empty to use the Netlify address.
+    - name: gtm_id
+      label: Google Tag Manager ID
+      widget: string
+      required: false
+      hint: e.g. GTM-TJMWC8GV. Leave empty to turn off tracking.
     - name: seo_title
       label: Browser tab / Google title
       widget: string
