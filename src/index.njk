@@ -12,6 +12,7 @@ permalink: /index.html
 {%- macro heading(d) -%}{{ d.heading }}{% if d.heading_italic %} <i>{{ d.heading_italic }}</i>{% endif %}{%- endmacro -%}
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
+{% include "gtm-head.njk" %}
 <script>document.documentElement.classList.add("js")</script>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>{{ s.seo_title }}</title>
@@ -56,6 +57,7 @@ permalink: /index.html
 <script>/* Netlify Identity invite / password links land here: send them to the CMS */
 if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))location.replace("/admin/"+location.hash);</script>
 </head><body>
+{% include "gtm-body.njk" %}
 {% include "ink-defs.njk" %}
 <a class="skip" href="#main">Skip to content</a>
 <header class="hd"><div class="w hd-in">
@@ -182,4 +184,5 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 <script>{% raw_include "menu.js" %}</script>
 <script>{% raw_include "fx.js" %}</script>
 {% if patio.enabled %}<script>{% raw_include "patio.js" %}</script>{% endif %}
+{% if settings.gtm_id %}<script>{% raw_include "tracking.js" %}</script>{% endif %}
 </body></html>

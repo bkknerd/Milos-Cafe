@@ -2,7 +2,8 @@
 permalink: /404.html
 ---
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<html lang="en"><head><meta charset="utf-8"/>
+{% include "gtm-head.njk" %}<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Page not found | {{ settings.business_name }}</title><meta name="robots" content="noindex"/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 
@@ -13,9 +14,12 @@ img{height:auto;width:min(320px,80vw);margin-bottom:36px}
 h1{font:380 clamp(40px,7vw,72px)/1.05 Fraunces,Georgia,serif;font-variation-settings:'SOFT' 100,'WONK' 0;letter-spacing:-.02em;color:#1f4bb8;margin:0 0 14px}h1 i{color:inherit}
 p{color:#13234a99;margin:0 0 28px}
 a.btn{display:inline-block;border-radius:999px;padding:13px 26px;background:#f0bf3c;color:#13234a;padding:13px 26px;font-weight:600;text-decoration:none}a.btn:hover{background:#13234a;color:#f8f7f3}
-</style></head><body><main>
+</style></head><body>
+{% include "gtm-body.njk" %}<main>
 <a href="/"><img src="{{ settings.logo }}" alt="{{ settings.business_name }} logo"/></a>
 <h1>{{ footer.notfound_heading }} <i>{{ footer.notfound_italic }}</i></h1>
 <p>{{ footer.notfound_text }}</p>
 <a class="btn" href="/">{{ footer.notfound_button }}</a>
-</main></body></html>
+</main>
+{% if settings.gtm_id %}<script>window.dataLayer=window.dataLayer||[];dataLayer.push({event:"page_not_found",page_path:location.pathname+location.search,page_referrer:document.referrer});</script>
+<script>{% raw_include "tracking.js" %}</script>{% endif %}</body></html>
