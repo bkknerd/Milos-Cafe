@@ -34,6 +34,22 @@ export default function (cfg) {
     return Image.generateHTML(meta, { alt, sizes, loading, decoding: "async", ...(cls ? { class: cls } : {}) });
   });
 
+  // Logo: WebP + PNG fallback at display sizes, no photo grade (keeps brand colors exact)
+  cfg.addAsyncShortcode("logo", async (src, alt = "", loading = "lazy", cls = "", sizes = "160px") => {
+    const file = src && src.startsWith("/") ? "src" + src : null;
+    const attrs = { alt, loading, decoding: "async", sizes, ...(cls ? { class: cls } : {}) };
+    if (!file || !existsSync(file)) return `<img src="${src}" alt="${alt}"${cls ? ` class="${cls}"` : ""} loading="${loading}" decoding="async"/>`;
+    const meta = await Image(file, { widths: [320, 480, 760], formats: ["webp", "png"], outputDir: "_site/img/", urlPath: "/img/" });
+    return Image.generateHTML(meta, attrs);
+  });
+
+  // schema.org priceRange from the menu, e.g. "$5–$16"
+  cfg.addFilter("priceRange", (menu) => {
+    const p = [];
+    for (const tab of ["food", "drinks"]) for (const c of (menu && menu[tab]) || []) for (const i of c.items || []) if (typeof i.price === "number" && i.price > 0) p.push(i.price);
+    return p.length ? "$" + Math.floor(Math.min(...p)) + "–$" + Math.ceil(Math.max(...p)) : "$";
+  });
+
   // Look up a menu item by name: { tab, price }
   cfg.addFilter("menuItem", (menu, name) => {
     for (const tab of ["food", "drinks"]) for (const c of (menu && menu[tab]) || []) for (const i of c.items || [])

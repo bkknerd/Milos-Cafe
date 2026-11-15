@@ -33,12 +33,15 @@ permalink: /index.html
 <meta property="og:title" content="{{ s.share_title }}"/>
 <meta property="og:description" content="{{ s.share_description }}"/>
 <meta property="og:image" content="{{ siteUrl if s.share_image.startsWith('/') }}{{ s.share_image }}"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="{{ s.business_name }}, a European café in {{ s.city }}, {{ s.state }}"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org", "@type": "CafeOrCoffeeShop", "@id": siteUrl + "/#cafe", "name": s.business_name,
   "logo": (siteUrl if s.logo.startsWith('/')) + s.logo,
   "url": siteUrl, "image": (siteUrl if s.share_image.startsWith('/')) + s.share_image,
-  "telephone": s.phone_dial, "servesCuisine": s.cuisine,
+  "telephone": s.phone_dial, "servesCuisine": s.cuisine, "priceRange": menu | priceRange,
   "address": { "@type": "PostalAddress", "streetAddress": s.street, "addressLocality": s.city, "addressRegion": s.state, "postalCode": s.zip, "addressCountry": "US" },
   "geo": { "@type": "GeoCoordinates", "latitude": s.latitude, "longitude": s.longitude },
   "openingHoursSpecification": hours.days | hoursSchema,
@@ -61,7 +64,7 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 {% include "ink-defs.njk" %}
 <a class="skip" href="#main">Skip to content</a>
 <header class="hd"><div class="w hd-in">
-<a aria-label="{{ s.business_name }}, back to top" class="logo" href="#"><img alt="{{ s.business_name }} logo" src="{{ s.logo }}" width="900" height="216"/></a>
+<a aria-label="{{ s.business_name }}, back to top" class="logo" href="#">{% logo s.logo, s.business_name + " logo", "eager" %}</a>
 <nav class="nav" aria-label="Sections">{% for n in header.nav %}{% if on[n.target] %}<a href="#{{ n.target }}">{{ n.label }}</a>{% endif %}{% endfor %}</nav>
 <div class="hd-r"><a class="today" href="#visit" data-label="{{ header.topbar_today_label }}"></a>{% if on.menu %}<a class="m-menu" href="#menu">{{ header.mobile_menu_label }}</a>{% endif %}<a class="btn" href="{{ s.order_url }}"{{ ext(s.order_url) }}>{{ header.order_button }}{{ extmark(s.order_url) }}</a></div>
 </div></header>
@@ -168,9 +171,9 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 <div><h3>{{ visit.address_label }}</h3><p>{{ s.street }}<br/>{{ s.city }}, {{ s.state }} {{ s.zip }}</p><p class="sm"><button class="cp" id="cp">{{ visit.copy_label }}</button> <a href="https://maps.apple.com/?daddr={{ fullAddr | enc }}">Apple Maps</a> <a href="https://waze.com/ul?ll={{ (s.latitude + ',' + s.longitude) | enc }}&amp;navigate=yes">Waze</a></p></div>
 <div><h3>{{ visit.hours_label }}</h3><p>{% for g in hours.days | hoursGroups %}<span class="hr-d">{{ g.days }}</span>{{ g.time }}{% endfor %}</p><p class="sm">{{ hours.note }}{% if hours.note_link_label %} <a href="{{ s.instagram_hours_url }}">{{ hours.note_link_label }}</a>{% endif %}</p></div>
 <div><h3>{{ visit.phone_label }}</h3><p><a href="tel:{{ s.phone_dial }}">{{ s.phone_display }}</a></p><h3>{{ visit.instagram_label }}</h3><p><a href="{{ s.instagram_url }}">@{{ s.instagram_handle }}</a></p></div>
-<a class="map" href="{{ gDir }}" aria-label="{{ visit.map_label }}. Opens Google Maps directions">{% include "map-svg.njk" %}</a>
+<a class="map" href="{{ gDir }}"><span class="sr">{{ visit.map_label }}. Opens Google Maps directions</span>{% include "map-svg.njk" %}</a>
 </div>
-<div class="ft-b"><img class="ft-logo" alt="{{ s.business_name }} logo" src="{{ s.logo_light or s.logo }}" width="900" height="216" loading="lazy"/>{% if footer.credit_label %}<a class="credit" href="{{ footer.credit_url }}" target="_blank" rel="noopener">{{ footer.credit_label }}</a>{% endif %}</div>
+<div class="ft-b">{% logo s.logo_light or s.logo, s.business_name + " logo", "lazy", "ft-logo", "(max-width: 600px) 70vw, 380px" %}{% if footer.credit_label %}<a class="credit" href="{{ footer.credit_url }}" target="_blank" rel="noopener">{{ footer.credit_label }}</a>{% endif %}</div>
 </div>
 </footer>
 <nav class="bar" aria-label="Quick actions"><a class="btn" href="{{ s.order_url }}"{{ ext(s.order_url) }}>{{ header.mobile_bar_order }}{{ extmark(s.order_url) }}</a><a class="btn o" href="tel:{{ s.phone_dial }}">{{ header.mobile_bar_call }}</a><a class="btn o" href="{{ gDir }}"{{ ext(gDir) }}>{{ header.mobile_bar_directions }}{{ extmark(gDir) }}</a></nav>
