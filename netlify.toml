@@ -35,6 +35,18 @@
     Cache-Control = "no-store"
     X-Robots-Tag = "noindex"
 
+# One address only: send www and the old Netlify address to the main domain
+[[redirects]]
+  from = "https://www.miloseuropeancafe.com/*"
+  to = "https://miloseuropeancafe.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://miloseurocafe.netlify.app/*"
+  to = "https://miloseuropeancafe.com/:splat"
+  status = 301
+  force = true
+
 # Short links for print/QR use
 [[redirects]]
   from = "/order"
