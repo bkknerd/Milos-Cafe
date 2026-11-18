@@ -1026,14 +1026,6 @@ collections:
     - name: instagram_label
       label: Instagram label
       widget: string
-    - name: footer_heading
-      label: 'Footer: heading'
-      widget: string
-    - name: footer_link_label
-      label: 'Footer: link text'
-      widget: string
-      required: false
-      hint: Leave empty to hide the footer link.
   - name: footer
     label: Credit & 404 page
     file: src/_data/footer.json

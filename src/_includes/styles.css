@@ -453,3 +453,9 @@ details:first-child{border-top:0;background:var(--hatch) repeat-x left top/240px
   .pr-list .pr-go{margin-top:10px}
   .pr-cd dd{font-size:var(--t-l)}
 }
+
+/* footer nav */
+.ft-nav{display:flex;flex-wrap:wrap;gap:10px 32px;padding:4px 0 40px;font:400 var(--t-l)/1.3 var(--serif)}
+.ft-nav a{text-decoration:none}.ft-nav a:hover,.ft-nav a[aria-current="page"]{color:var(--blue)}
+.ft-nav .ext{width:.55em;height:.55em;margin-left:5px;vertical-align:.2em}
+@media(max-width:900px){.ft-nav{gap:10px 22px;padding-bottom:32px}}
