@@ -1,4 +1,4 @@
-# Decap CMS — every editable area of the Milo's Cafe site.
+# Decap CMS: every editable area of the Milo's Cafe site.
 backend:
   name: git-gateway
   branch: main
@@ -29,7 +29,7 @@ collections:
       label: Website address
       widget: string
       required: false
-      hint: e.g. https://miloscafe.com — used for link previews. Leave empty to use the Netlify address.
+      hint: e.g. https://miloscafe.com. Used for link previews. Leave empty to use the Netlify address.
     - name: gtm_id
       label: Google Tag Manager ID
       widget: string
@@ -162,7 +162,7 @@ collections:
       allow_reorder: false
       min: 7
       max: 7
-      summary: '{{fields.day}}: {{fields.open}}–{{fields.close}}'
+      summary: '{{fields.day}}: {{fields.open}} to {{fields.close}}'
       hint: Updates the header, the footer, the FAQ, the patio scene and Google listing data.
     - name: note
       label: Note under hours

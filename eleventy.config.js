@@ -43,11 +43,11 @@ export default function (cfg) {
     return Image.generateHTML(meta, attrs);
   });
 
-  // schema.org priceRange from the menu, e.g. "$5–$16"
+  // schema.org priceRange from the menu, e.g. "$5-$16"
   cfg.addFilter("priceRange", (menu) => {
     const p = [];
     for (const tab of ["food", "drinks"]) for (const c of (menu && menu[tab]) || []) for (const i of c.items || []) if (typeof i.price === "number" && i.price > 0) p.push(i.price);
-    return p.length ? "$" + Math.floor(Math.min(...p)) + "–$" + Math.ceil(Math.max(...p)) : "$";
+    return p.length ? "$" + Math.floor(Math.min(...p)) + "-$" + Math.ceil(Math.max(...p)) : "$";
   });
 
   // Look up a menu item by name: { tab, price }
@@ -66,15 +66,15 @@ export default function (cfg) {
   cfg.addFilter("enc", (s) => encodeURIComponent(s || ""));
   cfg.addFilter("nl2br", (s) => String(s || "").split(/\r?\n/));
 
-  // Hours grouped for display: [{days:"Monday–Thursday", time:"7 AM–4 PM"}]
+  // Hours grouped for display: [{days:"Monday to Thursday", time:"7 AM to 4 PM"}]
   cfg.addFilter("hoursGroups", (days) => {
     const out = [];
     (days || []).forEach((d) => {
-      const time = d.closed ? "Closed" : label(d.open) + "–" + label(d.close);
+      const time = d.closed ? "Closed" : label(d.open) + " to " + label(d.close);
       const last = out[out.length - 1];
       if (last && last.time === time) { last.to = d.day; } else out.push({ from: d.day, to: d.day, time });
     });
-    return out.map((g) => ({ days: g.from === g.to ? g.from : g.from + "–" + g.to, time: g.time }));
+    return out.map((g) => ({ days: g.from === g.to ? g.from : g.from + " to " + g.to, time: g.time }));
   });
   // Hours for scripts, indexed Sun..Sat: [open, close] in decimal hours, or null when closed
   cfg.addFilter("hoursJS", (days) => {
