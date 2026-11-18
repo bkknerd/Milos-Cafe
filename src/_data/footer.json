@@ -1,4 +1,27 @@
 {
+  "nav": [
+    {
+      "label": "About",
+      "target": "kitchen"
+    },
+    {
+      "label": "Menu",
+      "target": "menu"
+    },
+    {
+      "label": "Photos",
+      "target": "gallery"
+    },
+    {
+      "label": "FAQ",
+      "target": "faq"
+    },
+    {
+      "label": "Press",
+      "target": "press"
+    }
+  ],
+  "nav_order_label": "Order online",
   "credit_label": "Draft & Logic",
   "credit_url": "https://draftandlogic.com",
   "notfound_heading": "This table’s",

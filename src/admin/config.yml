@@ -1030,6 +1030,38 @@ collections:
     label: Credit & 404 page
     file: src/_data/footer.json
     fields:
+    - name: nav
+      label: Footer links
+      widget: list
+      hint: The row of links above the footer logo. The header has its own list under Header & phone bar.
+      fields:
+      - name: label
+        label: Label
+        widget: string
+      - name: target
+        label: Goes to
+        widget: select
+        options:
+        - label: Story (about)
+          value: kitchen
+        - label: Menu
+          value: menu
+        - label: Reviews
+          value: reviews
+        - label: Photos
+          value: gallery
+        - label: FAQ
+          value: faq
+        - label: Press page
+          value: press
+        - label: Live patio
+          value: patio
+        - label: Visit (footer)
+          value: visit
+      summary: '{{fields.label}}'
+    - name: nav_order_label
+      label: Footer order link text
+      widget: string
     - name: credit_label
       label: Site credit text (bottom right)
       widget: string

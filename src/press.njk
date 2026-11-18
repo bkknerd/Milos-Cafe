@@ -65,18 +65,18 @@
 <h2>{{ feat.title }}</h2>
 <p class="pr-o">{{ feat.outlet }}</p>
 {% if feat.summary %}<p class="pr-s">{{ feat.summary }}</p>{% endif %}
-<span class="pr-go">{{ feat.link_label }}<svg viewBox="0 0 20 12" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ extmark(feat.url) }}</span>
+<span class="pr-go">{{ feat.link_label }}{{ extmark(feat.url) }}</span>
 </a>
 </section>
 {% endif %}
 
 {% if rest.length %}
 <section class="w pr-list" id="press-coverage" aria-labelledby="cov-h">
-<h2 id="cov-h" class="pr-lh">{{ press.list_heading }}</h2>
+<h2 id="cov-h" class="pr-lh">{{ press.list_heading }}{{ ink(2) }}</h2>
 <ol>{% for i in rest %}<li><a href="{{ i.url }}"{{ ext(i.url) }} data-press-outlet="{{ i.outlet }}" data-press-kind="{{ i.kind }}" data-press-title="{{ i.title }}" data-press-position="{{ loop.index + (1 if feat else 0) }}" data-press-featured="false">
 <span class="pr-k">{{ i.kind }}{% if i.date %} · {{ i.date }}{% endif %}</span>
 <span class="pr-t"><span class="pr-o">{{ i.outlet }}</span><span class="pr-h">{{ i.title }}</span>{% if i.summary %}<span class="pr-s">{{ i.summary }}</span>{% endif %}</span>
-<span class="pr-go">{{ i.link_label }}<svg viewBox="0 0 20 12" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ extmark(i.url) }}</span>
+<span class="pr-go">{{ i.link_label }}{{ extmark(i.url) }}</span>
 </a></li>{% endfor %}</ol>
 </section>
 {% endif %}
