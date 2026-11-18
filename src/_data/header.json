@@ -18,6 +18,10 @@
       "target": "faq"
     },
     {
+      "label": "Press",
+      "target": "press"
+    },
+    {
       "label": "Visit",
       "target": "visit"
     }

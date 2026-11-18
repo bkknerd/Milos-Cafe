@@ -8,6 +8,7 @@ const later=f=>setTimeout(f,0); // read state after the site's own handler has r
 const clean=s=>String(s||"").replace(/\s+/g," ").trim().slice(0,100);
 const label=el=>clean(el.getAttribute("aria-label")||el.innerText||el.value||el.getAttribute("alt")||el.getAttribute("title")||"");
 
+const PAGE=(dl.find&&(dl.find(x=>x&&x.page_type)||{}).page_type)||"other";
 const sectionOf=el=>{
   const s=el.closest("header,footer,section,nav.bar");
   if(!s)return"";
@@ -32,8 +33,9 @@ const linkKind=a=>{
   if(/yelp\.com$/i.test(u.hostname))return{kind:"review_site",provider:"yelp"};
   if(/instagram\.com$/i.test(u.hostname))return{kind:"social",provider:"instagram"};
   if(u.host===location.host&&u.pathname===location.pathname&&(u.hash||h==="#"))return{kind:"section_nav",target:u.hash.slice(1)||"top"};
+  if(u.host===location.host&&u.hash)return{kind:"section_nav",target:u.hash.slice(1)}; // e.g. /#menu from the press page
   if(u.host!==location.host)return{kind:"outbound",domain:u.hostname};
-  return{kind:"internal"};
+  return{kind:"internal",target:u.pathname.replace(/^\/|\/$/g,"")||"home"}; // e.g. /press/
 };
 const KIND_EVENT={phone:"phone_click",email:"email_click",order:"order_click",directions:"directions_click",review_site:"review_site_click",social:"social_click",section_nav:"nav_click",outbound:"outbound_click",internal:"internal_link_click"};
 
@@ -43,6 +45,8 @@ const itemInfo=it=>{
   return{item_name:clean(($(".n",it)||it).childNodes[0]?.textContent||label(it)),item_category:g?clean(($("h3",g)||{}).textContent):"",item_price:clean(($(".p",it)||{}).textContent),menu_tab:tab?tab.dataset.t:""};
 };
 
+const pressInfo=el=>({press_outlet:clean(el.dataset.pressOutlet),press_kind:clean(el.dataset.pressKind),press_title:clean(el.dataset.pressTitle),press_position:+el.dataset.pressPosition||0,press_featured:el.dataset.pressFeatured==="true"});
+
 /* ---- Every click ---- */
 let last={el:null,n:0,t:0};
 document.addEventListener("click",e=>{
@@ -51,7 +55,7 @@ document.addEventListener("click",e=>{
   const a=el.closest("a[href]");
   const type=a?"link":el.matches("button,[role=button]")?"button":el.matches("[role=tab]")?"tab":el.matches("summary")?"faq_question":el.matches("input,select,textarea,label")?"form_field":"non_interactive";
   const lk=a?linkKind(a):null;
-  const base={click_text:label(el),click_url:a?a.href:"",click_type:type,link_type:lk?lk.kind:"",click_section:sectionOf(el),click_element:el.tagName.toLowerCase(),click_id:el.id||"",click_classes:clean(typeof el.className==="string"?el.className:"")};
+  const base={page_type:PAGE,click_text:label(el),click_url:a?a.href:"",click_type:type,link_type:lk?lk.kind:"",click_section:sectionOf(el),click_element:el.tagName.toLowerCase(),click_id:el.id||"",click_classes:clean(typeof el.className==="string"?el.className:"")};
   push("site_click",base);
 
   // Rage clicks: 3+ on the same element within a second
@@ -73,8 +77,13 @@ document.addEventListener("click",e=>{
   if(a&&a.matches(".pr-i"))push("pairing_result_click",{item_name:clean(($(".pr-n",a)||a).textContent),menu_tab:a.dataset.tab||""});
   // Patio scene
   if(el.matches("#ps-ch .chip"))push("patio_sky",{sky:el.dataset.ov||"live"});
+  // Press page: which story, and how people get in touch
+  const ps=a&&a.closest("[data-press-title]");
+  if(ps)push("press_article_click",Object.assign(pressInfo(ps),{click_url:a.href,link_domain:lk&&lk.domain||"",page_type:PAGE}));
+  const pc=a&&a.closest("[data-contact]");
+  if(pc)push("press_contact_click",{contact_method:pc.dataset.contact,click_url:a.href,click_section:sectionOf(pc),page_type:PAGE});
   // Visit
-  if(el.matches("#cp"))push("copy_address",{click_section:"visit"});
+  if(el.matches("#cp"))push("copy_address",{click_section:"visit",page_type:PAGE});
 },true);
 
 /* ---- Menu hover (desktop): the cup pours on hover, so count a hover held for 0.7s, once per item ---- */
@@ -111,14 +120,17 @@ document.addEventListener("copy",()=>{const s=clean(String(getSelection()||""));
 
 /* ---- Scroll depth ---- */
 const marks=[25,50,75,90,100],hit=new Set();let sT;
-const depth=()=>{const h=document.documentElement,max=h.scrollHeight-innerHeight;const p=max<=0?100:Math.round(scrollY/max*100);marks.forEach(m=>{if(p>=m&&!hit.has(m)){hit.add(m);push("scroll_depth",{percent_scrolled:m})}})};
+const depth=()=>{const h=document.documentElement,max=h.scrollHeight-innerHeight;const p=max<=0?100:Math.round(scrollY/max*100);marks.forEach(m=>{if(p>=m&&!hit.has(m)){hit.add(m);push("scroll_depth",{percent_scrolled:m,page_type:PAGE})}})};
 addEventListener("scroll",()=>{clearTimeout(sT);sT=setTimeout(depth,150)},{passive:true});
 
 /* ---- Sections seen (40% on screen), once each ---- */
 if("IntersectionObserver" in window){
   const seen=new Set();
-  const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const n=sectionOf(en.target);if(n&&!seen.has(n)){seen.add(n);push("section_view",{section_name:n})}io.unobserve(en.target)}),{threshold:.4});
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const n=sectionOf(en.target);if(n&&!seen.has(n)){seen.add(n);push("section_view",{section_name:n,page_type:PAGE})}io.unobserve(en.target)}),{threshold:.4});
   $$("main section, footer").forEach(s=>io.observe(s));
+  // Press stories seen (60% on screen), once each, with their place in the list
+  const pio=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;push("press_item_view",Object.assign(pressInfo(en.target),{page_type:PAGE}));pio.unobserve(en.target)}),{threshold:.6});
+  $$("[data-press-title]").forEach(el=>pio.observe(el));
 }
 
 /* ---- Script errors (first 5) ---- */

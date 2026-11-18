@@ -200,6 +200,8 @@ collections:
           value: gallery
         - label: FAQ
           value: faq
+        - label: Press page
+          value: press
         - label: Live patio
           value: patio
         - label: Visit (footer)
@@ -924,6 +926,105 @@ collections:
       widget: string
     - name: map_label
       label: Map description (screen readers)
+      widget: string
+  - name: press
+    label: Press page
+    file: src/_data/press.json
+    fields:
+    - name: enabled
+      label: Show this page
+      widget: boolean
+      default: true
+      hint: Turn off to take the page down and hide its menu and footer links.
+    - name: seo_title
+      label: Browser tab and Google title
+      widget: string
+    - name: seo_description
+      label: Google description
+      widget: text
+      hint: About 150 characters.
+    - name: heading
+      label: Heading
+      widget: string
+    - name: heading_italic
+      label: Heading, italic second part (optional)
+      widget: string
+      required: false
+    - name: intro
+      label: Intro line
+      widget: text
+      required: false
+    - name: featured_label
+      label: Featured story label (screen readers)
+      widget: string
+    - name: list_heading
+      label: Heading above the list
+      widget: string
+    - name: items
+      label: Coverage
+      widget: list
+      summary: '{{fields.outlet}}: {{fields.title}}'
+      hint: Drag to reorder. Turn on "Feature at the top" for one story; the rest list below it.
+      fields:
+      - name: outlet
+        label: Publication
+        widget: string
+        hint: e.g. The News & Observer
+      - name: kind
+        label: Type
+        widget: string
+        hint: A short word shown above the title, e.g. Award, Feature, Review, Video
+      - name: date
+        label: Date (optional)
+        widget: string
+        required: false
+        hint: As you want it shown, e.g. 2026 or April 2024
+      - name: title
+        label: Title
+        widget: string
+      - name: summary
+        label: One-line summary (optional)
+        widget: text
+        required: false
+      - name: url
+        label: Link to the article or video
+        widget: string
+        hint: Paste the full address of the article itself, not the publication's homepage.
+      - name: link_label
+        label: Link text
+        widget: string
+        default: Read the story
+      - name: featured
+        label: Feature at the top
+        widget: boolean
+        default: false
+    - name: contact_heading
+      label: Contact heading
+      widget: string
+    - name: contact_heading_italic
+      label: Contact heading, italic second part (optional)
+      widget: string
+      required: false
+    - name: contact_text
+      label: Contact text
+      widget: text
+      required: false
+    - name: contact_email
+      label: Press email
+      widget: string
+      hint: Phone and Instagram come from Business info & SEO.
+    - name: email_button
+      label: Email button text
+      widget: string
+      required: false
+    - name: email_label
+      label: Email label
+      widget: string
+    - name: phone_label
+      label: Phone label
+      widget: string
+    - name: instagram_label
+      label: Instagram label
       widget: string
   - name: footer
     label: Credit & 404 page

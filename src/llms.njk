@@ -31,7 +31,11 @@ Prices are as listed on the online ordering menu; in-store prices may differ.
 ### {{ c.category | safe }}
 {% for i in c.items %}- {{ i.name | safe }}{% if i.price %} (${{ i.price | fixed2 }}){% endif %}{% if i.description %}: {{ i.description | safe }}{% endif %}
 {% endfor %}{% endfor %}{% endfor %}
-## Common questions
+{% if press.enabled %}## Press coverage
+{% for i in press.items %}- {{ i.outlet | safe }}: {{ i.title | safe }}{% if i.date %} ({{ i.date }}){% endif %}: {{ i.url }}
+{% endfor %}- Press contact: {{ press.contact_email }}, {{ s.phone_display }}
+
+{% endif %}## Common questions
 {% for f in faq.items %}{% if f.answer %}
 ### {{ f.question | safe }}
 {{ f.answer | safe }}
@@ -39,5 +43,6 @@ Prices are as listed on the online ordering menu; in-store prices may differ.
 ## Links
 - Website: {{ siteUrl }}/
 - Menu: {{ siteUrl }}/#menu
-- Instagram: {{ s.instagram_url }}
+{% if press.enabled %}- Press: {{ siteUrl }}/press/
+{% endif %}- Instagram: {{ s.instagram_url }}
 - Yelp: {{ s.yelp_url }}
