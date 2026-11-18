@@ -33,7 +33,7 @@ Upload any photo through the CMS. At build time every photo gets the same gentle
 
 ## Motion
 
-Two signature effects only: drink cups pour (and hot drinks steam) on hover or tap, and the patio sky follows the real time and weather. Both stop when the visitor's device asks for reduced motion.
+Three signature effects: drink cups pour (and hot drinks steam) on hover or tap; the patio sky follows the real time and weather; and on desktop the top of the page holds still while you scroll, playing one full day on the patio that starts and ends at the real Morrisville time. All of them stop when the visitor's device asks for reduced motion, and the scroll effect can be switched off in **Live patio**.
 
 ## Local editing
 

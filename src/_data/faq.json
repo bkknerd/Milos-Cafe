@@ -7,48 +7,65 @@
   "show_drawing": true,
   "items": [
     {
-      "question": "What is Milo’s Cafe known for?",
-      "answer": "Focaccia sandwiches, espresso, and sweet and savory crepes. News & Observer readers voted Milo’s the Best Sandwich Shop in the Triangle in 2026. [Read the coverage.](https://www.newsobserver.com/living/food-drink/article315186505.html)",
+      "question": "What should I order on my first visit?",
+      "answer": "A focaccia sandwich and an espresso, or a crepe if you have a sweet tooth. The schnitzel focaccia is our most popular sandwich, and News & Observer readers voted us the [Best Sandwich Shop in the Triangle](https://www.newsobserver.com/living/food-drink/article315186505.html).",
+      "search_question": "What is Milo’s Cafe known for?",
+      "search_answer": "Focaccia sandwiches, espresso, and sweet and savory crepes. News & Observer readers voted Milo’s the Best Sandwich Shop in the Triangle in 2026. [Read the coverage.](https://www.newsobserver.com/living/food-drink/article315186505.html)",
       "show_hours": false
     },
     {
-      "question": "Is there a good coffee shop in Morrisville, NC?",
-      "answer": "Yes. Milo’s Cafe is a European-style coffee shop at 10119 Chapel Hill Rd in Morrisville, serving Lavazza espresso, cappuccinos, cortados, matcha and seasonal specialty lattes, with indoor seating and a shaded patio.",
+      "question": "What coffee do you serve?",
+      "answer": "Lavazza espresso, cappuccinos, cortados, matcha and a rotating list of seasonal lattes.",
+      "search_question": "Is there a good coffee shop in Morrisville, NC?",
+      "search_answer": "Yes. Milo’s Cafe is a European-style coffee shop at 10119 Chapel Hill Rd in Morrisville, serving Lavazza espresso, cappuccinos, cortados, matcha and seasonal specialty lattes, with indoor seating and a shaded patio.",
       "show_hours": false
     },
     {
-      "question": "Is Milo’s Cafe close to Cary?",
-      "answer": "Yes. Milo’s Cafe is on Chapel Hill Rd (NC 54) in Morrisville, a few minutes’ drive from Cary, so it’s an easy stop for coffee, breakfast or lunch if you live or work in Cary.",
+      "question": "How far are you from Cary?",
+      "answer": "A few minutes. We’re on Chapel Hill Rd (NC 54) in Morrisville, an easy stop for coffee, breakfast or lunch from Cary.",
+      "search_question": "Is Milo’s Cafe close to Cary?",
+      "search_answer": "Yes. Milo’s Cafe is on Chapel Hill Rd (NC 54) in Morrisville, a few minutes’ drive from Cary, so it’s an easy stop for coffee, breakfast or lunch if you live or work in Cary.",
       "show_hours": false
     },
     {
-      "question": "Where can I get a great sandwich in Morrisville or Cary?",
-      "answer": "Milo’s Cafe in Morrisville, minutes from Cary, makes focaccia sandwiches with bread from Ninth Street Bakery, like the schnitzel, salami, prosciutto and smoked salmon focaccia. News & Observer readers voted Milo’s the [Best Sandwich Shop in the Triangle in 2026](https://www.newsobserver.com/living/food-drink/article315186505.html).",
+      "question": "Where does your bread come from?",
+      "answer": "Our focaccia comes from Ninth Street Bakery. We fill it to order, from schnitzel and salami to smoked salmon.",
+      "search_question": "Where can I get a great sandwich in Morrisville or Cary?",
+      "search_answer": "Milo’s Cafe in Morrisville, minutes from Cary, makes focaccia sandwiches with bread from Ninth Street Bakery, like the schnitzel, salami, prosciutto and smoked salmon focaccia. News & Observer readers voted Milo’s the [Best Sandwich Shop in the Triangle in 2026](https://www.newsobserver.com/living/food-drink/article315186505.html).",
       "show_hours": false
     },
     {
-      "question": "Where is Milo’s Cafe?",
-      "answer": "Milo’s Cafe is at 10119 Chapel Hill Rd, Morrisville, NC 27560.",
+      "question": "Where are you?",
+      "answer": "10119 Chapel Hill Rd, Morrisville, NC 27560.",
+      "search_question": "Where is Milo’s Cafe?",
+      "search_answer": "Milo’s Cafe is at 10119 Chapel Hill Rd, Morrisville, NC 27560.",
       "show_hours": false
     },
     {
-      "question": "What does Milo’s Cafe serve?",
-      "answer": "Lavazza espresso and coffee drinks, matcha, specialty lattes and teas, plus focaccia sandwiches, salads, toast and bowls, and sweet or savory crepes, all made from scratch.",
+      "question": "What’s on the menu besides coffee?",
+      "answer": "Matcha, specialty lattes and teas, plus focaccia sandwiches, salads, toast and bowls, and sweet or savory crepes, all made from scratch.",
+      "search_question": "What does Milo’s Cafe serve?",
+      "search_answer": "Lavazza espresso and coffee drinks, matcha, specialty lattes and teas, plus focaccia sandwiches, salads, toast and bowls, and sweet or savory crepes, all made from scratch.",
       "show_hours": false
     },
     {
-      "question": "Can I order online for pickup or delivery?",
-      "answer": "Yes. Order through our online ordering page for pickup, curbside or delivery, or come in and dine with us.",
+      "question": "Can I order ahead?",
+      "answer": "Yes, for pickup, curbside or delivery through our online ordering page. Or come in and stay a while.",
+      "search_question": "Can I order online for pickup or delivery?",
+      "search_answer": "Yes. Order through our online ordering page for pickup, curbside or delivery, or come in and dine with us.",
       "show_hours": false
     },
     {
-      "question": "Is there outdoor seating?",
-      "answer": "Yes. We have indoor seating and a patio with bistro chairs and shaded tables.",
+      "question": "Can we sit outside?",
+      "answer": "Yes. There’s indoor seating and a patio with bistro chairs and shaded tables.",
+      "search_question": "Is there outdoor seating?",
+      "search_answer": "Yes. We have indoor seating and a patio with bistro chairs and shaded tables.",
       "show_hours": false
     },
     {
-      "question": "What are your opening hours?",
+      "question": "When are you open?",
       "answer": "",
+      "search_question": "What are your opening hours?",
       "show_hours": true
     },
     {

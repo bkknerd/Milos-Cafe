@@ -36,9 +36,9 @@ Prices are as listed on the online ordering menu; in-store prices may differ.
 {% endfor %}- Press contact: {{ press.contact_email }}, {{ s.phone_display }}
 
 {% endif %}## Common questions
-{% for f in faq.items %}{% if f.answer %}
-### {{ f.question | safe }}
-{{ f.answer | safe }}
+{% for f in faq.items %}{% set fa = f.search_answer or f.answer %}{% if fa %}
+### {{ (f.search_question or f.question) | safe }}
+{{ fa | safe }}
 {% endif %}{% endfor %}
 ## Links
 - Website: {{ siteUrl }}/

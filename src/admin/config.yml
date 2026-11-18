@@ -267,6 +267,20 @@ collections:
     - name: intro
       label: Caption under the scene
       widget: text
+    - name: scroll_scrub
+      label: Scroll through the day (desktop and tablet)
+      widget: boolean
+      default: true
+      required: false
+      hint: The patio stays in place while visitors scroll and plays one full day, starting and ending at the real time.
+    - name: scroll_hint
+      label: 'Card: hint shown before scrolling'
+      widget: string
+      required: false
+    - name: card_scroll
+      label: 'Card: label while scrolling through the day'
+      widget: string
+      required: false
     - name: card_live
       label: 'Card: live label'
       widget: string
@@ -875,6 +889,16 @@ collections:
         editor_components: []
         minimal: true
         required: false
+      - name: search_question
+        label: Question as people search it (optional)
+        widget: string
+        required: false
+        hint: Used only for Google and AI answers, e.g. "Is there a good coffee shop in Morrisville, NC?". The page shows the question above.
+      - name: search_answer
+        label: Answer for search (optional)
+        widget: text
+        required: false
+        hint: Leave empty to use the answer above. Start with a direct reply that names Milo’s.
       - name: show_hours
         label: Add opening hours under the answer
         widget: boolean

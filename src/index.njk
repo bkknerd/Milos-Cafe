@@ -65,6 +65,7 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 
 <main id="main">
 <section class="hero" aria-labelledby="hero-h">
+<div class="scene-pin"><div class="scene-stick">
 <div class="w hero-top">
 <a class="today today-m" href="#visit" data-label="{{ header.topbar_today_label }}"></a>
 <h1 id="hero-h">{% if hero.eyebrow %}<span class="eyebrow">{{ hero.eyebrow }}</span>{% endif %}{{ hero.headline }}{% if hero.headline_italic %}<br/><i>{{ hero.headline_italic }}</i>{% endif %}</h1>
@@ -73,13 +74,14 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 </div>
 {% if patio.enabled %}
 <div class="scene" id="patio">{% include "patio-svg.njk" %}
-<div class="ps-card" aria-live="polite"><span id="ps-k">{{ patio.card_live }} · {{ patio.card_place }}</span><b id="ps-m">{{ patio.card_checking }}</b><span id="ps-s"></span></div></div>
+<div class="ps-card" aria-live="polite"><span id="ps-k">{{ patio.card_live }} · {{ patio.card_place }}</span><b id="ps-m">{{ patio.card_checking }}</b><span id="ps-s"></span>{% if patio.scroll_hint %}<span class="ps-hint" aria-hidden="true">{{ patio.scroll_hint }}</span>{% endif %}</div></div>
 <div class="w scene-ctl">
 <p class="cap">{{ patio.intro }}</p>
 <label class="sl"><span>{{ patio.slider_label }}</span><input id="ps-r" type="range" min="0" max="1439" step="1"/></label>
 <div class="chips" id="ps-ch" role="group" aria-label="{{ patio.sky_label }}"><button class="chip" data-ov="" aria-pressed="true">{{ patio.chip_live }}</button><button class="chip" data-ov="clear" aria-pressed="false">{{ patio.chip_clear }}</button><button class="chip" data-ov="cloud" aria-pressed="false">{{ patio.chip_cloudy }}</button><button class="chip" data-ov="rain" aria-pressed="false">{{ patio.chip_rain }}</button><button class="chip now" id="ps-now" hidden>{{ patio.back_to_now }}</button></div>
 </div>
 {% endif %}
+</div></div>
 </section>
 
 {% if kitchen.enabled %}
@@ -161,7 +163,7 @@ if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))loca
 <script>const SITE={{ {
   hours: hours.days | hoursJS, verdicts: patio.verdicts,
   lat: s.latitude, lng: s.longitude, address: fullAddr, copied: visit.copied_label,
-  patio: { card_live: patio.card_live, card_preview: patio.card_preview, card_place: patio.card_place },
+  patio: { card_live: patio.card_live, card_preview: patio.card_preview, card_place: patio.card_place, card_scroll: patio.card_scroll, scrub: patio.scroll_scrub != false },
   menu: { food: menu.food, drinks: menu.drinks, empty: menu.no_results },
   bite: kitchen.food_moods, sip: kitchen.drink_moods
 } | json | safe }};</script>

@@ -92,9 +92,9 @@ export default function (cfg) {
     const strip = (s) => md.renderInline(s || "").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;|&rsquo;/g, "’").replace(/&quot;/g, '"').trim();
     const groups = cfg.getFilter("hoursGroups")((hours && hours.days) || []);
     return (items || []).filter((f) => f.question).map((f) => {
-      let a = strip(f.answer);
+      let a = strip(f.search_answer || f.answer);
       if (f.show_hours) a = (a ? a + " " : "") + groups.map((g) => `${g.days}: ${g.time}`).join(". ") + "." + (hours && hours.note ? " " + hours.note : "");
-      return { "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: a } };
+      return { "@type": "Question", name: f.search_question || f.question, acceptedAnswer: { "@type": "Answer", text: a } };
     }).filter((q) => q.acceptedAnswer.text);
   });
 

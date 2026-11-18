@@ -2,8 +2,8 @@
   "enabled": true,
   "seo_title": "Press | Milo’s Cafe, Morrisville NC",
   "seo_description": "News coverage of Milo’s Cafe in Morrisville, NC: the 2026 News & Observer readers’ poll for Best Sandwich Shop in the Triangle, features, reviews and press contact.",
-  "heading": "In the",
-  "heading_italic": "press.",
+  "heading": "In the press",
+  "heading_italic": "",
   "intro": "What the Triangle’s food writers have said about Milo’s since we opened on Chapel Hill Rd in 2024.",
   "featured_label": "Award",
   "list_heading": "Coverage",
@@ -69,8 +69,8 @@
       "featured": false
     }
   ],
-  "contact_heading": "Press",
-  "contact_heading_italic": "contact.",
+  "contact_heading": "Press contact",
+  "contact_heading_italic": "",
   "contact_text": "Writing about Milo’s, or want to come by with a camera? Get in touch and we’ll set a time.",
   "contact_email": "milosfrenchcafe@gmail.com",
   "email_label": "Email",

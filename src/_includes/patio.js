@@ -17,13 +17,13 @@ const L=$('#psl'),n=$('#psB'),len=L.getTotalLength();s='';for(let i=1;i<22;i++){
 s='';for(let k=-1;k<9;k++)for(let i=0;i<22;i++){const x=Math.abs(Math.sin((i+1)*91.7+k)*1e4)%1*1560-60,y=k*80+(i*37%80);s+='<line x1="'+x.toFixed(0)+'" y1="'+y+'" x2="'+(x-5).toFixed(0)+'" y2="'+(y+22)+'"/>'}$('#psR').innerHTML=s;
 /* render */
 function draw(){
-const v=vh(S.h,S.sr,S.ss),d=dk(v),[t1,t2]=sky(v);
+const H=((S.h%24)+24)%24,v=vh(H,S.sr,S.ss),d=dk(v),[t1,t2]=sky(v);
 const cover=S.ov==='clear'?5:S.ov==='cloud'?85:S.ov==='rain'?95:S.cover,rain=S.ov?S.ov==='rain':S.rain,g=cover/100*(rain?.7:.45);
 sc.style.setProperty('--s1','rgb('+mix(t1,mix([110,120,140],[20,26,45],d),g)+')');
 sc.style.setProperty('--s2','rgb('+mix(t2,mix([150,158,172],[30,40,70],d),g)+')');
-const p=(S.h-S.sr)/(S.ss-S.sr),clr=1-cover/100*.85;
+const p=(H-S.sr)/(S.ss-S.sr),clr=1-cover/100*.85;
 if(p>=0&&p<=1){const x=140+p*1160,y=400-Math.sin(Math.PI*p)*280,o=Math.min(1,Math.sin(Math.PI*p)*4);['#psS','#psH'].forEach(i=>{set(i,'cx',x);set(i,'cy',y)});set('#psS','opacity',o*clr);set('#psH','opacity',o*clr*.9)}else{set('#psS','opacity',0);set('#psH','opacity',0)}
-const q=((S.h-S.ss+24)%24)/(24-(S.ss-S.sr));
+const q=((H-S.ss+24)%24)/(24-(S.ss-S.sr));
 if(q<=1){set('#psM','cx',140+q*1160);set('#psM','cy',400-Math.sin(Math.PI*q)*260);set('#psM','opacity',Math.min(1,Math.sin(Math.PI*q)*4)*(1-cover/100*.8))}else set('#psM','opacity',0);
 set('#pst','opacity',d*(1-cover/100*.85));
 sc.querySelectorAll('.psN').forEach(n=>n.setAttribute('opacity',d*.5+(rain?.12:0)));sc.style.setProperty('--nk',d*.5+(rain?.12:0));
@@ -36,10 +36,10 @@ sc.style.setProperty('--st',S.feel<72&&d<.95?.9:0);
 sc.style.setProperty('--sw',Math.max(1.8,7-S.wind/4)+'s');
 /* text */
 const w=rain?'Rain':cover>70?'Overcast':cover>30?'Partly cloudy':'Clear';
-$('#ps-k').textContent=(S.live&&!S.ov?PL.card_live:PL.card_preview)+' · '+PL.card_place;
+$('#ps-k').textContent=(S.scrub&&PL.card_scroll?PL.card_scroll:S.live&&!S.ov?PL.card_live:PL.card_preview)+' · '+PL.card_place;
 $('#ps-m').textContent=ph(v);
-$('#ps-s').textContent=[f(S.h),S.temp!=null?Math.round(S.temp)+'°F':'',w].filter(Boolean).join(' · ');
-$('#ps-r').value=Math.round(S.h*60);$('#ps-now').hidden=S.live&&!S.ov;
+$('#ps-s').textContent=[f(H),S.temp!=null?Math.round(S.temp)+'°F':'',w].filter(Boolean).join(' · ');
+$('#ps-r').value=Math.round(((S.h%24)+24)%24*60);$('#ps-now').hidden=(S.live&&!S.ov)||S.scrub;
 }
 /* controls */
 $('#ps-r').oninput=e=>{S.live=false;S.h=e.target.value/60;draw()};
@@ -48,14 +48,14 @@ const chips=[...document.querySelectorAll('#ps-ch .chip[data-ov]')],press=b=>chi
 chips.forEach(b=>b.onclick=()=>{S.ov=b.dataset.ov||null;press(b);draw()});
 /* back to now: real time and real weather, then keep focus on the controls */
 $('#ps-now').onclick=()=>{S.live=true;S.h=ny().h;S.ov=null;press(chips[0]);draw();$('#ps-r').focus({preventScroll:true})};
-setInterval(()=>{if(S.live){S.h=ny().h;draw()}},30000);
+setInterval(()=>{if(S.live&&!S.scrub){S.h=ny().h;draw()}},30000);
 S.h=ny().h;draw();
 /* framing: show the storefront on narrow screens */
 /* fit: the whole drawing always sits inside the first screen. Plenty of room: fill the width.
-   Short screen: scale the drawing down (sky and gravel continue into the side margins). Phones: frame the table. */
+   Short screen: scale the drawing down (sky and gravel continue into the side margins). Phones and tablets: frame the storefront. */
 const art=sc.querySelector('.art');
-const fit=()=>{if(innerWidth<760){sc.style.height='';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMaxYMax slice'));
-/* phones: the drawing ends above the bottom action bar; on short screens it gives up sky, never the table */
+const fit=()=>{if(innerWidth<901){sc.style.height='';svgs.forEach(v=>v.setAttribute('preserveAspectRatio','xMinYMax slice'));
+/* phones and tablets: frame the storefront and patio; the drawing ends above the bottom action bar and gives up sky first on short screens */
 const bar=document.querySelector('.bar'),barH=bar&&getComputedStyle(bar).display!=='none'?bar.offsetHeight:0;
 art.style.height='';const top=art.getBoundingClientRect().top+scrollY,natural=art.offsetHeight,room=innerHeight-top-barH-6;
 if(room<natural)art.style.height=Math.max(200,Math.round(room))+'px';return}
@@ -67,6 +67,27 @@ fit();addEventListener('resize',fit,{passive:true});if(document.fonts)document.f
 if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const far=$('#psFar'),cl=$('#pscl'),box=sc;
 const par=()=>{const r=box.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const y=Math.max(0,-r.top);far.style.transform='translateY('+(y*.06)+'px)';cl.style.transform='translateY('+(y*.12)+'px)'};
 addEventListener('scroll',par,{passive:true});par()}
+
+/* scroll through the day: on wide screens the top of the page holds still while you scroll and plays one full
+   day, starting and ending at the real time. Off for phones, reduced motion and the CMS switch. */
+(()=>{const pin=sc.closest('.scene-pin'),stick=sc.closest('.scene-stick'),card=$('.ps-card');if(!pin||!stick||PL.scrub===false)return;
+const mq=matchMedia('(min-width:901px) and (prefers-reduced-motion:no-preference)');let on=false,raf=0,lastP=-1,base=0;
+const len=()=>Math.round(innerHeight*1.35);
+let stickTop=0;
+const layout=()=>{on=mq.matches;pin.classList.toggle('pinned',on);pin.style.height=on?(stick.offsetHeight+len())+'px':'';
+/* pin when the controls reach the bottom of the screen, so the scene and its controls are always fully in view */
+const hd=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hd'))||64;stickTop=Math.min(hd,innerHeight-stick.offsetHeight);stick.style.top=on?stickTop+'px':'';lastP=-1;tick()};
+const tick=()=>{raf=0;if(!on){if(S.scrub){S.scrub=false;card.setAttribute('aria-live','polite');draw()}return}
+const top=pin.getBoundingClientRect().top-stickTop,run=pin.offsetHeight-stick.offsetHeight,p=Math.min(1,Math.max(0,-top/run));
+pin.classList.toggle('started',p>0);
+if(p===lastP)return;lastP=p;
+if(p<=0||p>=1){if(S.scrub){S.scrub=false;S.live=true;S.ov=null;S.h=ny().h;card.setAttribute('aria-live','polite');draw()}return}
+if(!S.scrub){S.scrub=true;base=ny().h;S.ov=null;chips.forEach(x=>x.setAttribute('aria-pressed',x===chips[0]));card.setAttribute('aria-live','off')}
+/* one full day, starting and ending at the real Morrisville time, so the resting scene is always the real sky */
+S.live=false;S.h=base+p*24;draw()};
+addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});
+addEventListener('resize',layout,{passive:true});mq.addEventListener('change',layout);
+if(document.fonts)document.fonts.ready.then(layout);layout()})();
 /* live weather */
 fetch('https://api.open-meteo.com/v1/forecast?latitude='+SITE.lat+'&longitude='+SITE.lng+'&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,cloud_cover&daily=sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=1')
 .then(r=>r.json()).then(j=>{const k=j.current,hh=x=>{const t=x.split('T')[1].split(':');return(+t[0])+(+t[1])/60};

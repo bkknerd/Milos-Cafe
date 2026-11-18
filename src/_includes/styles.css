@@ -468,3 +468,14 @@ details:first-child{border-top:0;background:var(--hatch) repeat-x left top/240px
   .hd-in .nav{margin:0}
   .hd-in .hd-r{justify-self:end;margin-left:0}
 }
+
+/* tablet: the owners' photo stays a photo, not a wall */
+@media(min-width:521px) and (max-width:900px){
+  .story-pic{max-width:560px}
+  .story-pic img{aspect-ratio:4/3;max-height:440px}
+}
+
+/* scroll through the day: the patio and its controls hold still while the page scrolls */
+.scene-pin.pinned .scene-stick{position:sticky;top:var(--hd);z-index:1;background:var(--bg)}
+.ps-hint{display:none}
+.pinned:not(.started) .ps-hint{display:block;margin-top:6px;padding-top:6px;border-top:1px solid var(--rule);color:var(--dim)}
