@@ -1,0 +1,72 @@
+{
+  "enabled": true,
+  "seo_title": "Press | Milo’s Cafe, Morrisville NC",
+  "seo_description": "News coverage of Milo’s Cafe in Morrisville, NC: the 2026 News & Observer readers’ poll for Best Sandwich Shop in the Triangle, features, reviews and press contact.",
+  "heading": "In the",
+  "heading_italic": "press.",
+  "intro": "What the Triangle’s food writers have said about Milo’s since we opened on Chapel Hill Rd in 2024.",
+  "featured_label": "Award",
+  "list_heading": "Coverage",
+  "items": [
+    {
+      "outlet": "The News & Observer",
+      "kind": "Award",
+      "date": "2026",
+      "title": "Best Sandwich Shop in the Triangle",
+      "summary": "N&O readers voted Milo’s the Triangle’s best sandwich shop. The story goes behind the counter with Menad, the torched-gruyère schnitzel sandwich, and the old motorcycle shop that became the café.",
+      "url": "https://www.newsobserver.com/living/food-drink/article315186505.html",
+      "link_label": "Read the story",
+      "featured": true
+    },
+    {
+      "outlet": "Cary Magazine",
+      "kind": "Feature",
+      "date": "",
+      "title": "Milo’s feature",
+      "summary": "",
+      "url": "https://www.carymagazine.com/",
+      "link_label": "Read the feature",
+      "featured": false
+    },
+    {
+      "outlet": "The News & Observer",
+      "kind": "Video",
+      "date": "",
+      "title": "Video feature",
+      "summary": "",
+      "url": "https://www.newsobserver.com/",
+      "link_label": "Watch the video",
+      "featured": false
+    },
+    {
+      "outlet": "The News & Observer",
+      "kind": "Review",
+      "date": "",
+      "title": "Restaurant review",
+      "summary": "",
+      "url": "https://www.newsobserver.com/",
+      "link_label": "Read the review",
+      "featured": false
+    },
+    {
+      "outlet": "Triangle Food Blog",
+      "kind": "Opening",
+      "date": "",
+      "title": "Opening-day coverage",
+      "summary": "",
+      "url": "https://trianglefoodblog.com/",
+      "link_label": "Read the post",
+      "featured": false
+    }
+  ],
+  "contact_heading": "Press",
+  "contact_heading_italic": "contact.",
+  "contact_text": "Writing about Milo’s, or want to come by with a camera? Get in touch and we’ll set a time.",
+  "contact_email": "milosfrenchcafe@gmail.com",
+  "email_label": "Email",
+  "phone_label": "Phone",
+  "instagram_label": "Instagram",
+  "email_button": "Email us",
+  "footer_heading": "Press",
+  "footer_link_label": "Coverage & contact"
+}

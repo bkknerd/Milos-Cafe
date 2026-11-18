@@ -98,6 +98,13 @@ export default function (cfg) {
     }).filter((q) => q.acceptedAnswer.text);
   });
 
+  // schema.org ItemList for the press page: each piece of coverage with its publisher
+  cfg.addFilter("pressSchema", (press) => ((press && press.items) || []).filter((i) => i.url && i.title).map((i, n) => ({
+    "@type": "ListItem", position: n + 1,
+    item: Object.assign({ "@type": "CreativeWork", name: i.title, url: i.url, publisher: { "@type": "Organization", name: i.outlet } },
+      i.summary ? { description: i.summary } : {}, /^\d{4}(-\d\d){0,2}$/.test(i.date || "") ? { datePublished: i.date } : {})
+  })));
+
   cfg.addFilter("fixed2", (n) => (typeof n === "number" ? n.toFixed(2) : n));
   // schema.org Menu: sections and dishes with descriptions
   cfg.addFilter("menuSchema", (menu, siteUrl) => {

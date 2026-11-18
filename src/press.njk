@@ -1,0 +1,101 @@
+{%- set s = settings -%}
+{%- set fullAddr = s.street + ", " + s.city + ", " + s.state + " " + s.zip -%}
+{%- set siteUrl = s.site_url or build.url -%}
+{%- from "macros.njk" import ext, extmark, ink, heading with context -%}
+{%- set gDir = "https://www.google.com/maps/dir/?api=1&destination=" + ((s.business_name + " " + fullAddr) | enc) -%}
+{%- set on = { kitchen: kitchen.enabled, menu: menu.enabled, reviews: reviews.enabled, gallery: gallery.enabled, faq: faq.enabled, patio: patio.enabled, press: press.enabled, visit: true } -%}
+{%- set home = false -%}{%- set page_id = "press" -%}
+{%- set feat = press.items | selectattr("featured") | first -%}
+{%- set rest = press.items | rejectattr("featured") -%}
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+{% include "gtm-head.njk" %}
+<script>document.documentElement.classList.add("js")</script>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>{{ press.seo_title }}</title>
+<meta name="description" content="{{ press.seo_description }}"/>
+<meta name="theme-color" content="#f8f7f3"/>
+<link rel="preload" href="/fonts/fraunces-normal.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+{% if siteUrl %}<link rel="canonical" href="{{ siteUrl }}/press/"/>{% endif %}
+<meta property="og:type" content="website"/>
+{% if siteUrl %}<meta property="og:url" content="{{ siteUrl }}/press/"/>{% endif %}
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="{{ s.business_name }}"/>
+<meta property="og:title" content="{{ press.seo_title }}"/>
+<meta property="og:description" content="{{ press.seo_description }}"/>
+<meta property="og:image" content="{{ siteUrl if s.share_image.startsWith('/') }}{{ s.share_image }}"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "CollectionPage", "@id": siteUrl + "/press/#page", "url": siteUrl + "/press/", "name": press.seo_title, "description": press.seo_description,
+      "about": { "@id": siteUrl + "/#cafe" }, "isPartOf": { "@type": "WebSite", "url": siteUrl + "/", "name": s.business_name },
+      "mainEntity": { "@type": "ItemList", "itemListElement": press | pressSchema } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": s.business_name, "item": siteUrl + "/" },
+      { "@type": "ListItem", "position": 2, "name": press.contact_heading, "item": siteUrl + "/press/" } ] },
+    { "@type": "CafeOrCoffeeShop", "@id": siteUrl + "/#cafe", "name": s.business_name, "url": siteUrl + "/", "telephone": s.phone_dial,
+      "email": press.contact_email, "sameAs": [s.instagram_url, s.yelp_url],
+      "address": { "@type": "PostalAddress", "streetAddress": s.street, "addressLocality": s.city, "addressRegion": s.state, "postalCode": s.zip, "addressCountry": "US" } }
+  ]
+} | json | safe }}</script>
+<style>{% raw_include "fonts.css" %}{% raw_include "styles.css" %}</style>
+</head><body>
+{% include "gtm-body.njk" %}
+{% include "ink-defs.njk" %}
+<a class="skip" href="#main">Skip to content</a>
+{% include "site-header.njk" %}
+
+<main id="main" class="press">
+<section class="w pr-top" aria-labelledby="press-h">
+<h1 id="press-h">{{ heading(press) }}{{ ink(0) }}</h1>
+{% if press.intro %}<p class="pr-intro">{{ press.intro }}</p>{% endif %}
+</section>
+
+{% if feat %}
+<section class="w" aria-label="{{ press.featured_label }}">
+<a class="pr-feat" href="{{ feat.url }}"{{ ext(feat.url) }}>
+<svg class="ico" viewBox="0 0 88 88" aria-hidden="true" focusable="false"><use href="#ico-sandwich"/></svg>
+<p class="pr-k">{{ feat.kind }}{% if feat.date %} · {{ feat.date }}{% endif %}</p>
+<h2>{{ feat.title }}</h2>
+<p class="pr-o">{{ feat.outlet }}</p>
+{% if feat.summary %}<p class="pr-s">{{ feat.summary }}</p>{% endif %}
+<span class="pr-go">{{ feat.link_label }}<svg viewBox="0 0 20 12" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ extmark(feat.url) }}</span>
+</a>
+</section>
+{% endif %}
+
+{% if rest.length %}
+<section class="w pr-list" aria-labelledby="cov-h">
+<h2 id="cov-h" class="pr-lh">{{ press.list_heading }}</h2>
+<ol>{% for i in rest %}<li><a href="{{ i.url }}"{{ ext(i.url) }}>
+<span class="pr-k">{{ i.kind }}{% if i.date %} · {{ i.date }}{% endif %}</span>
+<span class="pr-t"><span class="pr-o">{{ i.outlet }}</span><span class="pr-h">{{ i.title }}</span>{% if i.summary %}<span class="pr-s">{{ i.summary }}</span>{% endif %}</span>
+<span class="pr-go">{{ i.link_label }}<svg viewBox="0 0 20 12" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ extmark(i.url) }}</span>
+</a></li>{% endfor %}</ol>
+</section>
+{% endif %}
+
+<section class="w pr-contact" id="contact" aria-labelledby="contact-h">
+<div class="pr-ch"><h2 id="contact-h">{{ press.contact_heading }}{% if press.contact_heading_italic %} <i>{{ press.contact_heading_italic }}</i>{% endif %}{{ ink(1) }}</h2>
+{% if press.contact_text %}<p>{{ press.contact_text }}</p>{% endif %}
+{% if press.contact_email and press.email_button %}<p class="btns"><a class="btn" href="mailto:{{ press.contact_email }}?subject={{ ('Press: ' + s.business_name) | enc }}">{{ press.email_button }}</a></p>{% endif %}</div>
+<dl class="pr-cd">
+{% if press.contact_email %}<div><dt>{{ press.email_label }}</dt><dd><a href="mailto:{{ press.contact_email }}">{{ press.contact_email }}</a></dd></div>{% endif %}
+<div><dt>{{ press.phone_label }}</dt><dd><a href="tel:{{ s.phone_dial }}">{{ s.phone_display }}</a></dd></div>
+<div><dt>{{ press.instagram_label }}</dt><dd><a href="{{ s.instagram_url }}"{{ ext(s.instagram_url) }}>@{{ s.instagram_handle }}{{ extmark(s.instagram_url) }}</a></dd></div>
+</dl>
+</section>
+</main>
+
+{% include "site-footer.njk" %}
+<script>const SITE={{ { hours: hours.days | hoursJS, verdicts: patio.verdicts, address: fullAddr, copied: visit.copied_label } | json | safe }};
+(()=>{const cp=document.getElementById("cp");if(cp)cp.onclick=e=>{try{navigator.clipboard.writeText(SITE.address);e.currentTarget.textContent=SITE.copied}catch(x){}}})();</script>
+<script>{% raw_include "fx.js" %}</script>
+{% if settings.gtm_id %}<script>{% raw_include "tracking.js" %}</script>{% endif %}
+</body></html>

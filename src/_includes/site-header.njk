@@ -1,0 +1,8 @@
+{#- Shared header. Pages set `home` (true on the homepage) and `on` (which sections are shown). -#}
+{%- from "macros.njk" import ext, extmark with context -%}
+{%- set b = "" if home else "/" -%}
+<header class="hd"><div class="w hd-in">
+<a aria-label="{{ s.business_name }}, {{ 'back to top' if home else 'home' }}" class="logo" href="{{ '#' if home else '/' }}">{% logo s.logo, s.business_name + " logo", "eager" %}</a>
+<nav class="nav" aria-label="Sections">{% for n in header.nav %}{% if on[n.target] %}{% if n.target == "press" %}<a href="/press/"{% if page_id == "press" %} aria-current="page"{% endif %}>{{ n.label }}</a>{% else %}<a href="{{ '' if n.target == 'visit' else b }}#{{ n.target }}">{{ n.label }}</a>{% endif %}{% endif %}{% endfor %}</nav>
+<div class="hd-r"><a class="today" href="#visit" data-label="{{ header.topbar_today_label }}"></a>{% if on.menu %}<a class="m-menu" href="{{ b }}#menu">{{ header.mobile_menu_label }}</a>{% endif %}<a class="btn" href="{{ s.order_url }}"{{ ext(s.order_url) }}>{{ header.order_button }}{{ extmark(s.order_url) }}</a></div>
+</div></header>
