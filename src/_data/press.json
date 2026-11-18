@@ -19,13 +19,13 @@
       "featured": true
     },
     {
-      "outlet": "Cary Magazine",
-      "kind": "Feature",
+      "outlet": "The News & Observer",
+      "kind": "Review",
       "date": "",
-      "title": "Milo’s feature",
+      "title": "Restaurant review",
       "summary": "",
-      "url": "https://www.carymagazine.com/",
-      "link_label": "Read the feature",
+      "url": "https://www.newsobserver.com/living/food-drink/article315208865.html",
+      "link_label": "Read the review",
       "featured": false
     },
     {
@@ -34,28 +34,38 @@
       "date": "",
       "title": "Video feature",
       "summary": "",
-      "url": "https://www.newsobserver.com/",
+      "url": "https://www.newsobserver.com/living/food-drink/article315186571.html",
       "link_label": "Watch the video",
       "featured": false
     },
     {
-      "outlet": "The News & Observer",
-      "kind": "Review",
+      "outlet": "Cary Magazine",
+      "kind": "Feature",
       "date": "",
-      "title": "Restaurant review",
+      "title": "A fresh spin on salad",
       "summary": "",
-      "url": "https://www.newsobserver.com/",
-      "link_label": "Read the review",
+      "url": "https://www.carymagazine.com/food-and-dining/a-fresh-spin-on-salad/",
+      "link_label": "Read the feature",
       "featured": false
     },
     {
-      "outlet": "Triangle Food Blog",
-      "kind": "Opening",
-      "date": "",
-      "title": "Opening-day coverage",
-      "summary": "",
-      "url": "https://trianglefoodblog.com/",
-      "link_label": "Read the post",
+      "outlet": "Wake Forest Magazine",
+      "kind": "Guide",
+      "date": "September 2026",
+      "title": "Best coffee and tea shops in Morrisville",
+      "summary": "Milo’s makes the magazine’s guide to Morrisville coffee shops, called out for its crepes and focaccia sandwiches.",
+      "url": "https://wakeforestmagazine.com/guides/best-coffee-shops-in-morrisville/",
+      "link_label": "Read the guide",
+      "featured": false
+    },
+    {
+      "outlet": "Welcome to RTP/Morrisville",
+      "kind": "Newsletter",
+      "date": "November 2026",
+      "title": "A cozy spot for fall coffee",
+      "summary": "The local newsletter picks Milo’s for a fall breakfast or coffee with friends, for its specialty coffee, pastries and sandwiches.",
+      "url": "https://welcome-to-rtp.beehiiv.com/p/welcome-to-rtp-morrisville-3d55",
+      "link_label": "Read the newsletter",
       "featured": false
     }
   ],
