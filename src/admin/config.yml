@@ -267,20 +267,6 @@ collections:
     - name: intro
       label: Caption under the scene
       widget: text
-    - name: scroll_scrub
-      label: Scroll through the day (desktop and tablet)
-      widget: boolean
-      default: true
-      required: false
-      hint: The patio stays in place while visitors scroll and plays one full day, starting and ending at the real time.
-    - name: scroll_hint
-      label: 'Card: hint shown before scrolling'
-      widget: string
-      required: false
-    - name: card_scroll
-      label: 'Card: label while scrolling through the day'
-      widget: string
-      required: false
     - name: card_live
       label: 'Card: live label'
       widget: string

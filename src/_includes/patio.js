@@ -36,10 +36,10 @@ sc.style.setProperty('--st',S.feel<72&&d<.95?.9:0);
 sc.style.setProperty('--sw',Math.max(1.8,7-S.wind/4)+'s');
 /* text */
 const w=rain?'Rain':cover>70?'Overcast':cover>30?'Partly cloudy':'Clear';
-$('#ps-k').textContent=(S.scrub&&PL.card_scroll?PL.card_scroll:S.live&&!S.ov?PL.card_live:PL.card_preview)+' · '+PL.card_place;
+$('#ps-k').textContent=(S.live&&!S.ov?PL.card_live:PL.card_preview)+' · '+PL.card_place;
 $('#ps-m').textContent=ph(v);
 $('#ps-s').textContent=[f(H),S.temp!=null?Math.round(S.temp)+'°F':'',w].filter(Boolean).join(' · ');
-$('#ps-r').value=Math.round(((S.h%24)+24)%24*60);$('#ps-now').hidden=(S.live&&!S.ov)||S.scrub;
+$('#ps-r').value=Math.round(((S.h%24)+24)%24*60);$('#ps-now').hidden=S.live&&!S.ov;
 }
 /* controls */
 $('#ps-r').oninput=e=>{S.live=false;S.h=e.target.value/60;draw()};
@@ -48,7 +48,7 @@ const chips=[...document.querySelectorAll('#ps-ch .chip[data-ov]')],press=b=>chi
 chips.forEach(b=>b.onclick=()=>{S.ov=b.dataset.ov||null;press(b);draw()});
 /* back to now: real time and real weather, then keep focus on the controls */
 $('#ps-now').onclick=()=>{S.live=true;S.h=ny().h;S.ov=null;press(chips[0]);draw();$('#ps-r').focus({preventScroll:true})};
-setInterval(()=>{if(S.live&&!S.scrub){S.h=ny().h;draw()}},30000);
+setInterval(()=>{if(S.live){S.h=ny().h;draw()}},30000);
 S.h=ny().h;draw();
 /* framing: show the storefront on narrow screens */
 /* fit: the whole drawing always sits inside the first screen. Plenty of room: fill the width.
@@ -68,26 +68,6 @@ if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const far=$('#psFar')
 const par=()=>{const r=box.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const y=Math.max(0,-r.top);far.style.transform='translateY('+(y*.06)+'px)';cl.style.transform='translateY('+(y*.12)+'px)'};
 addEventListener('scroll',par,{passive:true});par()}
 
-/* scroll through the day: on wide screens the top of the page holds still while you scroll and plays one full
-   day, starting and ending at the real time. Off for phones, reduced motion and the CMS switch. */
-(()=>{const pin=sc.closest('.scene-pin'),stick=sc.closest('.scene-stick'),card=$('.ps-card');if(!pin||!stick||PL.scrub===false)return;
-const mq=matchMedia('(min-width:901px) and (prefers-reduced-motion:no-preference)');let on=false,raf=0,lastP=-1,base=0;
-const len=()=>Math.round(innerHeight*1.35);
-let stickTop=0;
-const layout=()=>{on=mq.matches;pin.classList.toggle('pinned',on);pin.style.height=on?(stick.offsetHeight+len())+'px':'';
-/* pin when the controls reach the bottom of the screen, so the scene and its controls are always fully in view */
-const hd=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hd'))||64;stickTop=Math.min(hd,innerHeight-stick.offsetHeight);stick.style.top=on?stickTop+'px':'';lastP=-1;tick()};
-const tick=()=>{raf=0;if(!on){if(S.scrub){S.scrub=false;card.setAttribute('aria-live','polite');draw()}return}
-const top=pin.getBoundingClientRect().top-stickTop,run=pin.offsetHeight-stick.offsetHeight,p=Math.min(1,Math.max(0,-top/run));
-pin.classList.toggle('started',p>0);
-if(p===lastP)return;lastP=p;
-if(p<=0||p>=1){if(S.scrub){S.scrub=false;S.live=true;S.ov=null;S.h=ny().h;card.setAttribute('aria-live','polite');draw()}return}
-if(!S.scrub){S.scrub=true;base=ny().h;S.ov=null;chips.forEach(x=>x.setAttribute('aria-pressed',x===chips[0]));card.setAttribute('aria-live','off')}
-/* one full day, starting and ending at the real Morrisville time, so the resting scene is always the real sky */
-S.live=false;S.h=base+p*24;draw()};
-addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(tick)},{passive:true});
-addEventListener('resize',layout,{passive:true});mq.addEventListener('change',layout);
-if(document.fonts)document.fonts.ready.then(layout);layout()})();
 /* live weather */
 fetch('https://api.open-meteo.com/v1/forecast?latitude='+SITE.lat+'&longitude='+SITE.lng+'&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,cloud_cover&daily=sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=1')
 .then(r=>r.json()).then(j=>{const k=j.current,hh=x=>{const t=x.split('T')[1].split(':');return(+t[0])+(+t[1])/60};

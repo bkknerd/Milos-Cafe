@@ -14,7 +14,5 @@
   "chip_rain": "Rain",
   "verdicts": {
     "closed_today": "Closed today"
-  },
-  "scroll_hint": "Scroll to watch a whole day go by",
-  "card_scroll": "A day at Milo’s"
+  }
 }
